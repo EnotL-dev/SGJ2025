@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace PlayerSystem
 {
@@ -8,22 +10,27 @@ namespace PlayerSystem
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private Camera _camera;
         [SerializeField] private CharacterController _characterController;
+        [SerializeField] private InputAction _input;
         private Vector3 _moving;
 
-        public void Tick()
+        private void OnEnable()
+        {
+            _input.Enable();
+        }
+
+        private void OnDisable()
+        {
+            _input.Disable();
+        }
+
+        private void Update()
         {
             Move();
         }
 
-        private void ResetVelocity()
-        {
-            _moving = Vector3.zero;
-        }
-
         private void Move()
         {
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
+            Vector3 moveDirection = _input.ReadValue<Vector3>();
             Vector3 cameraRight = _camera.transform.right;
             cameraRight.y = 0;
             cameraRight.Normalize();
@@ -31,8 +38,8 @@ namespace PlayerSystem
             cameraForward.y = 0;
             cameraForward.Normalize();
             Vector3 _inputMoving =
-                cameraRight * x +
-                cameraForward * z;
+                cameraRight * moveDirection.x +
+                cameraForward * moveDirection.z;
             _inputMoving = Vector3.ClampMagnitude(_inputMoving, 1);
             if (IsGround)
             {
@@ -45,6 +52,7 @@ namespace PlayerSystem
                 jumpMoving = Vector3.ClampMagnitude(jumpMoving, _config.MovingSpeed);
                 _characterController.Move(jumpMoving * Time.deltaTime);
             }
+            Debug.Log(_characterController.velocity.magnitude);
         }
     }
 }
