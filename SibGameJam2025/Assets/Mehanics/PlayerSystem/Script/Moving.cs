@@ -1,16 +1,16 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace PlayerSystem
 {
     public class Moving : MonoBehaviour
     {
-        public bool IsGround = true;
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private Camera _camera;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private InputAction _input;
+        //[SerializeField]
+        [SerializeField] private Jumping _jumpingSystem;
         private Vector3 _moving;
 
         private void OnEnable()
@@ -41,7 +41,7 @@ namespace PlayerSystem
                 cameraRight * moveDirection.x +
                 cameraForward * moveDirection.z;
             _inputMoving = Vector3.ClampMagnitude(_inputMoving, 1);
-            if (IsGround)
+            if (_jumpingSystem.IsGround)
             {
                 _moving = _inputMoving * _config.MovingSpeed;
                 _characterController.Move(_moving * Time.deltaTime);
@@ -52,7 +52,6 @@ namespace PlayerSystem
                 jumpMoving = Vector3.ClampMagnitude(jumpMoving, _config.MovingSpeed);
                 _characterController.Move(jumpMoving * Time.deltaTime);
             }
-            Debug.Log(_characterController.velocity.magnitude);
         }
     }
 }

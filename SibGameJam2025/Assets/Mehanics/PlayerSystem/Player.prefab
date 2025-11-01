@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1360168370495150270}
   - component: {fileID: 194807889887491467}
   - component: {fileID: 8399344984259592646}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CinemachineCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1123337822835008988}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 324653651153496312}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7441467341898335209}
   - component: {fileID: 8982105056898127665}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sequencer Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -291,7 +291,8 @@ GameObject:
   - component: {fileID: 8560827803616626118}
   - component: {fileID: 6202307744549774060}
   - component: {fileID: 4725509268947644320}
-  m_Layer: 0
+  - component: {fileID: 2301830999263655607}
+  m_Layer: 6
   m_Name: Player Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -307,11 +308,12 @@ Transform:
   m_GameObject: {fileID: 5726555929121282423}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 324653651153496312}
+  - {fileID: 3034501596354150279}
   m_Father: {fileID: 1618704947197867617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &6202307744549774060
@@ -351,7 +353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2283c87531189b4ab79604b413b7aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsGround: 1
   _config: {fileID: 11400000, guid: 85ec42e22223d2b4f98d011a4f75c545, type: 2}
   _camera: {fileID: 7956477240996061271}
   _characterController: {fileID: 6202307744549774060}
@@ -420,6 +421,86 @@ MonoBehaviour:
       m_Action: Input
       m_Flags: 8
     m_Flags: 0
+  _jumpingSystem: {fileID: 2301830999263655607}
+--- !u!114 &2301830999263655607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726555929121282423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58cd34591653bf449151638fc1029bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerConfig: {fileID: 11400000, guid: 85ec42e22223d2b4f98d011a4f75c545, type: 2}
+  _characterController: {fileID: 6202307744549774060}
+  _groundCheckerPosition: {fileID: 3034501596354150279}
+  _input:
+    m_Name: Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 20639a31-4654-4994-90bf-dbc1acccdbba
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: c15ac512-b34b-4657-bb0f-1b6e80385d94
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 80778d1b-3b09-479f-a34c-f7a96d344d9f
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 8498ed81-0b11-4c1c-94a8-6510c01e9d94
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Input
+      m_Flags: 8
+    m_Flags: 0
+--- !u!1 &5824809035752513076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3034501596354150279}
+  m_Layer: 6
+  m_Name: Ground Checker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3034501596354150279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5824809035752513076}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8560827803616626118}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7318422631614600371
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +514,7 @@ GameObject:
   - component: {fileID: 5478973882048109761}
   - component: {fileID: 3741424467339408840}
   - component: {fileID: 7816328972273327187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -449,7 +530,7 @@ Transform:
   m_GameObject: {fileID: 7318422631614600371}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.8, z: 0}
+  m_LocalPosition: {x: 0, y: 1.88, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -599,7 +680,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1618704947197867617}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
