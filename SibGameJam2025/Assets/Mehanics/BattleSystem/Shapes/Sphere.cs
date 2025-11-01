@@ -6,5 +6,7 @@ namespace BattleSystem
     public class Sphere : Shape
     {
         public override string nameNode { get => "Øàð"; }
+
+        public override int weight { get => 4; }
     }
 }
