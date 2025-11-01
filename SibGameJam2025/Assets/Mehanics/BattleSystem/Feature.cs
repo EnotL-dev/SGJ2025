@@ -3,7 +3,7 @@
 namespace BattleSystem
 {
     [CreateAssetMenu(fileName = "Node", menuName = "Nodes/Feature")]
-    public abstract class Feature : Node
+    public class Feature : Node
     {
 
     }
