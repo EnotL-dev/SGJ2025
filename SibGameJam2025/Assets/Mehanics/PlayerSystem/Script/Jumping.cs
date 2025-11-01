@@ -9,7 +9,6 @@ namespace PlayerSystem
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _groundCheckerPosition;
-        [SerializeField] private InputAction _input;
         private Vector3 _velocity;
 
         private void Update()
@@ -22,7 +21,7 @@ namespace PlayerSystem
 
         private void StartJump()
         {
-            if (IsGround && CanJump() && _input.triggered)
+            if (IsGround && CanJump() && Input.GetKeyDown(KeyCode.Space))
             {
                 Debug.Log("jump");
                 _velocity.y = Mathf.Sqrt(_playerConfig.JumpHeight * -2f * _playerConfig.Gravity);

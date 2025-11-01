@@ -8,20 +8,8 @@ namespace PlayerSystem
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private Camera _camera;
         [SerializeField] private CharacterController _characterController;
-        [SerializeField] private InputAction _input;
-        //[SerializeField]
         [SerializeField] private Jumping _jumpingSystem;
         private Vector3 _moving;
-
-        private void OnEnable()
-        {
-            _input.Enable();
-        }
-
-        private void OnDisable()
-        {
-            _input.Disable();
-        }
 
         private void Update()
         {
@@ -30,7 +18,9 @@ namespace PlayerSystem
 
         private void Move()
         {
-            Vector3 moveDirection = _input.ReadValue<Vector3>();
+            float x = Input.GetAxis("Horizontal");
+            float z = Input.GetAxis("Vertical");
+            Debug.Log(x);
             Vector3 cameraRight = _camera.transform.right;
             cameraRight.y = 0;
             cameraRight.Normalize();
@@ -38,8 +28,8 @@ namespace PlayerSystem
             cameraForward.y = 0;
             cameraForward.Normalize();
             Vector3 _inputMoving =
-                cameraRight * moveDirection.x +
-                cameraForward * moveDirection.z;
+                cameraRight * x +
+                cameraForward * z;
             _inputMoving = Vector3.ClampMagnitude(_inputMoving, 1);
             if (_jumpingSystem.IsGround)
             {
