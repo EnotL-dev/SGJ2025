@@ -3,7 +3,7 @@
 namespace BattleSystem
 {
     [CreateAssetMenu(fileName = "Node", menuName = "Nodes/Impact")]
-    public abstract class Impact : Node
+    public class Impact : Node
     {
         
     }

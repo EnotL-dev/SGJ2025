@@ -2,7 +2,6 @@ using UnityEngine;
 
 namespace BattleSystem
 {
-    [CreateAssetMenu(fileName = "Node", menuName = "Nodes")]
     public abstract class Node : ScriptableObject
     {
         private string _nameNode = "Nothing";

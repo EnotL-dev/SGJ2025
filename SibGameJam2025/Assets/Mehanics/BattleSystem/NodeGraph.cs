@@ -5,8 +5,8 @@ namespace BattleSystem
 {
     public class NodeGraph
     {
-        public Shape shape;
-        public Impact impact;
-        public Feature feature;
+        private Shape shape;
+        private Impact impact;
+        private Feature feature;
     }
 }
