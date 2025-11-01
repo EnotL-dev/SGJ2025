@@ -140,6 +140,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 563cff3af1e40044eb1a171ae76160d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _footsteps: {fileID: 5079978734607553586}
+  _moving: {fileID: 4725509268947644320}
+  _jumping: {fileID: 2301830999263655607}
+  _config: {fileID: 11400000, guid: 85ec42e22223d2b4f98d011a4f75c545, type: 2}
 --- !u!114 &3648127931758752571
 MonoBehaviour:
   m_ObjectHideFlags: 0

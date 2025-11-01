@@ -5,13 +5,14 @@ namespace PlayerSystem
 {
     public class Moving : MonoBehaviour
     {
+        public float Magnitude { get => _characterController.velocity.magnitude; }
+        public ReactiveProperty<bool> IsSprint = new(true);
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private Camera _camera;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Jumping _jumpingSystem;
         [SerializeField] private bool _debug = false;
         private Vector3 _moving;
-        private ReactiveProperty<bool> IsSprint = new(true);
 
         private void Update()
         {
@@ -42,7 +43,7 @@ namespace PlayerSystem
                 cameraRight * x +
                 cameraForward * z;
             _inputMoving = Vector3.ClampMagnitude(_inputMoving, 1);
-            if (_jumpingSystem.IsGround.Value)
+            if (_jumpingSystem.IsGrounded.Value)
             {
                 _moving = _inputMoving * GetSpeed();
                 _characterController.Move(_moving * Time.deltaTime);

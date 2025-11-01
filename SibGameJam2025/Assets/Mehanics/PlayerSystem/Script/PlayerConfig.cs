@@ -14,6 +14,7 @@ namespace PlayerSystem
         public float GroundCheckDistance => _groundCheckDistance;
         public LayerMask GroundCheckMask => _groundCheckMask;
         public float TimeToSecondJump => _timeToSecondJump;
+        public MinMaxValue StepSoundFrequency => _stepSoundFrequency;
         [SerializeField] private float _walkingSpeed = 10f;
         [SerializeField] private float _sprintSpeed = 15f;
         [SerializeField] private float _movingSpeedJump = 10f;
@@ -23,5 +24,6 @@ namespace PlayerSystem
         [SerializeField] private float _groundCheckDistance = 1f;
         [SerializeField] private LayerMask _groundCheckMask;
         [SerializeField] private float _timeToSecondJump;
+        [SerializeField] private MinMaxValue _stepSoundFrequency = new();
     }
 }
