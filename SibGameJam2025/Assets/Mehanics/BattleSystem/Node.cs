@@ -12,7 +12,7 @@ namespace BattleSystem
             set => _nameNode = value;
         }
 
-        private string _description = "Nothing";
+        private string _description = "None";
 
         public virtual string description
         {
