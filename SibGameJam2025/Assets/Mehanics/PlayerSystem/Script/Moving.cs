@@ -16,7 +16,6 @@ namespace PlayerSystem
         private void Update()
         {
             Move();
-            Sprint();
         }
 
         private void Sprint()
@@ -47,6 +46,7 @@ namespace PlayerSystem
             {
                 _moving = _inputMoving * GetSpeed();
                 _characterController.Move(_moving * Time.deltaTime);
+                Sprint();
             }
             else
             {
@@ -54,8 +54,8 @@ namespace PlayerSystem
                 jumpMoving = Vector3.ClampMagnitude(jumpMoving, GetSpeed());
                 _characterController.Move(jumpMoving * Time.deltaTime);
             }
-            //if (_debug)
-            //    Debug.Log($"player speed: " + _characterController.velocity.magnitude);
+            if (_debug)
+                Debug.Log($"player speed: " + _characterController.velocity.magnitude);
         }
     }
 }

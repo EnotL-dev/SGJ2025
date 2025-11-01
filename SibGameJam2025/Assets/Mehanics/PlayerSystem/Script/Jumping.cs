@@ -40,7 +40,6 @@ namespace PlayerSystem
                 if (_canSecondJump)
                     _secondJump = true;
                 _velocity.y = Mathf.Sqrt((_secondJump ? _playerConfig.JumpHeightSecond: _playerConfig.JumpHeight) * -2f * _playerConfig.Gravity);
-                //PlayOneShot(playerConfig.StartJumpSound);
                 if (!_secondJump)
                     _secondJumpTimer = StartCoroutine(LaunchTimerToSecondJump());
             }
@@ -102,11 +101,5 @@ namespace PlayerSystem
                     StopCoroutine(_secondJumpTimer);
             }
         }
-
-        //private void PlayLandingSound(bool old, bool current)
-        //{
-        //    if (old != current && current)
-        //        JumpSound.PlayOneShot(_playerConfig.LandingSound);
-        //}
     }
 }
