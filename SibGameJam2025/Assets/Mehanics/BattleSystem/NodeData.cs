@@ -15,9 +15,9 @@ namespace BattleSystem
 
         public Node GetRandomNodeByWeightScene(int chance)
         {
-            int rnd = Random.Range(0, 100);
+            int rnd = Random.Range(0, 99);
 
-            if (rnd < chance)
+            if (rnd > chance)
                 return null;
 
             int currentSceneIndex = 10; //SceneManager.GetActiveScene().buildIndex;
@@ -43,7 +43,7 @@ namespace BattleSystem
 
             for (int i = allNodes.Count - 1; i >= 0; i--)
             {
-                if (allNodes[i].weight < currentSceneIndex)
+                if (allNodes[i].weight >= currentSceneIndex)
                 {
                     allNodes.RemoveAt(i);
                 }
