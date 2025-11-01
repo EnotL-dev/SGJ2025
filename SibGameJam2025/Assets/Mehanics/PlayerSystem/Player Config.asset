@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b375025222495040a8e9b561c2cc561, type: 3}
   m_Name: Player Config
   m_EditorClassIdentifier: 
-  _movingSpeed: 10
+  _walkingSpeed: 10
+  _sprintSpeed: 15
   _movingSpeedJump: 5
-  _jumpHeight: 5
-  _gravity: -9.81
+  _jumpHeight: 1.5
+  _jumpHeightSecond: 2
+  _gravity: -19.62
   _groundCheckDistance: 0.2
   _groundCheckMask:
     serializedVersion: 2
     m_Bits: 55
+  _timeToSecondJump: 0.25
