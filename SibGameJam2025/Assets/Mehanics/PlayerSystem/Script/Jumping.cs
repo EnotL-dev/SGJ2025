@@ -6,7 +6,7 @@ namespace PlayerSystem
 {
     public class Jumping : MonoBehaviour
     {
-        public ReactiveProperty<bool> IsGround = new(true);
+        public ReactiveProperty<bool> IsGrounded = new(true);
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _groundCheckerPosition;
@@ -25,17 +25,17 @@ namespace PlayerSystem
 
         private void OnEnable()
         {
-            IsGround.Changed += Landing;
+            IsGrounded.Changed += Landing;
         }
 
         private void OnDisable()
         {
-            IsGround.Changed -= Landing;
+            IsGrounded.Changed -= Landing;
         }
 
         private void StartJump()
         {
-            if ((IsGround.Value || _canSecondJump) && CanJump() && Input.GetKeyDown(KeyCode.Space) && !_secondJump)
+            if ((IsGrounded.Value || _canSecondJump) && CanJump() && Input.GetKeyDown(KeyCode.Space) && !_secondJump)
             {
                 if (_canSecondJump)
                     _secondJump = true;
@@ -54,11 +54,11 @@ namespace PlayerSystem
 
         private void CheckGround()
         {
-            IsGround.Value = Physics.CheckSphere(
+            IsGrounded.Value = Physics.CheckSphere(
                 _groundCheckerPosition.position,
                 _playerConfig.GroundCheckDistance,
                 _playerConfig.GroundCheckMask);
-            if (IsGround.Value && _velocity.y < 0)
+            if (IsGrounded.Value && _velocity.y < 0)
                 _velocity.y = -2f;
         }
 

@@ -23,3 +23,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 55
   _timeToSecondJump: 0.25
+  _stepSoundFrequency:
+    Max: 0.2
+    Min: 0.1
