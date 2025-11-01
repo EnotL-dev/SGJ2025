@@ -13,4 +13,10 @@ MonoBehaviour:
   m_Name: Player Config
   m_EditorClassIdentifier: 
   _movingSpeed: 10
-  _movingSpeedJump: 10
+  _movingSpeedJump: 5
+  _jumpHeight: 5
+  _gravity: -9.81
+  _groundCheckDistance: 0.2
+  _groundCheckMask:
+    serializedVersion: 2
+    m_Bits: 55
