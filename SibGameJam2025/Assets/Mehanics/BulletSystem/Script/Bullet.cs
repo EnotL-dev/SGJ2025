@@ -15,13 +15,18 @@ namespace BulletSystem
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
             gameObject.transform.parent = null;
-            gameObject.transform.rotation = Quaternion.LookRotation(target.position - transform.position);
             _startPosition = transform.position;
         }
 
         public void SetParentLink(Transform parent)
         {
             _parent = parent;
+        }
+
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+            gameObject.transform.SetParent(_parent);
         }
 
         private void Update()
@@ -45,8 +50,7 @@ namespace BulletSystem
 
         private void OverDistanceAction()
         {
-            gameObject.SetActive(false);
-            gameObject.transform.SetParent(_parent);
+            Hide();
         }
     }
 }
