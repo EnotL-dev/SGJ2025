@@ -12,13 +12,14 @@ namespace EnemySystem.Ghost
         [SerializeField] private RotateToPlayer _rotor;
         [SerializeField] private Health _health;
         [SerializeField] private Light _pointLight;
-        [SerializeField] private AudioSource _audio;
+        [SerializeField] private AudioSource _deathSound;
+        [SerializeField] private AudioSource _attackSound;
 
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
-            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _rotor));
+            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _rotor, _attackSound));
             _states.Add(new Death(this, _animator));
             SwitchState<Waiting>();
         }
@@ -44,7 +45,7 @@ namespace EnemySystem.Ghost
             _collision.enabled = false;
             _rotor.enabled = false;
             _pointLight.enabled = false;
-            _audio.Play();
+            _deathSound.Play();
         }
     }
 }

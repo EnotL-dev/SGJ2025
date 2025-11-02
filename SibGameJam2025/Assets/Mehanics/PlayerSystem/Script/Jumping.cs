@@ -10,10 +10,14 @@ namespace PlayerSystem
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _groundCheckerPosition;
+        [SerializeField] private AudioSource _audioStartJump;
+        [SerializeField] private AudioSource _audioSecondJump;
+        [SerializeField] private AudioSource _audioLanding;
         private Vector3 _velocity;
         private bool _secondJump = false;
         private bool _canSecondJump = false;
         private Coroutine _secondJumpTimer;
+        private float _startJumpHight;
 
         private void Update()
         {
@@ -38,12 +42,17 @@ namespace PlayerSystem
             if ((IsGrounded.Value || _canSecondJump) && CanJump() && Input.GetKeyDown(KeyCode.Space) && !_secondJump)
             {
                 if (_canSecondJump)
+                {
                     _secondJump = true;
-                _velocity.y = Mathf.Sqrt((_secondJump ? _playerConfig.JumpHeightSecond: _playerConfig.JumpHeight) * -2f * _playerConfig.Gravity);
+                    _audioSecondJump.Play();
+                }
+                _velocity.y = Mathf.Sqrt((_secondJump ? _playerConfig.JumpHeightSecond : _playerConfig.JumpHeight) * -2f * _playerConfig.Gravity);
                 if (!_secondJump)
+                {
                     _secondJumpTimer = StartCoroutine(LaunchTimerToSecondJump());
+                    _audioStartJump.Play();
+                }
             }
-
         }
 
         private IEnumerator LaunchTimerToSecondJump()
@@ -93,12 +102,19 @@ namespace PlayerSystem
 
         private void Landing(bool oldValue, bool newValue)
         {
+            if (newValue == false)
+            {
+                _startJumpHight = _characterController.transform.position.y;
+            }
             if (newValue == true)
             {
                 _secondJump = false;
                 _canSecondJump = false;
                 if (_secondJumpTimer != null)
                     StopCoroutine(_secondJumpTimer);
+
+                if (Mathf.Abs(_startJumpHight - _characterController.transform.position.y) > 1.5f)
+                    _audioLanding.Play();
             }
         }
     }
