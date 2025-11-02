@@ -4,30 +4,41 @@ namespace BattleSystem
 {
     public class SpellCraft : MonoBehaviour
     {
-        [System.Serializable]
-        public class UICraft
-        {
-             
-        }
-
         [SerializeField] private GameObject canvasCraft;
+        private GameObject tempCanvas;
+        private ItemChoiceUI itemChoiceUI;
 
         private Node newNode;
 
-        private GameObject tempCanvas;
-        public void InitCraft(Node newNode)
+        private GameObject playerObj;
+        private void Start()
         {
-            this.newNode = newNode;
-            tempCanvas = Instantiate(canvasCraft);
+            playerObj = FindFirstObjectByType<CharacterController>().gameObject;
         }
 
-        private void MakeCraft()
+        public void InitCraft(Node newNode)
+        {
+            Time.timeScale = 0.01f;
+
+            this.newNode = newNode;
+            tempCanvas = Instantiate(canvasCraft);
+            itemChoiceUI = tempCanvas.GetComponent<ItemChoiceUI>();
+            itemChoiceUI.InitUI(newNode, this);
+        }
+
+        public void MakeCraft()
         {
             EndCraft();
         }
 
+        public void Dissmis()
+        {
+
+        }
+
         private void EndCraft()
         {
+            Time.timeScale = 1f;
             if(tempCanvas) Destroy(tempCanvas);
         }
     }
