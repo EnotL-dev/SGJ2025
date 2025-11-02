@@ -5,7 +5,13 @@ namespace BattleSystem
     [CreateAssetMenu(fileName = "Node", menuName = "Nodes/Shape")]
     public class Shape : Node
     {
-        public SpellBullet prefabSpellBullet;
+        private SpellBullet _prefabSpellBullet;
+
+        public virtual SpellBullet prefabSpellBullet
+        {
+            get => _prefabSpellBullet;
+            set => _prefabSpellBullet = value;
+        }
 
         private int _damage = 5;
 

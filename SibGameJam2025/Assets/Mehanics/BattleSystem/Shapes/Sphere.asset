@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d24d962fc279694485d071037a2b69b, type: 3}
   m_Name: Sphere
   m_EditorClassIdentifier: 
-  prefabSpellBullet: {fileID: 7597641698764003934, guid: 5b0ed6fb2394b1f48805982567b1c4ea, type: 3}
+  newPrefabSpellBullet: {fileID: 7597641698764003934, guid: 5b0ed6fb2394b1f48805982567b1c4ea, type: 3}

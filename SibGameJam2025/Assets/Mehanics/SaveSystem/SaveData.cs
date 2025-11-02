@@ -44,7 +44,7 @@ namespace SaveSystem
                 }
             }
 
-            public NodeGraph nodeGraph = new NodeGraph(new Single(), new Sphere(), new NothingImpact(), new NothingFeature());
+            public NodeGraph nodeGraph = new NodeGraph();
             private int money = 100;
             public PlayerParams playerParams = new PlayerParams();
 

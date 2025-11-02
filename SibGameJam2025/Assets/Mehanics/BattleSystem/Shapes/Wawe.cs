@@ -5,6 +5,8 @@ namespace BattleSystem
     [CreateAssetMenu(fileName = "Node", menuName = "Nodes/Shape/Wawe")]
     public class Wawe : Shape
     {
+        [SerializeField] private SpellBullet newPrefabSpellBullet;
+        public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
         public override string nameNode { get => "Волна"; }
         public override int manaCost { get => 2; }
 

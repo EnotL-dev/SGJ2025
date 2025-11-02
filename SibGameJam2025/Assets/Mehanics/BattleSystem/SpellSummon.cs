@@ -72,7 +72,45 @@ namespace BattleSystem
             {
                 if (node is Impact nodeImpact)
                 {
-                    Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
+                    if(nodeImpact.prefabToSpawn)
+                    {
+                        if(nodeImpact is Shrapnel)
+                        {
+                            for (int i = 1; i < 5; i++)
+                            {
+                                float angle = i * 25f;
+                                Quaternion rotation = Quaternion.Euler(0, angle, 0);
+
+                                List<Node> nodesWithoutShrapnel = new List<Node>();
+
+                                SpellBullet newPrefabBullet = null;
+                                foreach (Node addnode in nodes)
+                                {
+                                    if(addnode is not Impact)
+                                    {
+                                        if (addnode is Shape addShapeNode)
+                                            newPrefabBullet = addShapeNode.prefabSpellBullet;
+
+                                        nodesWithoutShrapnel.Add(addnode);
+                                    }
+                                    else
+                                    {
+                                        NodeData nodeData = Resources.Load<NodeData>("Nodes/NodeData");
+                                        nodesWithoutShrapnel.Add(nodeData.impacts[0]); //nothing ставим
+                                        nodeData = null;
+                                        Resources.UnloadAsset(nodeData);
+                                    }
+                                }
+
+                                SpellBullet spellBullet = Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, rotation).GetComponent<SpellBullet>();
+                                spellBullet.Launch(this, nodesWithoutShrapnel);
+                            }
+                        }
+                        else
+                        {
+                            Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
+                        }
+                    }
                 }
                 else if (node is Feature nodeFeature)
                 {

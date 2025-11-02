@@ -10,12 +10,17 @@ namespace BattleSystem
         public Impact impact;
         public Feature feature;
 
-        public NodeGraph(Summon summon, Shape shape, Impact impact, Feature feature)
+        public NodeGraph()
         {
-            this.summon = summon;
-            this.shape = shape;
-            this.impact = impact;
-            this.feature = feature;
+            NodeData nodeData = Resources.Load<NodeData>("Nodes/NodeData");
+
+            this.summon = nodeData.summons[0];
+            this.shape = nodeData.shapes[0];
+            this.impact = new NothingImpact();
+            this.feature = new NothingFeature();
+
+            nodeData = null;
+            Resources.UnloadAsset(nodeData);
         }
 
         public int GetManaCostWithChange(Node nodeChange) //Вернет цену с замененным элементом
