@@ -1,33 +1,35 @@
 using UnityEngine;
 
-namespace EnemySystem.Head
+namespace EnemySystem.Ghost
 {
     public class Waiting : State
     {
         private Transform _body;
         private CharacterController _player;
         private float _distance;
-        private HeadConfig _config;
         private AnimatorController _animator;
         private float _distanceDetect;
+        private RotateToPlayer _rotor;
 
-        public Waiting(IStateSwitcher stateSwitcher, Transform body, CharacterController player, HeadConfig config, AnimatorController animator, float distanceDetect) : base(stateSwitcher)
+        public Waiting(IStateSwitcher stateSwitcher, Transform body, CharacterController player, AnimatorController animator, float distanceDetect, RotateToPlayer rotor) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
-            _config = config;
             _animator = animator;
             _distanceDetect = distanceDetect;
+            _rotor = rotor;
         }
 
         public override void Start()
         {
             _animator.SetIdle(true);
+            _rotor.enabled = false;
         }
 
         public override void Stop()
         {
             _animator.SetIdle(false);
+            _rotor.enabled = true;
         }
 
         public override void Update()

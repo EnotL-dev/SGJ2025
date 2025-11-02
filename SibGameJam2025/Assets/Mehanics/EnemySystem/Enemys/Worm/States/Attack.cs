@@ -11,10 +11,7 @@ namespace EnemySystem.Worm
         private CharacterController _player;
         private float _distance;
         private WormConfig _config;
-   //     private float _currentTimeBeetwenAttack;
-      //  private float _currentTimeAttack;
         private AnimatorController _animator;
-      //  private bool _attackProcess = false;
         private Transform _launchPoint;
         private LayerMask _layerMask;
         private Coroutine _attackCoroutine;
@@ -32,8 +29,6 @@ namespace EnemySystem.Worm
 
         public override void Start()
         {
-          //  _currentTimeBeetwenAttack = 0;
-        //    _currentTimeAttack = 0;
             _animator.ChooseAttack(0);
             _animator.SetAnimationSpeed(_config.AttackAnimationSpeed);
             _attackCoroutine = _bulletPool.StartCoroutine(AttackProccess());
@@ -44,18 +39,18 @@ namespace EnemySystem.Worm
             _animator.SetAnimationSpeed(1f);
             if (_attackCoroutine != null)
                 _bulletPool.StopCoroutine(_attackCoroutine);
+            _animator.SetAttack(false);
         }
 
         public override void Update()
         {
             CheckDistance();
-            //LaunchBullet();
         }
 
         private void CheckDistance()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance > _config.DistanceAttack)
+            if (_distance > _config.DistanceAttack + 0.2)
             {
                 _stateSwitcher.SwitchState<Waiting>();
             }
@@ -65,49 +60,21 @@ namespace EnemySystem.Worm
         {
             while (true)
             {
-                if (HaveObstacle())
-                    continue;
-                _animator.SetAttack(true);
-                yield return new WaitForSeconds(_config.AttackPrepareTime);
-                _bulletPool.Launch(_player.transform);
-                yield return new WaitForSeconds(_config.AttackTime);
-                _animator.SetAttack(false);
-                yield return new WaitForSeconds(_config.AttackFrequancy);
+                if (!HaveObstacle())
+                {
+                    _animator.SetAttack(true);
+                    yield return new WaitForSeconds(_config.AttackPrepareTime);
+                    _bulletPool.Launch(_player.transform);
+                    yield return new WaitForSeconds(_config.AttackTime);
+                    _animator.SetAttack(false);
+                    yield return new WaitForSeconds(_config.AttackFrequancy);
+                }
+                else
+                {
+                    yield return null;
+                }
             }
         }
-
-        //private void LaunchBullet()
-        //{
-        //    if (!_attackProcess)
-        //    {
-        //        if (HaveObstacle())
-        //            return;
-        //        if (_currentTimeBeetwenAttack > 0)
-        //        {
-        //            _currentTimeBeetwenAttack -= Time.deltaTime;
-        //        }
-        //        else
-        //        {
-        //            _currentTimeAttack = _config.AttackTime;
-        //            _attackProcess = true;
-        //            _bulletPool.Launch(_player.transform);
-        //            _currentTimeBeetwenAttack = _config.AttackFrequancy;
-        //            _animator.SetAttack(true);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (_currentTimeAttack > 0)
-        //        {
-        //            _currentTimeAttack -= Time.deltaTime;
-        //        }
-        //        else
-        //        {
-        //            _attackProcess = false;
-        //            _animator.SetAttack(false);
-        //        }
-        //    }
-        //}
 
         private bool HaveObstacle()
         {
