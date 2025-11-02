@@ -32,7 +32,7 @@ namespace EnemySystem
                 CurrentState.Update();
         }
 
-        private void Awake()
+        private void Start()
         {
             InitializeStates();
             OnAwake();
