@@ -7,9 +7,11 @@ namespace BattleSystem
 {
     public class SpellSummon : MonoBehaviour
     {
+        [SerializeField] private Transform spawnSpellPoint;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
         private float timerDelay = 0;
+
         private void Update()
         {
             if (timerDelay < 0)
@@ -30,6 +32,7 @@ namespace BattleSystem
         {
             List<Node> nodes = nodeGraph.GetNodesInList();
 
+            SpellBullet prefabSpellBullet = null;
             foreach(Node node in nodes)
             {
                 if(node is Summon nodeSummon)
@@ -38,7 +41,7 @@ namespace BattleSystem
                 }
                 else if(node is Shape nodeShape)
                 {
-
+                    prefabSpellBullet = nodeShape.prefabSpellBullet;
                 }
                 else if (node is Impact nodeImpact)
                 {
@@ -49,6 +52,8 @@ namespace BattleSystem
 
                 }
             }
+
+            
         }
     }
 }
