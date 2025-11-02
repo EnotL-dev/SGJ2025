@@ -21,6 +21,8 @@ namespace BattleSystem
 
         [SerializeField] private List<CardUI> listCards;
         [SerializeField] private CardUI newCard = new CardUI();
+        [SerializeField] private TextMeshProUGUI TextNewCardCost;
+        [SerializeField] public Color payColor; //цвет после продажи
         [SerializeField] public Color choiceColor; //цвет не трогать карточку
         [SerializeField] public Color choiceColorHandle; //цвет карточку тронули
         [Space(5)]
@@ -55,8 +57,9 @@ namespace BattleSystem
             newCard.textDescription.text = newNode.description;
             newCard.textCost.text = newNode.manaCost.ToString();
             newCard.cost = newNode.manaCost;
+            TextNewCardCost.text = $"{newNode.moneyCost} ¤";
 
-            textMainCost.text = nodeGraph.cost().ToString();
+            textMainCost.text = nodeGraph.GetManaCost().ToString();
             textBalance.text = $"{SaveData.TempData.money} ¤";
 
             if (newNode is Summon)
@@ -89,6 +92,16 @@ namespace BattleSystem
         {
             if(newNode.moneyCost <= SaveData.TempData.money)
             {
+                newCard.cardObj.SetActive(false);
+                listCards[indexCard].textName.text = newNode.nameNode;
+                listCards[indexCard].textDescription.text = newNode.description;
+                listCards[indexCard].textCost.text = newNode.manaCost.ToString();
+                listCards[indexCard].cost = newNode.manaCost;
+
+                listCards[indexCard].cardObj.GetComponent<Image>().color = payColor;
+
+                textMainCost.text = $"{nodeGraph.GetManaCostWithChange(newNode)}";
+
                 StartCoroutine(BalanceEncount());
             }
             else
@@ -106,7 +119,7 @@ namespace BattleSystem
         {
             int count = newNode.moneyCost;
             int balanceInText = SaveData.TempData.money;
-            float timeNext = 1/count;
+            float timeNext = 3/count;
             while (count > 0)
             {
                 count--;

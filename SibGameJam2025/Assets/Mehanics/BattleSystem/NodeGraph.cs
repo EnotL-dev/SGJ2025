@@ -18,7 +18,23 @@ namespace BattleSystem
             this.feature = feature;
         }
 
-        public int cost()
+        public int GetManaCostWithChange(Node nodeChange) //Вернет цену с замененным элементом
+        {
+            int sum = nodeChange.manaCost;
+
+            if (nodeChange is Summon)
+                sum += summon.manaCost;
+            else if (nodeChange is Shape)
+                sum += shape.manaCost;
+            else if (nodeChange is Impact)
+                sum += impact.manaCost;
+            else if (nodeChange is Feature)
+                sum += feature.manaCost;
+
+            return sum;
+        }
+
+        public int GetManaCost()
         {
             return summon.manaCost + shape.manaCost + impact.manaCost + feature.manaCost;
         }
