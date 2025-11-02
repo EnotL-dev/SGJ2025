@@ -38,5 +38,10 @@ namespace BattleSystem
                 }
             }
         }
+
+        public Node GetNode()
+        {
+            return node;
+        }
     }
 }

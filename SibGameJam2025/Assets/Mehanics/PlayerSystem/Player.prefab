@@ -45,7 +45,8 @@ GameObject:
   - component: {fileID: 4725509268947644320}
   - component: {fileID: 2301830999263655607}
   - component: {fileID: 6733703007135028654}
-  - component: {fileID: 3648127931758752571}
+  - component: {fileID: 3428500622131564224}
+  - component: {fileID: 3001695008824988546}
   m_Layer: 6
   m_Name: Player Controller
   m_TagString: Untagged
@@ -144,7 +145,7 @@ MonoBehaviour:
   _moving: {fileID: 4725509268947644320}
   _jumping: {fileID: 2301830999263655607}
   _config: {fileID: 11400000, guid: 85ec42e22223d2b4f98d011a4f75c545, type: 2}
---- !u!114 &3648127931758752571
+--- !u!114 &3428500622131564224
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -153,9 +154,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 5726555929121282423}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9743e512495dd234fa4a3561129eaf12, type: 3}
+  m_Script: {fileID: 11500000, guid: 49b83fadfc84db543ae08c85ecbf18a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3001695008824988546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726555929121282423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10cc7f3af13b0ba409bc69073a4c190f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasCraft: {fileID: 1055494935288763307, guid: 5eb299a42463b83478be01782e2fe708, type: 3}
 --- !u!1 &5824809035752513076
 GameObject:
   m_ObjectHideFlags: 0
@@ -232,7 +246,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 6418180475301049370, guid: 1198b3dc197e199488fe00cc405c0c55, type: 2}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -329,6 +343,7 @@ GameObject:
   - component: {fileID: 5478973882048109761}
   - component: {fileID: 3741424467339408840}
   - component: {fileID: 8813226686902071788}
+  - component: {fileID: 851703917892059072}
   m_Layer: 6
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -471,6 +486,19 @@ MonoBehaviour:
   invertY: 0
   minVerticalAngle: -85
   maxVerticalAngle: 85
+--- !u!114 &851703917892059072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7318422631614600371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ebbecb4c98c1e4b85597df8dcdf0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellCraft: {fileID: 3001695008824988546}
 --- !u!1 &7466117140975692182
 GameObject:
   m_ObjectHideFlags: 0
