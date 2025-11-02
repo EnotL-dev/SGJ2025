@@ -11,6 +11,11 @@ namespace BulletSystem
         private List<Bullet> _bullets = new();
         private int _currentIndex = 0;
 
+        public void ChangePrefab(Bullet newPrefab)
+        {
+            _prefab = newPrefab;
+        }
+
         public void Launch(Transform target)
         {
             if (_bullets.Count == 0 || _bullets[_currentIndex] == null)
