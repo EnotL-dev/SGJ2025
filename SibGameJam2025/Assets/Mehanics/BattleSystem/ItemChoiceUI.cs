@@ -20,6 +20,7 @@ namespace BattleSystem
 
         [SerializeField] private List<CardUI> listCards;
         [SerializeField] private CardUI newCard = new CardUI();
+        [SerializeField] private Text textNewCard;
 
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
 

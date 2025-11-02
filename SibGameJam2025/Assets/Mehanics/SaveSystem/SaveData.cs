@@ -10,6 +10,7 @@ namespace SaveSystem
         public class DataParams
         {
             public NodeGraph nodeGraph = new NodeGraph(new Single(), new Sphere(), new NothingImpact(), new NothingFeature());
+            public int money = 10000;
         }
 
         public static Dictionary<string, float> Volumes = new Dictionary<string, float>();

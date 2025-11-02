@@ -19,6 +19,8 @@ namespace BattleSystem
         public void InitCraft(Node newNode)
         {
             Time.timeScale = 0.01f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
 
             this.newNode = newNode;
             tempCanvas = Instantiate(canvasCraft);
@@ -39,7 +41,10 @@ namespace BattleSystem
         private void EndCraft()
         {
             Time.timeScale = 1f;
-            if(tempCanvas) Destroy(tempCanvas);
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+
+            if (tempCanvas) Destroy(tempCanvas);
         }
     }
 }
