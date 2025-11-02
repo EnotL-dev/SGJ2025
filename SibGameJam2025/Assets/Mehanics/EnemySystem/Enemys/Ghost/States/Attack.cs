@@ -1,41 +1,41 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
-namespace EnemySystem.Head
+
+namespace EnemySystem.Ghost
 {
     public class Attack : State
     {
         private Transform _body;
         private CharacterController _player;
         private float _distance;
-        private HeadConfig _config;
         private AnimatorController _animator;
+        private GhostConfig _config;
         private Health _playerHealth;
         private Coroutine _attackCoroutine;
-        private NavMeshAgent _navMeshAgent;
+        private RotateToPlayer _rotor;
 
-        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, HeadConfig config, AnimatorController animator, Health playerHealth, NavMeshAgent navMeshAgent) : base(stateSwitcher)
+        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, GhostConfig config, AnimatorController animator, Health playerHealth, RotateToPlayer rotor) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
-            _config = config;
             _animator = animator;
+            _config = config;
             _playerHealth = playerHealth;
-            _navMeshAgent = navMeshAgent;
+            _rotor = rotor;
         }
 
         public override void Start()
         {
-           // _navMeshAgent.enabled = false;
             _attackCoroutine = _animator.StartCoroutine(AttackProccess());
+            _rotor.enabled = true;
         }
 
         public override void Stop()
         {
-           // _navMeshAgent.enabled = true;
             if (_attackCoroutine != null)
                 _animator.StopCoroutine(_attackCoroutine);
+            _rotor.enabled = false;
             _animator.SetAttack(false);
         }
 
@@ -55,6 +55,7 @@ namespace EnemySystem.Head
                 _animator.SetAttack(true);
                 yield return new WaitForSeconds(_config.AttackPrepareTime);
                 _playerHealth.Reduce(_config.Damage);
+            //    Debug.Log("damage");
                 yield return new WaitForSeconds(_config.AttackTime);
                 _animator.SetAttack(false);
                 yield return new WaitForSeconds(_config.AttackFrequency);
