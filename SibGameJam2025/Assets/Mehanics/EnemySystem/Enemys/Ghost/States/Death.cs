@@ -1,17 +1,17 @@
-using UnityEngine;
-
-
 namespace EnemySystem.Ghost
 {
     public class Death : State
     {
-        public Death(IStateSwitcher stateSwitcher) : base(stateSwitcher)
+        private AnimatorController _animator;
+
+        public Death(IStateSwitcher stateSwitcher, AnimatorController animator) : base(stateSwitcher)
         {
+            _animator = animator;
         }
 
         public override void Start()
         {
-           
+            _animator.CallDeath();
         }
 
         public override void Stop()
