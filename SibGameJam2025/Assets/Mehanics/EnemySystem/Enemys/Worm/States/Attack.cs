@@ -15,8 +15,19 @@ namespace EnemySystem.Worm
         private Transform _launchPoint;
         private LayerMask _layerMask;
         private Coroutine _attackCoroutine;
+        private AudioSource _shootSound;
 
-        public Attack(IStateSwitcher stateSwitcher, BulletPool bulletPool, Transform body, CharacterController player, WormConfig config, AnimatorController animator, Transform launchPoint, LayerMask layerMask) : base(stateSwitcher)
+        public Attack(
+            IStateSwitcher stateSwitcher,
+            BulletPool bulletPool,
+            Transform body,
+            CharacterController player,
+            WormConfig config,
+            AnimatorController animator,
+            Transform launchPoint,
+            LayerMask layerMask,
+            AudioSource shootSound
+            ) : base(stateSwitcher)
         {
             _bulletPool = bulletPool;
             _body = body;
@@ -25,6 +36,7 @@ namespace EnemySystem.Worm
             _animator = animator;
             _launchPoint = launchPoint;
             _layerMask = layerMask;
+            _shootSound = shootSound;
         }
 
         public override void Start()
@@ -65,6 +77,7 @@ namespace EnemySystem.Worm
                     _animator.SetAttack(true);
                     yield return new WaitForSeconds(_config.AttackPrepareTime);
                     _bulletPool.Launch(_player.transform);
+                    _shootSound.Play();
                     yield return new WaitForSeconds(_config.AttackTime);
                     _animator.SetAttack(false);
                     yield return new WaitForSeconds(_config.AttackFrequancy);

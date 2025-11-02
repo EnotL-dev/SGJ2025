@@ -15,12 +15,14 @@ namespace EnemySystem.Worm
         [SerializeField] private Transform _launchPoint;
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Collider _collision;
+        [SerializeField] private AudioSource _shootSound;
+        [SerializeField] private AudioSource _DeathSound;
 
         protected override void InitializeStates()
         {
            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator));
             _states.Add(new Death(this, _animator));
-            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask));
+            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask, _shootSound));
             SwitchState<Waiting>();
         }
 
@@ -44,6 +46,7 @@ namespace EnemySystem.Worm
             _collision.enabled = false;
             _BodyRotor.enabled = false;
             _gunRotor.enabled = false;
+            _DeathSound.Play();
         }
     }
 }

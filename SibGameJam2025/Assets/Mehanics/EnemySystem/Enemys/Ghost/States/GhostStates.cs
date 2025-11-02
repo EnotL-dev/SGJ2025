@@ -12,6 +12,7 @@ namespace EnemySystem.Ghost
         [SerializeField] private RotateToPlayer _rotor;
         [SerializeField] private Health _health;
         [SerializeField] private Light _pointLight;
+        [SerializeField] private AudioSource _audio;
 
         protected override void InitializeStates()
         {
@@ -43,6 +44,7 @@ namespace EnemySystem.Ghost
             _collision.enabled = false;
             _rotor.enabled = false;
             _pointLight.enabled = false;
+            _audio.Play();
         }
     }
 }
