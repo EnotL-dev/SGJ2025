@@ -20,12 +20,20 @@ namespace BattleSystem
             set => _description = value;
         }
 
-        private int _cost = 1;
+        private int _manaCost = 1;
 
-        public virtual int cost
+        public virtual int manaCost
         {
-            get => _cost;
-            set => _cost = value;
+            get => _manaCost;
+            set => _manaCost = value;
+        }
+
+        private int _moneyCost = 10;
+
+        public virtual int moneyCost
+        {
+            get => _moneyCost;
+            set => _moneyCost = value;
         }
 
         private int _weight = 1;

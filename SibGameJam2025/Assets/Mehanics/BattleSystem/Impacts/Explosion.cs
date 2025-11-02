@@ -6,7 +6,7 @@ namespace BattleSystem
     public class Explosion : Impact
     {
         public override string nameNode { get => "Взрыв"; }
-        public override int cost { get => 4; }
+        public override int manaCost { get => 4; }
         public override int weight { get => 3; }
     }
 }

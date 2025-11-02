@@ -6,7 +6,7 @@ namespace BattleSystem
     public class Vampirism : Feature
     {
         public override string nameNode { get => "Вампиризм"; }
-        public override int cost { get => 5; }
+        public override int manaCost { get => 5; }
 
         public override int weight { get => 3; }
     }

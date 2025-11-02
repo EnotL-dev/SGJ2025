@@ -34,14 +34,13 @@ namespace BattleSystem
             if (Physics.Raycast(ray, out hit, rayDistance, itemLayer))
             {
                 Debug.Log($"Найден предмет: {hit.collider.name}");
-                PickUpItem(hit.collider.GetComponent<ItemNode>().GetNode());
-                Destroy(hit.collider.gameObject);
+                PickUpItem(hit.collider.GetComponent<ItemNode>().GetNode(), hit.collider.gameObject);
             }
         }
 
-        private void PickUpItem(Node itemNode)
+        private void PickUpItem(Node itemNode, GameObject item)
         {
-            spellCraft.InitCraft(itemNode);
+            spellCraft.InitCraft(itemNode, item);
         }
     }
 }
