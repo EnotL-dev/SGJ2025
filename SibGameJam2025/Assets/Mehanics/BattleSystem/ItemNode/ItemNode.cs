@@ -9,6 +9,8 @@ namespace BattleSystem
         private Transform playerTransform;
         [SerializeField] private GameObject canvasObj;
         [SerializeField] private TextMeshProUGUI textName;
+        [SerializeField] private GameObject canvasMoneyObj;
+        [SerializeField] private TextMeshProUGUI textCostMoney;
 
         private Node node; //Случайная нода в зависимости от того на какой мы сейча локации
         private NodeData nodeData;
@@ -22,6 +24,7 @@ namespace BattleSystem
                 Destroy(gameObject);
 
             textName.text = node.nameNode;
+            textCostMoney.text = $"{node.moneyCost}¤";
             playerTransform = FindFirstObjectByType<CharacterController>().transform;
         }
 
@@ -34,6 +37,7 @@ namespace BattleSystem
 
                 if (direction != Vector3.zero)
                 {
+                    canvasMoneyObj.transform.rotation = Quaternion.LookRotation(direction);
                     canvasObj.transform.rotation = Quaternion.LookRotation(direction);
                 }
             }
