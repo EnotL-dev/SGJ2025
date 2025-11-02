@@ -176,6 +176,7 @@ MonoBehaviour:
   _collision: {fileID: 2444263530901112094}
   _rotor: {fileID: 5612286776925630074}
   _health: {fileID: 4783890570933919952}
+  _pointLight: {fileID: 247838190529467794}
 --- !u!114 &3609307468401640433
 MonoBehaviour:
   m_ObjectHideFlags: 0

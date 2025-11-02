@@ -11,6 +11,7 @@ namespace EnemySystem.Ghost
         [SerializeField] private Collider _collision;
         [SerializeField] private RotateToPlayer _rotor;
         [SerializeField] private Health _health;
+        [SerializeField] private Light _pointLight;
 
         protected override void InitializeStates()
         {
@@ -41,6 +42,7 @@ namespace EnemySystem.Ghost
             SwitchState<Death>();
             _collision.enabled = false;
             _rotor.enabled = false;
+            _pointLight.enabled = false;
         }
     }
 }
