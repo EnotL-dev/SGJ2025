@@ -18,6 +18,11 @@ namespace BattleSystem
             this.feature = feature;
         }
 
+        public int cost()
+        {
+            return summon.manaCost + shape.manaCost + impact.manaCost + feature.manaCost;
+        }
+
         public List<Node> GetNodesInList()
         {
             List<Node> newList = new List<Node>();

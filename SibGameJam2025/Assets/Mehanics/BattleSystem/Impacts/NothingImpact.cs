@@ -6,6 +6,6 @@ namespace BattleSystem
     public class NothingImpact : Impact
     {
         public override string nameNode { get => "Ничего"; }
-        public override int cost { get => 0; }
+        public override int manaCost { get => 0; }
     }
 }

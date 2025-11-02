@@ -10,7 +10,7 @@ namespace BattleSystem
             CardItemDrag droppedCard = eventData.pointerDrag?.GetComponent<CardItemDrag>();
             if (droppedCard != null)
             {
-                Debug.Log($"Card {droppedCard.name} dropped on {name}");
+                droppedCard.itemChoiceUI.MakeCraft();
             }
         }
     }

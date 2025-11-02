@@ -5,6 +5,7 @@ namespace BattleSystem
 {
     public class CardItemDrag : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
     {
+        [HideInInspector] public ItemChoiceUI itemChoiceUI;
         [SerializeField] private float returnSpeed = 4500f;
         [SerializeField] private float hoverScaleFactor = 1.1f;
         [SerializeField] private float enlargeFactor = 1.3f;
@@ -24,6 +25,7 @@ namespace BattleSystem
         private void Awake()
         {
             canvas = GetComponentInParent<Canvas>();
+            itemChoiceUI = canvas.GetComponent<ItemChoiceUI>();
             canvasGroup = GetComponent<CanvasGroup>(); 
 
             originalScale = transform.localScale;
@@ -34,19 +36,27 @@ namespace BattleSystem
         public void OnPointerEnter(PointerEventData eventData)
         {
             if (!isDragging)
+            {
+                itemChoiceUI.StartInteraction();
                 transform.localScale = originalScale * hoverScaleFactor;
+            }
         }
 
         public void OnPointerExit(PointerEventData eventData)
         {
             if (!isDragging)
+            {
+                itemChoiceUI.StopInteraction();
                 transform.localScale = originalScale;
+            }
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             isReturning = false;
             isDragging = true;
+            itemChoiceUI.StartInteraction();
+
             originalParent = transform.parent;
             startPosition = transform.position;
 
@@ -65,6 +75,7 @@ namespace BattleSystem
         public void OnEndDrag(PointerEventData eventData)
         {
             isDragging = false;
+            itemChoiceUI.StopInteraction();
 
             transform.localScale = originalScale;
 

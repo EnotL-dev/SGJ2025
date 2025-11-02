@@ -3,6 +3,7 @@ using UnityEngine;
 using SaveSystem;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 namespace BattleSystem
 {
@@ -20,7 +21,12 @@ namespace BattleSystem
 
         [SerializeField] private List<CardUI> listCards;
         [SerializeField] private CardUI newCard = new CardUI();
-        [SerializeField] private Text textNewCard;
+        [SerializeField] public Color choiceColor; //цвет не трогать карточку
+        [SerializeField] public Color choiceColorHandle; //цвет карточку тронули
+        [Space(5)]
+        [SerializeField] private TextMeshProUGUI textBalance;
+        [SerializeField] private TextMeshProUGUI textMainCost;
+        [SerializeField] private TextMeshProUGUI textMainDamage;
 
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
 
@@ -36,24 +42,81 @@ namespace BattleSystem
         private void InitializeCards()
         {
             int i = 0;
-            foreach(Node node in nodeGraph.GetNodesInList())
+            foreach (Node node in nodeGraph.GetNodesInList())
             {
                 listCards[i].textName.text = node.nameNode;
                 listCards[i].textDescription.text = node.description;
-                listCards[i].textCost.text = node.cost.ToString();
-                listCards[i].cost = node.cost;
+                listCards[i].textCost.text = node.manaCost.ToString();
+                listCards[i].cost = node.manaCost;
                 i++;
             }
+
+            newCard.textName.text = newNode.nameNode;
+            newCard.textDescription.text = newNode.description;
+            newCard.textCost.text = newNode.manaCost.ToString();
+            newCard.cost = newNode.manaCost;
+
+            textMainCost.text = nodeGraph.cost().ToString();
+            textBalance.text = $"{SaveData.TempData.money} ¤";
+
+            if (newNode is Summon)
+                indexCard = 0;
+            else if (newNode is Shape)
+                indexCard = 1;
+            else if (newNode is Impact)
+                indexCard = 2;
+            else if (newNode is Feature)
+                indexCard = 3;
+
+            newCard.cardObj.GetComponent<Image>().color = choiceColor;
+            listCards[indexCard].cardObj.GetComponent<Image>().color = choiceColor;
         }
 
-        public void MakeCraft()
+        private int indexCard = 0;
+        public void StartInteraction()
         {
-            spellCraft.MakeCraft();
+            newCard.cardObj.GetComponent<Image>().color = choiceColorHandle;
+            listCards[indexCard].cardObj.GetComponent<Image>().color = choiceColorHandle;
+        }
+
+        public void StopInteraction()
+        {
+            newCard.cardObj.GetComponent<Image>().color = choiceColor;
+            listCards[indexCard].cardObj.GetComponent<Image>().color = choiceColor;
+        }
+
+        public void MakeCraft() //Сначало проведет действия в UI потом перекинет на "мгновенный" крафт
+        {
+            if(newNode.moneyCost <= SaveData.TempData.money)
+            {
+                StartCoroutine(BalanceEncount());
+            }
+            else
+            {
+                print("Нет ДЕНЕГ!");
+            }
         }
 
         public void Dissmis()
         {
             spellCraft.Dissmis();
+        }
+
+        private IEnumerator BalanceEncount()
+        {
+            int count = newNode.moneyCost;
+            int balanceInText = SaveData.TempData.money;
+            float timeNext = 1/count;
+            while (count > 0)
+            {
+                count--;
+                balanceInText--;
+                textBalance.text = $"{balanceInText} ¤";
+                yield return new WaitForSeconds(timeNext);
+            }
+
+            spellCraft.MakeCraft();
+            yield return null;
         }
     }
 }
