@@ -1,6 +1,10 @@
 using UnityEngine;
 
-public class SpellSummon : MonoBehaviour
+
+namespace BattleSystem
 {
-   
+    public class SpellSummon : MonoBehaviour
+    {
+
+    }
 }

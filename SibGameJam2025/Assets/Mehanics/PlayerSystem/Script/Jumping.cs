@@ -1,15 +1,19 @@
+using ReactiveVariables;
+using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace PlayerSystem
 {
     public class Jumping : MonoBehaviour
     {
-        public bool IsGround { get; set; } = true;
+        public ReactiveProperty<bool> IsGrounded = new(true);
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Transform _groundCheckerPosition;
         private Vector3 _velocity;
+        private bool _secondJump = false;
+        private bool _canSecondJump = false;
+        private Coroutine _secondJumpTimer;
 
         private void Update()
         {
@@ -19,24 +23,42 @@ namespace PlayerSystem
             StartJump();
         }
 
+        private void OnEnable()
+        {
+            IsGrounded.Changed += Landing;
+        }
+
+        private void OnDisable()
+        {
+            IsGrounded.Changed -= Landing;
+        }
+
         private void StartJump()
         {
-            if (IsGround && CanJump() && Input.GetKeyDown(KeyCode.Space))
+            if ((IsGrounded.Value || _canSecondJump) && CanJump() && Input.GetKeyDown(KeyCode.Space) && !_secondJump)
             {
-                Debug.Log("jump");
-                _velocity.y = Mathf.Sqrt(_playerConfig.JumpHeight * -2f * _playerConfig.Gravity);
-                //PlayOneShot(playerConfig.StartJumpSound);
+                if (_canSecondJump)
+                    _secondJump = true;
+                _velocity.y = Mathf.Sqrt((_secondJump ? _playerConfig.JumpHeightSecond: _playerConfig.JumpHeight) * -2f * _playerConfig.Gravity);
+                if (!_secondJump)
+                    _secondJumpTimer = StartCoroutine(LaunchTimerToSecondJump());
             }
 
         }
 
+        private IEnumerator LaunchTimerToSecondJump()
+        {
+            yield return new WaitForSeconds(_playerConfig.TimeToSecondJump);
+            _canSecondJump = true;
+        }
+
         private void CheckGround()
         {
-            IsGround = Physics.CheckSphere(
+            IsGrounded.Value = Physics.CheckSphere(
                 _groundCheckerPosition.position,
                 _playerConfig.GroundCheckDistance,
                 _playerConfig.GroundCheckMask);
-            if (IsGround && _velocity.y < 0)
+            if (IsGrounded.Value && _velocity.y < 0)
                 _velocity.y = -2f;
         }
 
@@ -69,10 +91,15 @@ namespace PlayerSystem
             return Physics.CheckCapsule(startPoint, endPosition, radius, layerMask);
         }
 
-        //private void PlayLandingSound(bool old, bool current)
-        //{
-        //    if (old != current && current)
-        //        JumpSound.PlayOneShot(_playerConfig.LandingSound);
-        //}
+        private void Landing(bool oldValue, bool newValue)
+        {
+            if (newValue == true)
+            {
+                _secondJump = false;
+                _canSecondJump = false;
+                if (_secondJumpTimer != null)
+                    StopCoroutine(_secondJumpTimer);
+            }
+        }
     }
 }

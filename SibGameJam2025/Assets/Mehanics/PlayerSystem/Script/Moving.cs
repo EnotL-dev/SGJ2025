@@ -1,14 +1,17 @@
+using ReactiveVariables;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace PlayerSystem
 {
     public class Moving : MonoBehaviour
     {
+        public float Magnitude { get => _characterController.velocity.magnitude; }
+        public ReactiveProperty<bool> IsSprint = new(true);
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private Camera _camera;
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Jumping _jumpingSystem;
+        [SerializeField] private bool _debug = false;
         private Vector3 _moving;
 
         private void Update()
@@ -16,11 +19,20 @@ namespace PlayerSystem
             Move();
         }
 
+        private void Sprint()
+        {
+            IsSprint.Value = Input.GetKey(KeyCode.LeftShift);
+        }
+
+        private float GetSpeed()
+        {
+            return (IsSprint.Value ? _config.SprintSpeed : _config.WalkingSpeed);
+        }
+
         private void Move()
         {
-            float x = Input.GetAxis("Horizontal");
-            float z = Input.GetAxis("Vertical");
-            Debug.Log(x);
+            float x = Input.GetAxisRaw("Horizontal");
+            float z = Input.GetAxisRaw("Vertical");
             Vector3 cameraRight = _camera.transform.right;
             cameraRight.y = 0;
             cameraRight.Normalize();
@@ -31,17 +43,20 @@ namespace PlayerSystem
                 cameraRight * x +
                 cameraForward * z;
             _inputMoving = Vector3.ClampMagnitude(_inputMoving, 1);
-            if (_jumpingSystem.IsGround)
+            if (_jumpingSystem.IsGrounded.Value)
             {
-                _moving = _inputMoving * _config.MovingSpeed;
+                _moving = _inputMoving * GetSpeed();
                 _characterController.Move(_moving * Time.deltaTime);
+                Sprint();
             }
             else
             {
                 Vector3 jumpMoving = _moving + _inputMoving * _config.MovingSpeedJump;
-                jumpMoving = Vector3.ClampMagnitude(jumpMoving, _config.MovingSpeed);
+                jumpMoving = Vector3.ClampMagnitude(jumpMoving, GetSpeed());
                 _characterController.Move(jumpMoving * Time.deltaTime);
             }
+            if (_debug)
+                Debug.Log($"player speed: " + _characterController.velocity.magnitude);
         }
     }
 }
