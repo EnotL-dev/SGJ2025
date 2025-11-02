@@ -15,5 +15,6 @@ MonoBehaviour:
   _distanceDetect: 20
   _distanceAttack: 25
   _attackFrequancy: 1
-  _attackTime: 0.5
+  _attackTime: 0.1
   _attackAnimationSpeed: 1
+  _attackPrepareTime: 0.5
