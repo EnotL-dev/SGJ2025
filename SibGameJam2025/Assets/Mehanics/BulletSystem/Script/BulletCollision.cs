@@ -8,7 +8,7 @@ namespace BulletSystem
         [SerializeField] private Bullet _bullet;
         [SerializeField] private LayerMask _layerMaskHit;
         [SerializeField] private LayerMask _layerMaskIgnore;
-
+        [SerializeField] private AudioSource _audio;
         private void OnTriggerEnter(Collider other)
         {
             if (IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
@@ -18,6 +18,7 @@ namespace BulletSystem
                 if (other.gameObject.TryGetComponent(out Health health))
                 {
                     health.Reduce(_damage);
+                    _audio.Play();
                 }
             }
             _bullet.Hide();
