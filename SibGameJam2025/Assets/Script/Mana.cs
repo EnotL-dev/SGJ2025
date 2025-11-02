@@ -1,9 +1,11 @@
+using PlayerSystem;
 using ReactiveVariables;
 using System;
 using UnityEngine;
 
 public class Mana : MonoBehaviour
 {
+    [SerializeField] private PlayerStatsController playerStats;
     public IReadOnlyReactiveProperty<int> Current => _current;
     public event Action IsOver;
     public event Action IsRestored;
@@ -23,6 +25,8 @@ public class Mana : MonoBehaviour
             _current.Value = Mathf.Clamp(_current.Value - value, 0, _max.Value);
         if (_current.Value <= 0)
             IsOver?.Invoke();
+
+        //playerStats.ChangeMp(Current, _maxManaValue);
     }
 
     public void Add(int value)

@@ -429,6 +429,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 637834206070510686, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 945250458086839592, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.571991
+      objectReference: {fileID: 0}
     - target: {fileID: 1618704947197867617, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6454581
@@ -469,9 +477,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4535876577334330125, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.69125366
+      objectReference: {fileID: 0}
+    - target: {fileID: 5017429487631007188, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -0.6913147
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645739295684004126, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 30.820557
+      objectReference: {fileID: 0}
+    - target: {fileID: 6645739295684004126, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842532434145374599, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6842532434145374599, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7466117140975692182, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926006386886770822, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926006386886770822, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114983146116007824, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9114983146116007824, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

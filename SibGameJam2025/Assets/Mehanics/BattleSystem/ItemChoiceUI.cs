@@ -60,7 +60,7 @@ namespace BattleSystem
             TextNewCardCost.text = $"{newNode.moneyCost} ¤";
 
             textMainCost.text = nodeGraph.GetManaCost().ToString();
-            textBalance.text = $"{SaveData.TempData.money} ¤";
+            textBalance.text = $"{SaveData.TempData.GetMoney()} ¤";
 
             if (newNode is Summon)
                 indexCard = 0;
@@ -90,7 +90,7 @@ namespace BattleSystem
 
         public void MakeCraft() //Сначало проведет действия в UI потом перекинет на "мгновенный" крафт
         {
-            if(newNode.moneyCost <= SaveData.TempData.money)
+            if(newNode.moneyCost <= SaveData.TempData.GetMoney())
             {
                 newCard.cardObj.SetActive(false);
                 listCards[indexCard].textName.text = newNode.nameNode;
@@ -118,7 +118,7 @@ namespace BattleSystem
         private IEnumerator BalanceEncount()
         {
             int count = newNode.moneyCost;
-            int balanceInText = SaveData.TempData.money;
+            int balanceInText = SaveData.TempData.GetMoney();
             float timeNext = 3/count;
             while (count > 0)
             {

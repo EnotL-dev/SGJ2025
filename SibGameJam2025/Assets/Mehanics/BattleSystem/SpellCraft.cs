@@ -7,6 +7,7 @@ namespace BattleSystem
 {
     public class SpellCraft : MonoBehaviour
     {
+        [SerializeField] private PlayerStatsController playerStatsController;
         [SerializeField] private GameObject canvasCraft;
         private GameObject tempCanvas;
         private CanvasGroup canvasGroup;
@@ -61,7 +62,8 @@ namespace BattleSystem
         public void MakeCraft()
         {
             Debug.Log("Плата прошла!");
-            SaveData.TempData.money -= newNode.moneyCost;
+            SaveData.TempData.ReduceMoney(newNode.moneyCost);
+            playerStatsController.balanceUpdate();
             AddNodeInNodeGraph();
             newNode = null;
 
