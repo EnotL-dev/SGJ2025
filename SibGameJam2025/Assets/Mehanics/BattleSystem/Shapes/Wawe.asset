@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6e35e8f50d32047aa003b88ae27e49, type: 3}
   m_Name: Wawe
   m_EditorClassIdentifier: 
+  newPrefabSpellBullet: {fileID: 7597641698764003934, guid: 37b2bb296812330498da2e62ff6adeb9, type: 3}

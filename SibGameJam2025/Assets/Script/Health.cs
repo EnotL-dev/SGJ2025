@@ -1,5 +1,6 @@
 using PlayerSystem;
 using ReactiveVariables;
+using SaveSystem;
 using System;
 using UnityEngine;
 
@@ -62,7 +63,11 @@ public class Health : MonoBehaviour
 
     private void Awake()
     {
-        _max.SetValueWithoutAction(_maxHealthValue);
+        if(playerStats)
+            _max.SetValueWithoutAction(SaveData.TempData.playerParams.maxHp);
+        else
+            _max.SetValueWithoutAction(_maxHealthValue);
+
         _current.SetValueWithoutAction(_maxHealthValue);
 
         if(playerStats)

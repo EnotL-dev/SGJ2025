@@ -9,8 +9,44 @@ namespace SaveSystem
     {
         public class DataParams
         {
-            public NodeGraph nodeGraph = new NodeGraph(new Single(), new Sphere(), new NothingImpact(), new NothingFeature());
-            private int money = 1000;
+            public class PlayerParams
+            {
+                private int _lv = 1;
+                public int lv
+                {
+                    get => _lv;
+                }
+
+                private int _maxHp = 30;
+                public int maxHp
+                {
+                    get => _maxHp;
+                }
+
+                private int _maxMp = 20;
+                public int maxMp
+                {
+                    get => _maxMp;
+                }
+
+                private int _bonusDamage = 1;
+                public int bonusDamage
+                {
+                    get => _bonusDamage;
+                }
+
+                public void LvlUp()
+                {
+                    _lv++;
+                    _maxHp += 8;
+                    _maxMp += 5;
+                    _bonusDamage += 2;
+                }
+            }
+
+            public NodeGraph nodeGraph = new NodeGraph();
+            private int money = 100;
+            public PlayerParams playerParams = new PlayerParams();
 
             public int GetMoney()
             {
