@@ -6,13 +6,12 @@ using UnityEngine;
 public class Mana : MonoBehaviour
 {
     [SerializeField] private PlayerStatsController playerStats;
-    public IReadOnlyReactiveProperty<int> Current => _current;
     public event Action IsOver;
     public event Action IsRestored;
 
     [SerializeField, Min(0)] private int _maxManaValue = 1;
-    private ReactiveProperty<int> _current = new();
-    private ReactiveProperty<int> _max = new();
+    public ReactiveProperty<int> _current = new();
+    public ReactiveProperty<int> _max = new();
 
     public void Reduce(int value)
     {
@@ -26,7 +25,7 @@ public class Mana : MonoBehaviour
         if (_current.Value <= 0)
             IsOver?.Invoke();
 
-        //playerStats.ChangeMp(Current, _maxManaValue);
+        playerStats.ChangeMp(_current.Value, _max.Value);
     }
 
     public void Add(int value)
@@ -37,6 +36,7 @@ public class Mana : MonoBehaviour
             return;
         }
         _current.Value = Mathf.Clamp(_current.Value + value, 0, _max.Value);
+        playerStats.ChangeMp(_current.Value, _max.Value);
     }
 
     public void RestoreToFull()
@@ -55,11 +55,7 @@ public class Mana : MonoBehaviour
     {
         _max.SetValueWithoutAction(_maxManaValue);
         _current.SetValueWithoutAction(_maxManaValue);
-    }
 
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //        KillImmediately();
-    //}
+        playerStats.ChangeMp(_current.Value, _max.Value);
+    }
 }

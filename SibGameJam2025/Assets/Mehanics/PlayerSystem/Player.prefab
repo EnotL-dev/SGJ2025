@@ -86,7 +86,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 1
-  m_Value: 43
+  m_Value: 51
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -407,7 +407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6404792, y: 0.8924446}
   m_AnchorMax: {x: 0.992125, y: 0.97225934}
-  m_AnchoredPosition: {x: -0.17004395, y: -0.69131}
+  m_AnchoredPosition: {x: -0.17004395, y: -0.6913147}
   m_SizeDelta: {x: -2.1, y: -1.3826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8862284372875724458
@@ -1145,7 +1145,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f721939eace107d48afe44afb2cd8a8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealthValue: 100
+  playerStats: {fileID: 6081581465925539778}
+  _maxHealthValue: 50
 --- !u!114 &9039468014755786712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1159,7 +1160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 6081581465925539778}
-  _maxManaValue: 100
+  _maxManaValue: 30
 --- !u!1 &5824809035752513076
 GameObject:
   m_ObjectHideFlags: 0

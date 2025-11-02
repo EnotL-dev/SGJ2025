@@ -1,16 +1,17 @@
+using PlayerSystem;
 using ReactiveVariables;
 using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public IReadOnlyReactiveProperty<int> Current => _current;
+    [SerializeField] private PlayerStatsController playerStats;
     public event Action IsOver;
     public event Action IsRestored;
 
     [SerializeField, Min(0)] private int _maxHealthValue = 1;
-    private ReactiveProperty<int> _current = new();
-    private ReactiveProperty<int> _max = new();
+    public ReactiveProperty<int> _current = new();
+    public ReactiveProperty<int> _max = new();
 
     public void Reduce(int value)
     {
@@ -23,6 +24,8 @@ public class Health : MonoBehaviour
             _current.Value = Mathf.Clamp(_current.Value - value, 0, _max.Value);
         if (_current.Value <= 0)
             IsOver?.Invoke();
+
+        playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void Add(int value)
@@ -33,24 +36,29 @@ public class Health : MonoBehaviour
             return;
         }
         _current.Value = Mathf.Clamp(_current.Value + value, 0, _max.Value);
+        playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void RestoreToFull()
     {
         _current.Value = _max.Value;
         IsRestored?.Invoke();
+        playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void KillImmediately()
     {
         _current.Value = 0;
         IsOver?.Invoke();
+        playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     private void Awake()
     {
         _max.SetValueWithoutAction(_maxHealthValue);
         _current.SetValueWithoutAction(_maxHealthValue);
+
+        playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void Update()

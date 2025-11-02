@@ -17,12 +17,14 @@ namespace PlayerSystem
 
         public void ChangeHp(int currentHp, int maxHp)
         {
+            sliderHp.maxValue = maxHp;
             sliderHp.value = currentHp;
             textHpCount.text = $"{currentHp}/{maxHp}";
         }
 
         public void ChangeMp(int currentMp, int maxMp)
         {
+            sliderMp.maxValue = maxMp;
             sliderMp.value = currentMp;
             textMpCount.text = $"{currentMp}/{maxMp}";
         }
