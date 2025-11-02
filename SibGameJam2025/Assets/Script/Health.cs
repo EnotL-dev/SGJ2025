@@ -52,4 +52,10 @@ public class Health : MonoBehaviour
         _max.SetValueWithoutAction(_maxHealthValue);
         _current.SetValueWithoutAction(_maxHealthValue);
     }
+
+    //public void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //        KillImmediately();
+    //}
 }

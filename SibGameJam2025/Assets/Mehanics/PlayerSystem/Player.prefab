@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 6733703007135028654}
   - component: {fileID: 3428500622131564224}
   - component: {fileID: 3001695008824988546}
+  - component: {fileID: 5713205336164120976}
   m_Layer: 6
   m_Name: Player Controller
   m_TagString: Untagged
@@ -170,6 +171,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasCraft: {fileID: 1055494935288763307, guid: 5eb299a42463b83478be01782e2fe708, type: 3}
+--- !u!114 &5713205336164120976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5726555929121282423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f721939eace107d48afe44afb2cd8a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealthValue: 100
 --- !u!1 &5824809035752513076
 GameObject:
   m_ObjectHideFlags: 0

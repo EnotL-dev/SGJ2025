@@ -4,12 +4,28 @@ namespace BulletSystem
 {
     public class BulletCollision : MonoBehaviour
     {
-        private void OnCollisionEnter(Collision collision)
-        {
-            if (collision.gameObject.TryGetComponent(out CharacterController player))
-            {
+        [SerializeField] private int _damage;
+        [SerializeField] private Bullet _bullet;
+        [SerializeField] private LayerMask _layerMaskHit;
+        [SerializeField] private LayerMask _layerMaskIgnore;
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
+                return;
+            if (IsLayerInMask(other.gameObject.layer, _layerMaskHit))
+            {
+                if (other.gameObject.TryGetComponent(out Health health))
+                {
+                    health.Reduce(_damage);
+                }
             }
+            _bullet.Hide();
+        }
+
+        public static bool IsLayerInMask(int layer, LayerMask layerMask)
+        {
+            return layerMask == (layerMask | (1 << layer));
         }
     }
 }

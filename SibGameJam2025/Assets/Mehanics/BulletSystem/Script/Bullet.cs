@@ -23,6 +23,12 @@ namespace BulletSystem
             _parent = parent;
         }
 
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+            gameObject.transform.SetParent(_parent);
+        }
+
         private void Update()
         {
             Move();
@@ -44,8 +50,7 @@ namespace BulletSystem
 
         private void OverDistanceAction()
         {
-            gameObject.SetActive(false);
-            gameObject.transform.SetParent(_parent);
+            Hide();
         }
     }
 }

@@ -15,8 +15,9 @@ namespace EnemySystem.Worm
         private AnimatorController _animator;
         private bool _attackProcess = false;
         private Transform _launchPoint;
+        private LayerMask _layerMask;
 
-        public Attack(IStateSwitcher stateSwitcher, BulletPool bulletPool, Transform body, CharacterController player, WormConfig config, AnimatorController animator, Transform launchPoint) : base(stateSwitcher)
+        public Attack(IStateSwitcher stateSwitcher, BulletPool bulletPool, Transform body, CharacterController player, WormConfig config, AnimatorController animator, Transform launchPoint, LayerMask layerMask) : base(stateSwitcher)
         {
             _bulletPool = bulletPool;
             _body = body;
@@ -24,6 +25,7 @@ namespace EnemySystem.Worm
             _config = config;
             _animator = animator;
             _launchPoint = launchPoint;
+            _layerMask = layerMask;
         }
 
         public override void Start()
@@ -42,8 +44,7 @@ namespace EnemySystem.Worm
         public override void Update()
         {
             CheckDistance();
-            if (!HaveObstacle())
-                LaunchBullet();
+            LaunchBullet();
         }
 
         private void CheckDistance()
@@ -59,6 +60,8 @@ namespace EnemySystem.Worm
         {
             if (!_attackProcess)
             {
+                if (HaveObstacle())
+                    return;
                 if (_currentTimeBeetwenAttack > 0)
                 {
                     _currentTimeBeetwenAttack -= Time.deltaTime;
@@ -90,11 +93,10 @@ namespace EnemySystem.Worm
         {
             Vector3 playerPos = _player.transform.position;
             playerPos.y += 1.5f;
-            if (Physics.Raycast(_launchPoint.position, playerPos - _launchPoint.position, out RaycastHit hit, 1000))
+            if (Physics.Raycast(_launchPoint.position, playerPos - _launchPoint.position, out RaycastHit hit, 1000, _layerMask))
             {
                 if (!hit.collider.gameObject.TryGetComponent(out CharacterController player))
                 {
-                    Debug.Log(hit.collider.gameObject);
                     return true;
                 }
             }

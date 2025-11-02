@@ -1,5 +1,6 @@
 using BulletSystem;
 using PlayerSystem;
+using Unity.VisualScripting.Dependencies.Sqlite;
 using UnityEngine;
 
 namespace EnemySystem.Worm
@@ -13,12 +14,14 @@ namespace EnemySystem.Worm
         [SerializeField] private RotateToPlayer _BodyRotor;
         [SerializeField] private RotateToPlayer _gunRotor;
         [SerializeField] private Transform _launchPoint;
+        [SerializeField] private LayerMask _layerMask;
+        [SerializeField] private Collider _collision;
 
         protected override void InitializeStates()
         {
            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator));
             _states.Add(new Death(this, _animator));
-            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint));
+            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask));
             SwitchState<Waiting>();
         }
 
@@ -39,6 +42,7 @@ namespace EnemySystem.Worm
         private void CallDeath()
         {
             SwitchState<Death>();
+            _collision.enabled = false;
             _BodyRotor.enabled = false;
             _gunRotor.enabled = false;
         }
