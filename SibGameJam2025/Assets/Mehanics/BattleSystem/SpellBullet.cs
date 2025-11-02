@@ -1,3 +1,5 @@
+using SaveSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleSystem
@@ -11,12 +13,24 @@ namespace BattleSystem
         [SerializeField] private LayerMask _layerMaskHit;
         [SerializeField] private LayerMask _layerMaskIgnore;
 
+        private List<Node> nodes; //для обращения что делать к spellSummon
+        private SpellSummon spellSummon;
+
         private Vector3 _startPosition;
-        private void Launch(int damage, float speed, float maxDistance)
+        public void Launch(SpellSummon spellSummon, List<Node> nodes)
         {
-            this.damage = damage;
-            this.speed = speed;
-            this.maxDistance = maxDistance;
+            this.spellSummon = spellSummon;
+            this.nodes = nodes;
+
+            foreach(Node node in nodes)
+            {
+                if(node is Shape nodeShape)
+                {
+                    damage = nodeShape.damage + SaveData.TempData.playerParams.bonusDamage;
+                    speed = nodeShape.speed;
+                    maxDistance = nodeShape.distance;
+                }
+            }
 
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
@@ -56,11 +70,14 @@ namespace BattleSystem
             {
                 if (other.gameObject.TryGetComponent(out Health health))
                 {
+                    int trueDamage = damage; //урон
+                    if(health._current.Value < damage)
+                        trueDamage = health._current.Value;
+
                     health.Reduce(damage);
+                    spellSummon.HandlingHit(health.gameObject, gameObject, nodes, trueDamage);
                 }
             }
-
-            Destroy(gameObject);
         }
 
         public static bool IsLayerInMask(int layer, LayerMask layerMask)

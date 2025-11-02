@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d233393764e822b46b6f12241c65a679, type: 3}
   m_Name: Beam
   m_EditorClassIdentifier: 
+  prefabSpellBullet: {fileID: 7597641698764003934, guid: a9d9ee346cec7a749ae4da0b58052a4a, type: 3}

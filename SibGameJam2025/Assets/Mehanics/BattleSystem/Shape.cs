@@ -6,5 +6,29 @@ namespace BattleSystem
     public class Shape : Node
     {
         public SpellBullet prefabSpellBullet;
+
+        private int _damage = 5;
+
+        public virtual int damage
+        {
+            get => _damage;
+            set => _damage = value;
+        }
+
+        private int _speed = 10;
+
+        public virtual int speed
+        {
+            get => _speed;
+            set => _speed = value;
+        }
+
+        private int _distance = 20;
+
+        public virtual int distance
+        {
+            get => _distance;
+            set => _distance = value;
+        }
     }
 }

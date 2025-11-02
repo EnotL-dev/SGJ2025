@@ -8,6 +8,8 @@ namespace BattleSystem
     public class SpellSummon : MonoBehaviour
     {
         [SerializeField] private Transform spawnSpellPoint;
+        [SerializeField] private Transform spawnSpellPointSecond;
+        [SerializeField] private Transform spawnSpellPointThird;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
         private float timerDelay = 0;
@@ -18,8 +20,13 @@ namespace BattleSystem
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    SummonSpell();
-                    timerDelay = delaySpell;
+                    if (gameObject.GetComponent<Mana>()._current.Value >= nodeGraph.GetManaCost())
+                    {
+                        gameObject.GetComponent<Mana>().Reduce(nodeGraph.GetManaCost());
+
+                        SummonSpell();
+                        timerDelay = delaySpell;
+                    }
                 }
             }
             else
@@ -32,28 +39,51 @@ namespace BattleSystem
         {
             List<Node> nodes = nodeGraph.GetNodesInList();
 
+            bool triple = false;
             SpellBullet prefabSpellBullet = null;
             foreach(Node node in nodes)
             {
                 if(node is Summon nodeSummon)
                 {
-
+                    if (nodeSummon is Triple)
+                        triple = true;
                 }
                 else if(node is Shape nodeShape)
                 {
                     prefabSpellBullet = nodeShape.prefabSpellBullet;
                 }
-                else if (node is Impact nodeImpact)
-                {
+            }
 
+            SpellBullet spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, Quaternion.identity).GetComponent<SpellBullet>();
+            spellBullet.Launch(this, nodes);
+
+            if (triple)
+            {
+                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPointSecond.position, Quaternion.identity).GetComponent<SpellBullet>();
+                spellBullet.Launch(this, nodes);
+                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPointThird.position, Quaternion.identity).GetComponent<SpellBullet>();
+                spellBullet.Launch(this, nodes);
+            }
+        }
+
+        public void HandlingHit(GameObject hitObj, GameObject bulletObj, List<Node> nodes, int trueDamage) //Обработка попадания
+        {
+            foreach (Node node in nodes)
+            {
+                if (node is Impact nodeImpact)
+                {
+                    Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
                 }
                 else if (node is Feature nodeFeature)
                 {
-
+                    if (nodeFeature is Vampirism)
+                        gameObject.GetComponent<Health>().Add(trueDamage / 2);
+                    else if(node is PaybackMana)
+                        gameObject.GetComponent<Mana>().Add(trueDamage / 3);
                 }
             }
 
-            
+            Destroy(bulletObj);
         }
     }
 }

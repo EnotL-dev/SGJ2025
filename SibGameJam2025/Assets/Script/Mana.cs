@@ -1,5 +1,6 @@
 using PlayerSystem;
 using ReactiveVariables;
+using SaveSystem;
 using System;
 using UnityEngine;
 
@@ -53,7 +54,7 @@ public class Mana : MonoBehaviour
 
     private void Awake()
     {
-        _max.SetValueWithoutAction(_maxManaValue);
+        _max.SetValueWithoutAction(SaveData.TempData.playerParams.maxMp);
         _current.SetValueWithoutAction(_maxManaValue);
 
         playerStats.ChangeMp(_current.Value, _max.Value);

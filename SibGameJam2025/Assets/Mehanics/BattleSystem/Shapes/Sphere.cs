@@ -8,5 +8,7 @@ namespace BattleSystem
         public override string nameNode { get => "Øàð"; }
 
         public override int weight { get => 4; }
+
+        public override int distance { get => 25; }
     }
 }

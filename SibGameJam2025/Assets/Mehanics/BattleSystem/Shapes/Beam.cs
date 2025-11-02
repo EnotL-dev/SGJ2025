@@ -9,5 +9,8 @@ namespace BattleSystem
         public override int manaCost { get => 3; }
 
         public override int weight { get => 3; }
+
+        public override int damage { get => 3; }
+        public override int speed { get => 20; }
     }
 }
