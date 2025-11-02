@@ -4,7 +4,7 @@ namespace BattleSystem
 {
     public abstract class Node : ScriptableObject
     {
-        private string _nameNode = "Nothing";
+        private string _nameNode = "Ничего";
 
         public virtual string nameNode
         {
@@ -12,7 +12,7 @@ namespace BattleSystem
             set => _nameNode = value;
         }
 
-        private string _description = "None";
+        private string _description = "Ничего";
 
         public virtual string description
         {

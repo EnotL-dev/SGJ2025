@@ -5,9 +5,28 @@ namespace BattleSystem
 {
     public class NodeGraph
     {
-        private Summon summon;
-        private Shape shape;
-        private Impact impact;
-        private Feature feature;
+        public Summon summon;
+        public Shape shape;
+        public Impact impact;
+        public Feature feature;
+
+        public NodeGraph(Summon summon, Shape shape, Impact impact, Feature feature)
+        {
+            this.summon = summon;
+            this.shape = shape;
+            this.impact = impact;
+            this.feature = feature;
+        }
+
+        public List<Node> GetNodesInList()
+        {
+            List<Node> newList = new List<Node>();
+            newList.Add(summon);
+            newList.Add(shape);
+            newList.Add(impact);
+            newList.Add(feature);
+
+            return newList;
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace SaveSystem
     {
         public class DataParams
         {
-            public static NodeGraph nodeGraph = new NodeGraph();
+            public NodeGraph nodeGraph = new NodeGraph(new Single(), new Sphere(), new NothingImpact(), new NothingFeature());
         }
 
         public static Dictionary<string, float> Volumes = new Dictionary<string, float>();
