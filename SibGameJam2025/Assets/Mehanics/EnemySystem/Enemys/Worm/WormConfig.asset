@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96fce21de7bb9424183047050ba81fc4, type: 3}
   m_Name: WormConfig
   m_EditorClassIdentifier: 
-  _distanceDetect: 5
-  _distanceAttack: 6
+  _distanceDetect: 20
+  _distanceAttack: 25
   _attackFrequancy: 1
