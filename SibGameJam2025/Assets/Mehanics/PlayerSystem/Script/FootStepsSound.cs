@@ -53,6 +53,7 @@ namespace PlayerSystem
                 _left = true;
                 return 1f;
             }
+            //return 1f;
         }
 
         private void ChangeTimeToStep(bool old, bool isRun)

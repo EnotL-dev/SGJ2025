@@ -14,8 +14,18 @@ namespace EnemySystem.Ghost
         private Health _playerHealth;
         private Coroutine _attackCoroutine;
         private RotateToPlayer _rotor;
+        private AudioSource _attackSound;
 
-        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, GhostConfig config, AnimatorController animator, Health playerHealth, RotateToPlayer rotor) : base(stateSwitcher)
+        public Attack(
+            IStateSwitcher stateSwitcher,
+            Transform body,
+            CharacterController player,
+            GhostConfig config,
+            AnimatorController animator,
+            Health playerHealth,
+            RotateToPlayer rotor,
+            AudioSource attackSound
+            ) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
@@ -23,6 +33,7 @@ namespace EnemySystem.Ghost
             _config = config;
             _playerHealth = playerHealth;
             _rotor = rotor;
+            _attackSound = attackSound;
         }
 
         public override void Start()
@@ -55,7 +66,8 @@ namespace EnemySystem.Ghost
                 _animator.SetAttack(true);
                 yield return new WaitForSeconds(_config.AttackPrepareTime);
                 _playerHealth.Reduce(_config.Damage);
-            //    Debug.Log("damage");
+                //    Debug.Log("damage");
+                _attackSound.Play();
                 yield return new WaitForSeconds(_config.AttackTime);
                 _animator.SetAttack(false);
                 yield return new WaitForSeconds(_config.AttackFrequency);
