@@ -31,7 +31,7 @@ namespace EnemySystem.Worm
         public override void Update()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance < _config.DistanceDetect)
+            if (_distance < _config.DistanceDetect || PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Attack>();
             }

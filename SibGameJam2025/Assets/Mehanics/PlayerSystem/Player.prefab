@@ -2044,6 +2044,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterController: {fileID: 6202307744549774060}
   _health: {fileID: 5713205336164120976}
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &7770317022697003083
 GameObject:
   m_ObjectHideFlags: 0

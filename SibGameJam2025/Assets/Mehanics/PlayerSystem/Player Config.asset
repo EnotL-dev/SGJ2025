@@ -21,7 +21,7 @@ MonoBehaviour:
   _groundCheckDistance: 0.2
   _groundCheckMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 311
   _timeToSecondJump: 0.25
   _stepSoundFrequency:
     Max: 0.4

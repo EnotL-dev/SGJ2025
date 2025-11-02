@@ -1,3 +1,4 @@
+using PlayerSystem;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,7 +43,7 @@ namespace EnemySystem.Head
             {
                 _stateSwitcher.SwitchState<Waiting>();
             }
-            if (_distance < _config.DistanceAttack)
+            if (_distance < _config.DistanceAttack || PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Attack>();
             }

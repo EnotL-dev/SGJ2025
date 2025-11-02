@@ -42,7 +42,7 @@ namespace EnemySystem.Head
         public override void Update()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance > _config.DistanceAttack + 0.2)
+            if (_distance > _config.DistanceAttack + 0.2 && !PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Moving>();
             }
