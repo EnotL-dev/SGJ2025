@@ -26,9 +26,14 @@ namespace EnemySystem
             _animator.SetTrigger("Death");
         }
 
-        public void ShooseAttack(float index)
+        public void ChooseAttack(float index)
         {
             _animator.SetFloat("Attack Index", index);
+        }
+
+        public void SetAnimationSpeed(float speed)
+        {
+            _animator.speed = speed;
         }
     }
 }

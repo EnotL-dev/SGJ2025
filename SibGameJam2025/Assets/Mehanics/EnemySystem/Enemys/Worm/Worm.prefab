@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2535034488515450428}
   - component: {fileID: 6264243888336011621}
   - component: {fileID: 8437456044484061697}
+  - component: {fileID: 4693046514543535846}
   m_Layer: 0
   m_Name: Worm
   m_TagString: Untagged
@@ -49,9 +50,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 5799e45477e87344c9d3537d6f91f1ca, type: 2}
-  _launchPoint: {fileID: 2861573457981051449}
   _bulletPool: {fileID: 2535034488515450428}
   _animator: {fileID: 8437456044484061697}
+  _health: {fileID: 4693046514543535846}
+  _BodyRotor: {fileID: 6264243888336011621}
+  _gunRotor: {fileID: 7648928112251931019}
+  _launchPoint: {fileID: 5663982426293227480}
 --- !u!114 &2535034488515450428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,6 +86,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   _yDirection: 0
   _speed: 1
+  _yOffset: 1.5
 --- !u!114 &8437456044484061697
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +100,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animator: {fileID: 7341978449664781671}
+--- !u!114 &4693046514543535846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440906977372280741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f721939eace107d48afe44afb2cd8a8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealthValue: 5
 --- !u!1 &3687237576192792004
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +160,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   _yDirection: 1
   _speed: 0
+  _yOffset: 1.5
 --- !u!1 &3917320369901835450
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,6 +209,7 @@ MonoBehaviour:
   _rotationSpeed: 10
   _yDirection: 1
   _speed: 0
+  _yOffset: 0
 --- !u!1001 &1132775111728083640
 PrefabInstance:
   m_ObjectHideFlags: 0

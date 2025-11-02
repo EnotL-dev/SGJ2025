@@ -9,8 +9,8 @@ public class Health : MonoBehaviour
     public event Action IsRestored;
 
     [SerializeField, Min(0)] private int _maxHealthValue = 1;
-    private ReactiveProperty<int> _current;
-    private ReactiveProperty<int> _max;
+    private ReactiveProperty<int> _current = new();
+    private ReactiveProperty<int> _max = new();
 
     public void Reduce(int value)
     {

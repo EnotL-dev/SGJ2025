@@ -15,7 +15,6 @@ namespace BulletSystem
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
             gameObject.transform.parent = null;
-            gameObject.transform.rotation = Quaternion.LookRotation(target.position - transform.position);
             _startPosition = transform.position;
         }
 

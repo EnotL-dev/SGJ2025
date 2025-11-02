@@ -8,6 +8,7 @@ namespace EnemySystem
         [SerializeField] private float _rotationSpeed = 10f;
         [SerializeField] private bool _yDirection = true;
         [SerializeField] private bool _speed = true;
+        [SerializeField] private float _yOffset;
         private CharacterController _player;
         private Vector3 _lookDirection;
 
@@ -18,7 +19,9 @@ namespace EnemySystem
 
         public void Update()
         {
-            _lookDirection = _player.transform.position - transform.position;
+            Vector3 playerPosition = _player.transform.position;
+            playerPosition.y += _yOffset;
+            _lookDirection = playerPosition - transform.position;
             if (!_yDirection)
                 _lookDirection.y = 0;
             
@@ -29,7 +32,7 @@ namespace EnemySystem
             }
             else 
             {
-                transform.LookAt(_player.transform.position);
+                transform.LookAt(playerPosition);
             }
         }
     }
