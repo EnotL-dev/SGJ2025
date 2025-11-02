@@ -25,7 +25,8 @@ public class Health : MonoBehaviour
         if (_current.Value <= 0)
             IsOver?.Invoke();
 
-        playerStats.ChangeHp(_current.Value, _max.Value);
+        if(playerStats)
+            playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void Add(int value)
@@ -36,21 +37,27 @@ public class Health : MonoBehaviour
             return;
         }
         _current.Value = Mathf.Clamp(_current.Value + value, 0, _max.Value);
-        playerStats.ChangeHp(_current.Value, _max.Value);
+
+        if(playerStats)
+            playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void RestoreToFull()
     {
         _current.Value = _max.Value;
         IsRestored?.Invoke();
-        playerStats.ChangeHp(_current.Value, _max.Value);
+
+        if(playerStats)
+            playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void KillImmediately()
     {
         _current.Value = 0;
         IsOver?.Invoke();
-        playerStats.ChangeHp(_current.Value, _max.Value);
+
+        if(playerStats)
+            playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     private void Awake()
@@ -58,7 +65,8 @@ public class Health : MonoBehaviour
         _max.SetValueWithoutAction(_maxHealthValue);
         _current.SetValueWithoutAction(_maxHealthValue);
 
-        playerStats.ChangeHp(_current.Value, _max.Value);
+        if(playerStats)
+            playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
     public void Update()

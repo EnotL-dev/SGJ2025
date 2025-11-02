@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SpellCollision : MonoBehaviour
 {
-    public int damage;
+    [HideInInspector] public int damage;
     [SerializeField] private LayerMask _layerMaskHit;
     [SerializeField] private LayerMask _layerMaskIgnore;
 
@@ -17,6 +17,8 @@ public class SpellCollision : MonoBehaviour
                 health.Reduce(damage);
             }
         }
+
+        Destroy(gameObject);
     }
 
     public static bool IsLayerInMask(int layer, LayerMask layerMask)
