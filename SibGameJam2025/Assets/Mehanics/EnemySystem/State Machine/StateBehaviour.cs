@@ -23,6 +23,7 @@ namespace EnemySystem
                 CurrentState.Stop();
             newState.Start();
             CurrentState = newState;
+            //Debug.Log($"switch {CurrentState}");
         }
 
         private void Update()

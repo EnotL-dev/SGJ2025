@@ -7,18 +7,21 @@ namespace BulletSystem
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _maxDistance = 20f;
         private Vector3 _startPosition;
-        private BulletPool _pool;
+        private Transform _parent;
 
-        public void Launch()
+        public void Launch(Transform target)
         {
             gameObject.SetActive(true);
+            gameObject.transform.localPosition = Vector3.zero;
+            gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
             gameObject.transform.parent = null;
+            gameObject.transform.rotation = Quaternion.LookRotation(target.position - transform.position);
             _startPosition = transform.position;
         }
 
-        private void SetParentLink(BulletPool pool)
+        public void SetParentLink(Transform parent)
         {
-            _pool = pool;
+            _parent = parent;
         }
 
         private void Update()
@@ -29,12 +32,12 @@ namespace BulletSystem
 
         private void Move()
         {
-            transform.Translate(transform.forward * _speed * Time.deltaTime);
+            transform.Translate(Vector3.forward * _speed * Time.deltaTime);
         }
 
         private void CheckDistance()
         {
-            if (Vector3.Distance(_startPosition, transform.position) < _maxDistance)
+            if (Vector3.Distance(_startPosition, transform.position) > _maxDistance)
             {
                 OverDistanceAction();
             }
@@ -43,7 +46,7 @@ namespace BulletSystem
         private void OverDistanceAction()
         {
             gameObject.SetActive(false);
-            gameObject.transform.SetParent(_pool.transform);
+            gameObject.transform.SetParent(_parent);
         }
     }
 }
