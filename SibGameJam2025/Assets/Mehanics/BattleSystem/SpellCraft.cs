@@ -63,7 +63,7 @@ namespace BattleSystem
         {
             Debug.Log("Плата прошла!");
             SaveData.TempData.ReduceMoney(newNode.moneyCost);
-            playerStatsController.balanceUpdate();
+            playerStatsController.BalanceUpdate();
             AddNodeInNodeGraph();
             newNode = null;
 

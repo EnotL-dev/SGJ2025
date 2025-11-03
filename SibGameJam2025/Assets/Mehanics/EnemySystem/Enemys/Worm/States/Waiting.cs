@@ -9,13 +9,15 @@ namespace EnemySystem.Worm
         private float _distance;
         private WormConfig _config;
         private AnimatorController _animator;
+        private float _distanceDetect;
 
-        public Waiting(IStateSwitcher stateSwitcher, Transform body, CharacterController player, WormConfig config, AnimatorController animator) : base(stateSwitcher)
+        public Waiting(IStateSwitcher stateSwitcher, Transform body, CharacterController player, WormConfig config, AnimatorController animator, float distanceDetect) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
             _config = config;
             _animator = animator;
+            _distanceDetect = distanceDetect;
         }
 
         public override void Start()
@@ -31,7 +33,7 @@ namespace EnemySystem.Worm
         public override void Update()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance < _config.DistanceDetect || PlayerAboveMe(_body))
+            if (_distance < _distanceDetect || PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Attack>();
             }

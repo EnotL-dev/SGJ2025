@@ -18,8 +18,8 @@ namespace EnemySystem.Ghost
 
         protected override void InitializeStates()
         {
-            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
-            _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
+            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, (MaxAgro ? 30000 : _distanceDetect), _rotor));
+            _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, 30000, _rotor));
             _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _rotor, _attackSound));
             _states.Add(new Death(this, _animator, _timeToDestroy, transform));
             SwitchState<Waiting>();
@@ -47,6 +47,7 @@ namespace EnemySystem.Ghost
             _rotor.enabled = false;
             _pointLight.enabled = false;
             _deathSound.Play();
+            Died?.Invoke();
         }
     }
 }

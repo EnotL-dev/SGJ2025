@@ -21,7 +21,7 @@ namespace BattleSystem
             set => _damage = value;
         }
 
-        private int _speed = 20;
+        private int _speed = 25;
 
         public virtual int speed
         {

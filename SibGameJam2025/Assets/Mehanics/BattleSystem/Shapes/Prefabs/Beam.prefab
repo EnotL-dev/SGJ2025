@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8410864555886028576}
   - component: {fileID: 7597641698764003934}
   - component: {fileID: 2463504425751597458}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,7 +108,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 0.23
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7597641698764003934
 MonoBehaviour:
@@ -127,10 +127,7 @@ MonoBehaviour:
     m_Bits: 256
   _layerMaskIgnore:
     serializedVersion: 2
-    m_Bits: 64
-  _layerUI:
-    serializedVersion: 2
-    m_Bits: 32
+    m_Bits: 1248
 --- !u!54 &2463504425751597458
 Rigidbody:
   m_ObjectHideFlags: 0

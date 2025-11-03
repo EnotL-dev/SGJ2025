@@ -16,6 +16,7 @@ namespace EnemySystem.Worm
         private LayerMask _layerMask;
         private Coroutine _attackCoroutine;
         private AudioSource _shootSound;
+        private float _distanceDetect;
 
         public Attack(
             IStateSwitcher stateSwitcher,
@@ -26,7 +27,8 @@ namespace EnemySystem.Worm
             AnimatorController animator,
             Transform launchPoint,
             LayerMask layerMask,
-            AudioSource shootSound
+            AudioSource shootSound,
+            float distanceDetect
             ) : base(stateSwitcher)
         {
             _bulletPool = bulletPool;
@@ -37,6 +39,7 @@ namespace EnemySystem.Worm
             _launchPoint = launchPoint;
             _layerMask = layerMask;
             _shootSound = shootSound;
+            _distanceDetect = distanceDetect;
         }
 
         public override void Start()
@@ -62,7 +65,7 @@ namespace EnemySystem.Worm
         private void CheckDistance()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance > _config.DistanceAttack + 0.2 && !PlayerAboveMe(_body))
+            if (_distance > _distanceDetect + 0.2 && !PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Waiting>();
             }

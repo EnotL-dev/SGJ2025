@@ -37,10 +37,10 @@ namespace EnemySystem.Ghost
         public override void Update()
         {
             _distance = Vector3.Distance(_body.position, _player.transform.position);
-            if (_distance > _distanceDetect)
-            {
-                _stateSwitcher.SwitchState<Waiting>();
-            }
+            //if (_distance > _distanceDetect)
+            //{
+            //    _stateSwitcher.SwitchState<Waiting>();
+            //}
             if (_distance < _config.DistanceAttack || PlayerAboveMe(_body))
             {
                 _stateSwitcher.SwitchState<Attack>();
