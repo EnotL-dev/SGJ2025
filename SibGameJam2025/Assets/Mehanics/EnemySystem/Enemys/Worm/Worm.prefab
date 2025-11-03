@@ -196,6 +196,7 @@ MonoBehaviour:
   _collision: {fileID: 1827766441377077644}
   _shootSound: {fileID: 9193925350024658114}
   _DeathSound: {fileID: 6597340333374299785}
+  _destroyTimer: 10
 --- !u!114 &2535034488515450428
 MonoBehaviour:
   m_ObjectHideFlags: 0

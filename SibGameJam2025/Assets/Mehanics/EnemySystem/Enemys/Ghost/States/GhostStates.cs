@@ -14,13 +14,14 @@ namespace EnemySystem.Ghost
         [SerializeField] private Light _pointLight;
         [SerializeField] private AudioSource _deathSound;
         [SerializeField] private AudioSource _attackSound;
+        [SerializeField] private float _timeToDestroy;
 
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
             _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _rotor, _attackSound));
-            _states.Add(new Death(this, _animator));
+            _states.Add(new Death(this, _animator, _timeToDestroy, transform));
             SwitchState<Waiting>();
         }
 

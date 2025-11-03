@@ -2022,6 +2022,7 @@ GameObject:
   - component: {fileID: 2313564430402918207}
   - component: {fileID: 3654577470204340736}
   - component: {fileID: 5816476110308454387}
+  - component: {fileID: 1773666257543907390}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -2132,6 +2133,23 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!111 &1773666257543907390
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436670484783076426}
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Animation: {fileID: 7400000, guid: 5c478758dcfcce341ad16577df70aa2a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 5c478758dcfcce341ad16577df70aa2a, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_UpdateMode: 0
+  m_CullingType: 0
 --- !u!1 &7466117140975692182
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,9 +2753,17 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -7390416049455898114, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7390416049455898114, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
+    - target: {fileID: -5023665091138247962, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -5023665091138247962, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2755,12 +2781,20 @@ PrefabInstance:
       value: 48.703
       objectReference: {fileID: 0}
     - target: {fileID: -1079999205645749209, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1079999205645749209, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
     - target: {fileID: 919132149155446097, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: m_Name
       value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672208958247150467, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3672208958247150467, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2778,10 +2812,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 48.703
       objectReference: {fileID: 0}
+    - target: {fileID: 5130281801138119698, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495206983804496990, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6495206983804496990, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
+    - target: {fileID: 6737310410259473597, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6737310410259473597, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 

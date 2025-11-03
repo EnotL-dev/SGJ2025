@@ -12,11 +12,12 @@ namespace EnemySystem.Head
         [SerializeField] private float _distanceDetect = 10f;
         [SerializeField] private Health _health;
         [SerializeField] private Collider _collision;
+        [SerializeField] private float _destroyTimer;
 
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect));
-            _states.Add(new Death(this, _animator));
+            _states.Add(new Death(this, _animator, _destroyTimer, transform));
             _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _agent));
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _agent, _distanceDetect));
             SwitchState<Waiting>();
