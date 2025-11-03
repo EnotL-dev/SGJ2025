@@ -86,9 +86,11 @@ namespace BattleSystem
                     {
                         if (nodeImpact is Shrapnel)
                         {
+                            Vector3 eulerA = bulletObj.transform.eulerAngles;
+                            Vector3 bulPos = bulletObj.transform.position;
                             for (int i = 1; i < 5; i++)
                             {
-                                Quaternion rotation = Quaternion.Euler(bulletObj.transform.eulerAngles + new Vector3(0, i * 90f, 0));
+                                Quaternion rotation = Quaternion.Euler(eulerA + new Vector3(0, i * 90f, 0));
 
                                 List<Node> nodesWithoutShrapnel = new List<Node>();
 
@@ -113,7 +115,8 @@ namespace BattleSystem
                                     }
                                 }
 
-                                SpellBullet spellBullet = Instantiate(newPrefabBullet, bulletObj.transform.position, rotation).GetComponent<SpellBullet>();
+                                
+                                SpellBullet spellBullet = Instantiate(newPrefabBullet, bulPos, rotation).GetComponent<SpellBullet>();
                                 spellBullet.Launch(this, nodesWithoutShrapnel);
                             }
                         }
@@ -129,7 +132,9 @@ namespace BattleSystem
             }
             if (trueDamage > 0)
                 OnHit?.Invoke();
-            Destroy(bulletObj);
+
+            if(bulletObj)
+                Destroy(bulletObj);
         }
     }
 }
