@@ -14,6 +14,35 @@ namespace BattleSystem
         public List<Impact> impacts;
         public List<Feature> features;
 
+        public List<Node> GetNewCognitionNodesList() //Вернет лист познаных нодов (от веса (уровня))
+        {
+            int currentLv = SaveData.TempData.playerParams.lv;
+            List<Node> playerNowNodes = new List<Node>();
+
+            foreach (Node node in summons)
+            {
+                if (node.weight == currentLv)
+                    playerNowNodes.Add(node);
+            }
+            foreach (Node node in shapes)
+            {
+                if (node.weight == currentLv)
+                    playerNowNodes.Add(node);
+            }
+            foreach (Node node in impacts)
+            {
+                if (node.weight == currentLv)
+                    playerNowNodes.Add(node);
+            }
+            foreach (Node node in features)
+            {
+                if (node.weight == currentLv)
+                    playerNowNodes.Add(node);
+            }
+
+            return playerNowNodes;
+        }
+
         public Node GetRandomNodeByWeightScene()
         {
             int currentSceneIndex = SaveData.TempData.playerParams.lv; //SceneManager.GetActiveScene().buildIndex;
