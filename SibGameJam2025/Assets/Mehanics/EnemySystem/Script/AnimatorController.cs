@@ -5,7 +5,8 @@ namespace EnemySystem
     public class AnimatorController : MonoBehaviour
     {
         [SerializeField] private Animator _animator;
-
+        [SerializeField] private float _animSpeed = 1.0f;
+        
         public void SetIdle(bool value)
         {
             _animator.SetBool("Idle", value);
@@ -34,6 +35,11 @@ namespace EnemySystem
         public void SetAnimationSpeed(float speed)
         {
             _animator.speed = speed;
+        }
+
+        private void Start()
+        {
+            SetAnimationSpeed(_animSpeed);
         }
     }
 }
