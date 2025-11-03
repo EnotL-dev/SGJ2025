@@ -72,6 +72,9 @@ namespace SaveSystem
 
         public static Dictionary<string, float> Volumes = new Dictionary<string, float>();
 
+        public static int currentSouls = 0;
+        public static int maxSouls = 0;
+
         private static DataParams MainData = new DataParams();
         public static DataParams TempData = new DataParams();
 

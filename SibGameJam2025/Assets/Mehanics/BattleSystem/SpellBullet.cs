@@ -12,7 +12,6 @@ namespace BattleSystem
         private int damage;
         [SerializeField] private LayerMask _layerMaskHit;
         [SerializeField] private LayerMask _layerMaskIgnore;
-        [SerializeField] private LayerMask _layerUI;
 
         private List<Node> nodes; //для обращения что делать к spellSummon
         private SpellSummon spellSummon;
@@ -63,6 +62,9 @@ namespace BattleSystem
 
         private void OnTriggerEnter(Collider other)
         {
+            if (IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
+                return;
+
             if (IsLayerInMask(other.gameObject.layer, _layerMaskHit))
             {
                 if (other.gameObject.TryGetComponent(out Health health))
@@ -75,12 +77,10 @@ namespace BattleSystem
                     spellSummon.HandlingHit(gameObject, nodes, trueDamage);
                 }
             }
-            else if (!IsLayerInMask(other.gameObject.layer, _layerUI) && !IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
+            else if (!IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
             {
-                //spellSummon.HandlingHit(gameObject, nodes, 0);
+                spellSummon.HandlingHit(gameObject, nodes, 0);
             }
-            else if (IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
-                return;
         }
 
         public static bool IsLayerInMask(int layer, LayerMask layerMask)
