@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8398b57be5ca01e42a9efb461e5bf3a8, type: 3}
   m_Name: MinotaurConfig
   m_EditorClassIdentifier: 
-  _distanceAttack: 6
+  _distanceAttack: 7
   _damage: 5
-  _attackPrepareTime: 0.5
-  _attackTime: 0.5
+  _attackPrepareTime: 0.8
+  _attackTime: 0.3
   _attackFrequency: 0.5

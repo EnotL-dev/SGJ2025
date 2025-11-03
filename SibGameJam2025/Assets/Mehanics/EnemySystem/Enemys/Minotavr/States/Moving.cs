@@ -59,7 +59,7 @@ namespace EnemySystem.Minotaur
             //}
             if (_distance < _config.DistanceAttack || PlayerAboveMe(_body))
             {
-            //    _stateSwitcher.SwitchState<Attack>();
+                _stateSwitcher.SwitchState<Attack>();
             }
             _agent.SetDestination(_player.transform.position);
         }

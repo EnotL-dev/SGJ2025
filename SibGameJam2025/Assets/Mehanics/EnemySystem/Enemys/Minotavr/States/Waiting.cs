@@ -36,7 +36,7 @@ namespace EnemySystem.Minotaur
             _distance = Vector3.Distance(_body.position, _player.transform.position);
             if (_distance < _distanceDetect)
             {
-              //  _stateSwitcher.SwitchState<Moving>();
+                _stateSwitcher.SwitchState<Moving>();
             }
         }
     }
