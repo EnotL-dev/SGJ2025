@@ -1,4 +1,5 @@
 using PlayerSystem;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,13 +28,26 @@ namespace EnemySystem.Head
         public override void Start()
         {
             _animator.SetWalk(true);
-            _agent.isStopped = false;
+            try
+            {
+                _agent.isStopped = false;//!!!!!!!!!!!!!!! проверить что спан поинты касаются навигации!
+            }
+            catch (Exception ex)
+            {
+                Debug.Log($"Nav mesh error {ex.Message}");
+            }
         }
-
         public override void Stop()
         {
             _animator.SetWalk(false);
-            _agent.isStopped = true;
+            try
+            {
+                _agent.isStopped = true;
+            }
+            catch (Exception ex)
+            {
+                Debug.Log($"Nav mesh error {ex.Message}");
+            }
         }
 
         public override void Update()

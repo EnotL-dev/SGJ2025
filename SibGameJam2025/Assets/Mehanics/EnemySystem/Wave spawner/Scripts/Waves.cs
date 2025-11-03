@@ -43,7 +43,7 @@ namespace EnemySystem {
         {
             for (var i = 0; i < _waveEnemys.Count; i++)
             {
-                if (_waveEnemys[i].Prefabs.Count != _spawnPoints.Count)
+                if (_waveEnemys[i].Prefabs.Count > _spawnPoints.Count)
                 {
                     Debug.LogError("Error: count spawnPoints and enemy in a wave are not equal");
                     return false;
