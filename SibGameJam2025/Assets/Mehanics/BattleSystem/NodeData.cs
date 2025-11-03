@@ -18,23 +18,33 @@ namespace BattleSystem
         {
             int currentSceneIndex = SaveData.TempData.playerParams.lv; //SceneManager.GetActiveScene().buildIndex;
 
+            List<Node> playerNowNodes = new List<Node>();
+            playerNowNodes.Add(SaveData.TempData.nodeGraph.summon);
+            playerNowNodes.Add(SaveData.TempData.nodeGraph.shape);
+            playerNowNodes.Add(SaveData.TempData.nodeGraph.impact);
+            playerNowNodes.Add(SaveData.TempData.nodeGraph.feature);
+
             List<Node> allNodes = new List<Node>();
 
             foreach(Node node in summons)
             {
-                allNodes.Add(node);
+                if(playerNowNodes[0] != node)
+                    allNodes.Add(node);
             }
             foreach (Node node in shapes)
             {
-                allNodes.Add(node);
+                if (playerNowNodes[1] != node)
+                    allNodes.Add(node);
             }
             foreach (Node node in impacts)
             {
-                allNodes.Add(node);
+                if (playerNowNodes[2] != node)
+                    allNodes.Add(node);
             }
             foreach (Node node in features)
             {
-                allNodes.Add(node);
+                if (playerNowNodes[3] != node)
+                    allNodes.Add(node);
             }
 
             for (int i = allNodes.Count - 1; i >= 0; i--)

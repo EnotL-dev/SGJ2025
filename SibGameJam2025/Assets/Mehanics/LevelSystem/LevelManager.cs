@@ -13,6 +13,9 @@ namespace LevelSystem
         private WellScript fountainScript;
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
+        [Space(5)]
+        [SerializeField] private GameObject PORTAL_TRANSIT_ZONE;
+        [SerializeField] private TransitionScript transitionScript;
 
         public void InitializeLevel(int maxSouls) //Инициализируем на старте
         {
