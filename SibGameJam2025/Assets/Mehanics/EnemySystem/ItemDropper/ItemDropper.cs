@@ -7,31 +7,29 @@ namespace EnemySystem
     {
         [SerializeField] private ItemNode _item;
         [SerializeField, Range(0, 100)] private int _chance = 100;
-        [SerializeField] private float _force;
-        [SerializeField] private Health _health;
 
-        private void OnEnable()
-        {
-            _health.IsOver += Drop;
-        }
+        private float spawnForce = 5f;
+        private float radius = 0.3f;
+        private float upwardForce = 5f;
 
-        private void OnDisable()
+        public void Drop(Vector3 pos)
         {
-            _health.IsOver -= Drop;
-        }
+            int rnd = Random.Range(0, 99);
+            if (rnd > _chance)
+                return;
 
-        public void Drop()
-        {
-            int random = Random.Range(1, 101);
-            if (_chance >= random)
-            {
-                ItemNode instance = Instantiate(_item, transform.position, Quaternion.identity);
-                if (instance.TryGetComponent(out Rigidbody rigidbody))
-                {
-                    Vector3 randomDirection = new Vector3(Random.Range(-1, 1f), 1, Random.Range(-1, 1f));
-                    rigidbody.AddForce(randomDirection * _force, ForceMode.Impulse);
-                }
-            }
+            float angle = Random.Range(0,360) * Mathf.PI * 2f;
+
+            Vector3 spawnPos = pos + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+
+            ItemNode item = Instantiate(_item, pos, Quaternion.identity);
+
+            Rigidbody rb = item.GetComponent<Rigidbody>();
+            if (rb == null) return;
+
+            Vector3 dir = (spawnPos - pos).normalized + Vector3.up * 0.5f;
+
+            rb.AddForce(dir * spawnForce + Vector3.up * upwardForce, ForceMode.Impulse);
         }
     }
 }

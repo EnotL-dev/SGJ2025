@@ -394,6 +394,7 @@ GameObject:
   - component: {fileID: 5612286776925630074}
   - component: {fileID: 4783890570933919952}
   - component: {fileID: 5434543524347035648}
+  - component: {fileID: 268610298573457102}
   m_Layer: 8
   m_Name: Ghost
   m_TagString: Untagged
@@ -523,6 +524,20 @@ MonoBehaviour:
   _coinsCountMin: 1
   _coinsCountMax: 3
   _health: {fileID: 4783890570933919952}
+--- !u!114 &268610298573457102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8784127377645710204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dd4ae31fb981d4eb19ec935e4033c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 6878124202887625533, guid: 3ef31d394e390764f9b8204252cc8738, type: 3}
+  _chance: 25
 --- !u!1001 &5461428100586173230
 PrefabInstance:
   m_ObjectHideFlags: 0

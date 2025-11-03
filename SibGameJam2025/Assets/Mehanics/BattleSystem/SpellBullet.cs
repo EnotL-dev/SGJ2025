@@ -1,3 +1,4 @@
+using EnemySystem;
 using PlayerSystem;
 using SaveSystem;
 using System.Collections.Generic;
@@ -74,7 +75,7 @@ namespace BattleSystem
                     if (health._current.Value < damage) //Это значит что урон убьет противника
                     {
                         trueDamage = health._current.Value;
-                        PlayerRefs.Instance.levelManager.SoulAdd();
+                        PlayerRefs.Instance.levelManager.SoulAdd(other.gameObject.GetComponent<ItemDropper>());
                     }
 
                     health.Reduce(damage);

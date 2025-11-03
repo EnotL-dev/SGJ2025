@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 4693046514543535846}
   - component: {fileID: 1827766441377077644}
   - component: {fileID: 6997230913151716634}
+  - component: {fileID: 2359078283153742376}
   m_Layer: 8
   m_Name: Worm
   m_TagString: Untagged
@@ -296,6 +297,20 @@ MonoBehaviour:
   _coinsCountMin: 2
   _coinsCountMax: 3
   _health: {fileID: 4693046514543535846}
+--- !u!114 &2359078283153742376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2440906977372280741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dd4ae31fb981d4eb19ec935e4033c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 6878124202887625533, guid: 3ef31d394e390764f9b8204252cc8738, type: 3}
+  _chance: 10
 --- !u!1 &3687237576192792004
 GameObject:
   m_ObjectHideFlags: 0

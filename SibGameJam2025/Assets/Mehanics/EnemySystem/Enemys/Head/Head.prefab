@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6172988443530759912}
   - component: {fileID: 8065929881197506340}
   - component: {fileID: 2941311746574414614}
+  - component: {fileID: 6462035342683272686}
   m_Layer: 8
   m_Name: Head
   m_TagString: Untagged
@@ -147,6 +148,20 @@ MonoBehaviour:
   _coinsCountMin: 4
   _coinsCountMax: 7
   _health: {fileID: 8065929881197506340}
+--- !u!114 &6462035342683272686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9189861739281284557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1dd4ae31fb981d4eb19ec935e4033c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 6878124202887625533, guid: 3ef31d394e390764f9b8204252cc8738, type: 3}
+  _chance: 20
 --- !u!1001 &1731075132932268156
 PrefabInstance:
   m_ObjectHideFlags: 0

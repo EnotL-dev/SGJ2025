@@ -1,3 +1,4 @@
+using EnemySystem;
 using PlayerSystem;
 using SaveSystem;
 using System.Collections;
@@ -32,9 +33,10 @@ namespace LevelSystem
             fountainScript.textFountainSouls.text = $"{min}/{max}";
         }
 
-        public void SoulAdd()
+        public void SoulAdd(ItemDropper itemDropper)
         {
             SaveData.currentSouls++;
+            itemDropper.Drop(fountainScript.transform.position);
 
             if (SaveData.currentSouls == SaveData.maxSouls)
                 LevelComplete();

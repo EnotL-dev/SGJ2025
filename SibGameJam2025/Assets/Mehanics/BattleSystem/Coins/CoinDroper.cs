@@ -48,8 +48,11 @@ namespace BattleSystem
                 rb.AddForce(dir * spawnForce + Vector3.up * upwardForce, ForceMode.Impulse);
             }
 
+            int addGoldRush = 0;
+            if (SaveData.TempData.nodeGraph.feature is GoldRush)
+                addGoldRush = 1;
 
-            SaveData.TempData.AddMoney(count * 3);
+            SaveData.TempData.AddMoney(count * (3+addGoldRush));
             PlayerRefs.Instance.PlayerStastController.BalanceUpdate();
         }
     }
