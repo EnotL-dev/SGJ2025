@@ -34,7 +34,7 @@ namespace BattleSystem
 
 
             SaveData.TempData.AddMoney(count * 3);
-            playerStatsController.balanceUpdate();
+            playerStatsController.BalanceUpdate();
         }
     }
 }

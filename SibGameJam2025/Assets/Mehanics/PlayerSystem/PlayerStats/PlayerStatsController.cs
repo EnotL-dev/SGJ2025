@@ -14,6 +14,7 @@ namespace PlayerSystem
         [Space(5)]
         [SerializeField] private TextMeshProUGUI textBalance;
         [SerializeField] private TextMeshProUGUI textSoulsCount;
+        [SerializeField] private TextMeshProUGUI textLv;
 
         public void ChangeHp(int currentHp, int maxHp)
         {
@@ -29,9 +30,19 @@ namespace PlayerSystem
             textMpCount.text = $"{currentMp}/{maxMp}";
         }
 
-        public void balanceUpdate()
+        public void BalanceUpdate()
         {
             textBalance.text = $"{SaveData.TempData.GetMoney()}¤";
+        }
+
+        public void SoulsUpdate()
+        {
+            textSoulsCount.text = $"{SaveData.currentSouls}/{SaveData.maxSouls}";
+        }
+
+        public void LvUpdate()
+        {
+            textLv.text = $"Lv {SaveData.TempData.playerParams.lv}";
         }
     }
 }
