@@ -80,11 +80,13 @@ namespace SaveSystem
 
         public static void Load()
         {
+            Debug.Log("Загрузка сейва");
             TempData = MainData;
         }
 
         public static void Save()
         {
+            Debug.Log("Сохранение");
             MainData = TempData;
         }
 
