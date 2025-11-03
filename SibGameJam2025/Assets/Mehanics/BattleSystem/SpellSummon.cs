@@ -60,11 +60,10 @@ namespace BattleSystem
 
             if (triple)
             {
-                Quaternion rotation = Camera.main.transform.rotation;
-                rotation.y -= 30;
+                Quaternion rotation = Quaternion.Euler(Camera.main.transform.eulerAngles + new Vector3(0, -30f, 0));
                 spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, rotation).GetComponent<SpellBullet>();
                 spellBullet.Launch(this, nodes);
-                rotation.y += 60;
+                rotation = Quaternion.Euler(Camera.main.transform.eulerAngles + new Vector3(0, 30f, 0));
                 spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, rotation).GetComponent<SpellBullet>();
                 spellBullet.Launch(this, nodes);
             }
@@ -78,20 +77,22 @@ namespace BattleSystem
                 {
                     if(nodeImpact.prefabToSpawn)
                     {
-                        if(nodeImpact is Shrapnel)
+                        Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
+                    }
+                    else
+                    {
+                        if (nodeImpact is Shrapnel)
                         {
                             for (int i = 1; i < 5; i++)
                             {
-                                float angle = i * 90f;
-                                Quaternion rotation = Camera.main.transform.rotation;
-                                rotation.y += angle;
+                                Quaternion rotation = Quaternion.Euler(Camera.main.transform.eulerAngles + new Vector3(0, i * 90f, 0));
 
                                 List<Node> nodesWithoutShrapnel = new List<Node>();
 
                                 SpellBullet newPrefabBullet = null;
                                 foreach (Node addnode in nodes)
                                 {
-                                    if(addnode is not Impact)
+                                    if (addnode is not Impact)
                                     {
                                         if (addnode is Shape addShapeNode)
                                             newPrefabBullet = addShapeNode.prefabSpellBullet;
@@ -109,13 +110,9 @@ namespace BattleSystem
                                     }
                                 }
 
-                                SpellBullet spellBullet = Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, rotation).GetComponent<SpellBullet>();
+                                SpellBullet spellBullet = Instantiate(newPrefabBullet, bulletObj.transform.position, rotation).GetComponent<SpellBullet>();
                                 spellBullet.Launch(this, nodesWithoutShrapnel);
                             }
-                        }
-                        else
-                        {
-                            Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
                         }
                     }
                 }
