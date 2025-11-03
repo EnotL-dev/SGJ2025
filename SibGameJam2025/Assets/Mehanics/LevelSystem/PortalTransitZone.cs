@@ -5,11 +5,14 @@ namespace LevelSystem
 {
     public class PortalTransitZone : MonoBehaviour
     {
+        [SerializeField] private AudioClip portalSound;
+        [SerializeField] private AudioSource source;
         [SerializeField] private LayerMask _layer;
         private void OnTriggerEnter(Collider other)
         {
             if(IsLayerInMask(other.gameObject.layer, _layer))
             {
+                source.PlayOneShot(portalSound);
                 PlayerRefs.Instance.levelManager.LoadNextLevel();
             }
         }
