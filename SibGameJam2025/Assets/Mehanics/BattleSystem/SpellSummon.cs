@@ -1,4 +1,5 @@
 using SaveSystem;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace BattleSystem
 {
     public class SpellSummon : MonoBehaviour
     {
+        public Action OnHit { get; set; }
         [SerializeField] private Transform spawnSpellPoint;
         [SerializeField] private Animator _stickAnimator;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
@@ -125,7 +127,8 @@ namespace BattleSystem
                         gameObject.GetComponent<Mana>().Add(trueDamage / 3);
                 }
             }
-
+            if (trueDamage > 0)
+                OnHit?.Invoke();
             Destroy(bulletObj);
         }
     }
