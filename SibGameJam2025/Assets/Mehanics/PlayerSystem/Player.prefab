@@ -2160,7 +2160,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1618704947197867617}
   - component: {fileID: 28732307592761759}
-  - component: {fileID: 8893356061002946467}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -2203,23 +2202,7 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 64
---- !u!114 &8893356061002946467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7466117140975692182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5df60c986a5068a4cb97550680673890, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerStatsController: {fileID: 6081581465925539778}
-  coinPrefab: {fileID: 828133906144549880, guid: 50fa1cb69d8dd1547addefdd6fce83d6, type: 3}
-  spawnForce: 5
-  spreadAngle: 45
-  upwardForce: 3
+  _playerStastController: {fileID: 6081581465925539778}
 --- !u!1 &7770317022697003083
 GameObject:
   m_ObjectHideFlags: 0
