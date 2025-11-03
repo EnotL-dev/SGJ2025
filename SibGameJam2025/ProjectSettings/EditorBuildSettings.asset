@@ -5,18 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/BattleSystemTest.unity
-    guid: 977f1536650464a4bbf1df2d489b8513
-  - enabled: 0
-    path: Assets/Scenes/ControlTest.unity
-    guid: 99e62c7f837e91f40b799d4d77afc78a
   - enabled: 1
     path: Assets/Levels/Loader/Loader.unity
     guid: bd1d7ad63641b15458cbb9e730f653b1
   - enabled: 1
     path: Assets/Levels/Scene_01/Blockout_01.unity
     guid: c2603c636efe6794a91aa2f30a1930d3
+  - enabled: 1
+    path: Assets/Levels/Scene_02/Blockout_02.unity
+    guid: f6e43a752a04fca4bb3881624d27a368
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
