@@ -22,6 +22,7 @@ namespace EnemySystem.Ghost
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, 30000, _rotor));
             _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _rotor, _attackSound));
             _states.Add(new Death(this, _animator, _timeToDestroy, transform));
+            _states.Add(new Recoil(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor));
             SwitchState<Waiting>();
         }
 
@@ -33,11 +34,13 @@ namespace EnemySystem.Ghost
         private void OnEnable()
         {
             _health.IsOver += CallDeath;
+            _health._current.Changed += CallRecoil;
         }
 
         private void OnDisable()
         {
             _health.IsOver -= CallDeath;
+            _health._current.Changed -= CallRecoil;
         }
 
         private void CallDeath()
@@ -48,6 +51,11 @@ namespace EnemySystem.Ghost
             _pointLight.enabled = false;
             _deathSound.Play();
             Died?.Invoke();
+        }
+
+        private void CallRecoil(int old, int newValue)
+        {
+            SwitchState<Recoil>();
         }
     }
 }
