@@ -6,8 +6,9 @@ namespace BattleSystem
     public class Single : Summon
     {
         public override string nameNode { get => "Одиночный вызов"; }
+        public override string description { get => $"Вызывает <b>одну</b> копию заклинание за раз"; }
         public override int manaCost { get => 1; }
-
-        public override int weight { get => 4; }
+        public override int weight { get => 2; }
+        public override int moneyCost { get => 35; }
     }
 }

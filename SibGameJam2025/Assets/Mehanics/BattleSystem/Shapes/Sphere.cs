@@ -8,8 +8,10 @@ namespace BattleSystem
         [SerializeField] private SpellBullet newPrefabSpellBullet;
         public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
         public override string nameNode { get => "Шар"; }
-
-        public override int weight { get => 4; }
+        public override string description { get => $"Задает форму заклинанию в виде <b>шара</b>. Назначает урон <color=red>{damage} + Lv</color>"; }
+        public override int manaCost { get => 1; }
+        public override int weight { get => 2; }
+        public override int moneyCost { get => 45; }
 
         public override int distance { get => 25; }
     }
