@@ -45,7 +45,7 @@ namespace SaveSystem
             }
 
             public NodeGraph nodeGraph = new NodeGraph();
-            private int money = 100;
+            private int money = 1000;
             public PlayerParams playerParams = new PlayerParams();
 
             public int GetMoney()
