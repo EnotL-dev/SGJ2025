@@ -35,7 +35,6 @@ namespace EnemySystem.Ghost
 
         private IEnumerator DestroyTimer()
         {
-            Debug.Log(_timeToDestroy);
             yield return new WaitForSeconds(_timeToDestroy);
             try
             {

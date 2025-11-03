@@ -199,6 +199,7 @@ MonoBehaviour:
   _destroyTimer: 2
   _timeBeforeDestroyAnimation: 5
   _destroyAnimation: {fileID: 4665817345637404265}
+  _distanceDetect: 10
 --- !u!114 &2535034488515450428
 MonoBehaviour:
   m_ObjectHideFlags: 0
