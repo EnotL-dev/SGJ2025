@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace LevelSystem
 {
@@ -33,6 +34,12 @@ namespace LevelSystem
             }
 
             canvasGroupTransition.alpha = 1f;
+            LoadLevel();
+        }
+
+        private void LoadLevel()
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 
         private IEnumerator FadeOutCoroutine(float duration)

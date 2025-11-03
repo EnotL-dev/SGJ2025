@@ -14,7 +14,7 @@ namespace LevelSystem
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
         [Space(5)]
-        [SerializeField] private GameObject PORTAL_TRANSIT_ZONE;
+        [SerializeField] private PortalTransitZone PORTAL_TRANSIT_ZONE;
         [SerializeField] private TransitionScript transitionScript;
 
         public void InitializeLevel(int maxSouls) //Инициализируем на старте
@@ -27,6 +27,11 @@ namespace LevelSystem
             SaveData.currentSouls = 0;
             SaveData.maxSouls = maxSouls;
             PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
+        }
+
+        public void LoadNextLevel()
+        {
+            transitionScript.StartTransit();
         }
 
         private void UpdateUIFountain(int min, int max)
@@ -55,6 +60,10 @@ namespace LevelSystem
             PlayerRefs.Instance.PlayerStastController.LvUpdate();
 
             textHint.text = "Этаж зачищен\nУровень прозрения повышен";
+
+            if(PORTAL_TRANSIT_ZONE)
+                PORTAL_TRANSIT_ZONE.gameObject.SetActive(true);
+
             StartCoroutine(FadeInCoroutine(1));
         }
 
