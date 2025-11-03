@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  _maxHealthValue: 20
+  _maxHealthValue: 25
 --- !u!114 &2941311746574414614
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 828133906144549880, guid: 50fa1cb69d8dd1547addefdd6fce83d6, type: 3}
   _offset: 1
-  _coinsCountMin: 1
-  _coinsCountMax: 3
+  _coinsCountMin: 4
+  _coinsCountMax: 7
   _health: {fileID: 8065929881197506340}
 --- !u!1001 &1731075132932268156
 PrefabInstance:

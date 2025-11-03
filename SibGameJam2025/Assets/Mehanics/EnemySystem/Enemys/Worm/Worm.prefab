@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  _maxHealthValue: 20
+  _maxHealthValue: 30
 --- !u!65 &1827766441377077644
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coinPrefab: {fileID: 828133906144549880, guid: 50fa1cb69d8dd1547addefdd6fce83d6, type: 3}
   _offset: 1
-  _coinsCountMin: 1
+  _coinsCountMin: 2
   _coinsCountMax: 3
   _health: {fileID: 4693046514543535846}
 --- !u!1 &3687237576192792004
