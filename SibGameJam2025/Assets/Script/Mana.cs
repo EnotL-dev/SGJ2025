@@ -75,6 +75,6 @@ public class Mana : MonoBehaviour
             yield return new WaitForSeconds(1f);
         }
 
-        yield return null;
+        //yield return null;
     }
 }

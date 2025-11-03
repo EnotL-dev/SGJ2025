@@ -57,9 +57,14 @@ namespace BattleSystem
             }
         }
 
+        private bool hasHit = false;
         private void OverDistanceAction()
         {
-            spellSummon.HandlingHit(gameObject, nodes, 0);
+            if (!hasHit)
+            { 
+                hasHit = true;
+                spellSummon.HandlingHit(gameObject, nodes, 0);
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -69,7 +74,7 @@ namespace BattleSystem
 
             if (IsLayerInMask(other.gameObject.layer, _layerMaskHit))
             {
-                if (other.gameObject.TryGetComponent(out Health health))
+                if (other.gameObject.TryGetComponent(out Health health) && gameObject.layer != LayerMask.NameToLayer("Player"))
                 {
                     int trueDamage = damage; //урон
                     if (health._current.Value < damage) //Это значит что урон убьет противника
@@ -79,12 +84,21 @@ namespace BattleSystem
                     }
 
                     health.Reduce(damage);
-                    spellSummon.HandlingHit(gameObject, nodes, trueDamage);
+
+                    if (!hasHit)
+                    {
+                        hasHit = true;
+                        spellSummon.HandlingHit(gameObject, nodes, trueDamage);
+                    }
                 }
             }
             else if (!IsLayerInMask(other.gameObject.layer, _layerMaskIgnore))
             {
-                spellSummon.HandlingHit(gameObject, nodes, 0);
+                if (!hasHit)
+                {
+                    hasHit = true;
+                    spellSummon.HandlingHit(gameObject, nodes, 0);
+                }
             }
         }
 
