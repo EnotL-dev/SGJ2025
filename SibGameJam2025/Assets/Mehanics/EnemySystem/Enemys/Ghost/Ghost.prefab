@@ -436,7 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _config: {fileID: 11400000, guid: 8fa2567cf1d5e134da421c5f21464a04, type: 2}
   _animator: {fileID: 3609307468401640433}
-  _distanceDetect: 10
+  _distanceDetect: 20
   _collision: {fileID: 2444263530901112094}
   _rotor: {fileID: 5612286776925630074}
   _health: {fileID: 4783890570933919952}

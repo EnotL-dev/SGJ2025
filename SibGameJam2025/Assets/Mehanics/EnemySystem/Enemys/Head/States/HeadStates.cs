@@ -35,11 +35,13 @@ namespace EnemySystem.Head
         private void OnEnable()
         {
             _health.IsOver += CallDeath;
+            _health._current.Changed += CallAgr;
         }
 
         private void OnDisable()
         {
             _health.IsOver -= CallDeath;
+            _health._current.Changed -= CallAgr;
         }
 
         private void CallDeath()
@@ -49,6 +51,12 @@ namespace EnemySystem.Head
             _agent.enabled = false;
             _deathSound.Play();
             Died?.Invoke();
+        }
+
+        private void CallAgr(int old, int newValue)
+        {
+            if (CurrentState is Waiting)
+                SwitchState<Moving>();
         }
     }
 }
