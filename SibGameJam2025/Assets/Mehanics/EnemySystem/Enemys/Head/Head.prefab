@@ -79,6 +79,7 @@ MonoBehaviour:
   _distanceDetect: 10
   _health: {fileID: 8065929881197506340}
   _collision: {fileID: 6172988443530759912}
+  _destroyTimer: 10
 --- !u!114 &3766047930847763564
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2753,9 +2753,17 @@ PrefabInstance:
       value: -90
       objectReference: {fileID: 0}
     - target: {fileID: -7390416049455898114, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -7390416049455898114, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
+    - target: {fileID: -5023665091138247962, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -5023665091138247962, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -2773,12 +2781,20 @@ PrefabInstance:
       value: 48.703
       objectReference: {fileID: 0}
     - target: {fileID: -1079999205645749209, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1079999205645749209, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
     - target: {fileID: 919132149155446097, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: m_Name
       value: Stick
+      objectReference: {fileID: 0}
+    - target: {fileID: 3672208958247150467, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3672208958247150467, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -2796,10 +2812,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 48.703
       objectReference: {fileID: 0}
+    - target: {fileID: 5130281801138119698, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6495206983804496990, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6495206983804496990, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: da1e697a33a5fcf4fb5fb31b27a77458, type: 2}
+    - target: {fileID: 6737310410259473597, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6737310410259473597, guid: 794bd5f666ed8a245b354b07c90e7563, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
