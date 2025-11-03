@@ -14,8 +14,9 @@ namespace EnemySystem.Head
         private Health _playerHealth;
         private Coroutine _attackCoroutine;
         private NavMeshAgent _navMeshAgent;
+        private AudioSource _attackAudio;
 
-        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, HeadConfig config, AnimatorController animator, Health playerHealth, NavMeshAgent navMeshAgent) : base(stateSwitcher)
+        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, HeadConfig config, AnimatorController animator, Health playerHealth, NavMeshAgent navMeshAgent, AudioSource attackAudio) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
@@ -23,6 +24,7 @@ namespace EnemySystem.Head
             _animator = animator;
             _playerHealth = playerHealth;
             _navMeshAgent = navMeshAgent;
+            _attackAudio = attackAudio;
         }
 
         public override void Start()
@@ -53,6 +55,7 @@ namespace EnemySystem.Head
             while (true)
             {
                 _animator.SetAttack(true);
+                _attackAudio.Play();
                 yield return new WaitForSeconds(_config.AttackPrepareTime);
                 _playerHealth.Reduce(_config.Damage);
                 yield return new WaitForSeconds(_config.AttackTime);

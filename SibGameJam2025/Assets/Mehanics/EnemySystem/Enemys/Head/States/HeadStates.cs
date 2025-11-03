@@ -15,12 +15,14 @@ namespace EnemySystem.Head
         [SerializeField] private float _destroyTimer;
         [SerializeField] private float _timeBeforeDestroyAnimation;
         [SerializeField] private DestroyAnimation _destroyAnimation;
+        [SerializeField] private AudioSource _attackSound;
+        [SerializeField] private AudioSource _deathSound;
 
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, (MaxAgro ? 30000 : _distanceDetect)));
             _states.Add(new Death(this, _animator, _destroyTimer, _timeBeforeDestroyAnimation, transform, _destroyAnimation));
-            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _agent));
+            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _agent, _attackSound));
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _agent, 30000));
             SwitchState<Waiting>();
         }
@@ -45,6 +47,7 @@ namespace EnemySystem.Head
             SwitchState<Death>();
             _collision.enabled = false;
             _agent.enabled = false;
+            _deathSound.Play();
             Died?.Invoke();
         }
     }

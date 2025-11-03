@@ -1,4 +1,3 @@
-using EnemySystem.Head;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,8 +14,17 @@ namespace EnemySystem.Minotaur
         private Health _playerHealth;
         private Coroutine _attackCoroutine;
         private NavMeshAgent _navMeshAgent;
+        private AudioSource _attackSound;
 
-        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, MinotaurConfig config, AnimatorController animator, Health playerHealth, NavMeshAgent navMeshAgent) : base(stateSwitcher)
+        public Attack(IStateSwitcher stateSwitcher,
+            Transform body,
+            CharacterController player,
+            MinotaurConfig config,
+            AnimatorController animator,
+            Health playerHealth,
+            NavMeshAgent navMeshAgent,
+            AudioSource attackSound
+            ) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
@@ -24,6 +32,7 @@ namespace EnemySystem.Minotaur
             _animator = animator;
             _playerHealth = playerHealth;
             _navMeshAgent = navMeshAgent;
+            _attackSound = attackSound;
         }
 
         public override void Start()
@@ -54,6 +63,7 @@ namespace EnemySystem.Minotaur
             while (true)
             {
                 _animator.SetAttack(true);
+                _attackSound.Play();
                 yield return new WaitForSeconds(_config.AttackPrepareTime);
                 _playerHealth.Reduce(_config.Damage);
                 yield return new WaitForSeconds(_config.AttackTime);
