@@ -13,7 +13,6 @@ namespace LevelSystem
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
 
-        PlayerRefs playerRefs = new PlayerRefs();
         public void InitializeLevel(int maxSouls) //Инициализируем на старте
         {
             fountainScript = FindFirstObjectByType<WellScript>();
@@ -23,12 +22,12 @@ namespace LevelSystem
 
             SaveData.currentSouls = 0;
             SaveData.maxSouls = maxSouls;
-            playerRefs.PlayerStastController.SoulsUpdate();
+            PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
         }
 
         private void UpdateUIFountain(int min, int max)
         {
-            fountainScript.sliderFountainSouls.value = 0;
+            fountainScript.sliderFountainSouls.value = min;
             fountainScript.sliderFountainSouls.maxValue = max;
             fountainScript.textFountainSouls.text = $"{min}/{max}";
         }
@@ -37,17 +36,18 @@ namespace LevelSystem
         {
             SaveData.currentSouls++;
 
-            if(SaveData.currentSouls == SaveData.maxSouls)
+            if (SaveData.currentSouls == SaveData.maxSouls)
                 LevelComplete();
 
             UpdateUIFountain(SaveData.currentSouls, SaveData.maxSouls);
-            playerRefs.PlayerStastController.SoulsUpdate();
+            PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
         }
 
         public void LevelComplete()
         {
             Debug.Log("Level complete");
             SaveData.TempData.playerParams.LvlUp();
+            PlayerRefs.Instance.PlayerStastController.LvUpdate();
 
             textHint.text = "Этаж зачищен\nУровень прозрения повышен";
             StartCoroutine(FadeInCoroutine(1));
