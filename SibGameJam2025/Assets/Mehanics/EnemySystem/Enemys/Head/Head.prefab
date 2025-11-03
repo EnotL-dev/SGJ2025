@@ -79,7 +79,9 @@ MonoBehaviour:
   _distanceDetect: 10
   _health: {fileID: 8065929881197506340}
   _collision: {fileID: 6172988443530759912}
-  _destroyTimer: 10
+  _destroyTimer: 2
+  _timeBeforeDestroyAnimation: 4
+  _destroyAnimation: {fileID: 3987167427539498257}
 --- !u!114 &3766047930847763564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +295,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: be35c1fdac5e9824b9dc4a02f67d787e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2745793058294587780}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: be35c1fdac5e9824b9dc4a02f67d787e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3987167427539498257}
   m_SourcePrefab: {fileID: 100100000, guid: be35c1fdac5e9824b9dc4a02f67d787e, type: 3}
 --- !u!4 &8470557627988828336 stripped
 Transform:
@@ -326,6 +331,44 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3987167427539498257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9135173492852898314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0aa0867b016d6743ba220936543f7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _time: 1
+  _height: 5
+  movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8931440933375150214
 PrefabInstance:
   m_ObjectHideFlags: 0

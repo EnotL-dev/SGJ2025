@@ -18,11 +18,13 @@ namespace EnemySystem.Worm
         [SerializeField] private AudioSource _shootSound;
         [SerializeField] private AudioSource _DeathSound;
         [SerializeField] private float _destroyTimer;
+        [SerializeField] private float _timeBeforeDestroyAnimation;
+        [SerializeField] private DestroyAnimation _destroyAnimation;
 
         protected override void InitializeStates()
         {
            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator));
-            _states.Add(new Death(this, _animator, _destroyTimer, transform));
+            _states.Add(new Death(this, _animator, _destroyTimer, _timeBeforeDestroyAnimation, transform, _destroyAnimation));
             _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask, _shootSound));
             SwitchState<Waiting>();
         }

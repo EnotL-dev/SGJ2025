@@ -8,13 +8,17 @@ namespace EnemySystem.Worm
     {
         private AnimatorController _animator;
         private float _timeToDestroy;
+        private float _timeBeforeAnimation;
         private Transform _body;
+        private DestroyAnimation _destroyAnimation;
 
-        public Death(IStateSwitcher stateSwitcher, AnimatorController animator, float timeToDestroy, Transform body) : base(stateSwitcher)
+        public Death(IStateSwitcher stateSwitcher, AnimatorController animator, float timeToDestroy, float timeBeforeAnimation, Transform body, DestroyAnimation destroyAnimation) : base(stateSwitcher)
         {
             _animator = animator;
             _timeToDestroy = timeToDestroy;
+            _timeBeforeAnimation = timeBeforeAnimation;
             _body = body;
+            _destroyAnimation = destroyAnimation;
         }
 
         public override void Start()
@@ -36,6 +40,8 @@ namespace EnemySystem.Worm
         private IEnumerator DestroyTimer()
         {
             Debug.Log(_timeToDestroy);
+            yield return new WaitForSeconds(_timeBeforeAnimation);
+            _destroyAnimation.StartPlayAnimation();
             yield return new WaitForSeconds(_timeToDestroy);
             try
             {

@@ -5,19 +5,36 @@ public class DestroyAnimation : MonoBehaviour
 {
     [SerializeField] private float _time = 1f;
     [SerializeField] private float _height = 5f;
+    [SerializeField] private AnimationCurve movementCurve;
+
+    public void StartPlayAnimation()
+    {
+        StartCoroutine(PlayAnimation());
+    }
 
     private IEnumerator PlayAnimation()
-   {
-        float time = _time;
+    {
+        float elapsedTime = 0f;
+        Vector3 targetPosition = new Vector3(
+            transform.position.x,
+            transform.position.y - _height,
+            transform.position.z
+        );
         Vector3 startPostion = transform.position;
-        float startY = startPostion.y;
-        float targetY = startPostion.y - _height;
-        while (time > 0)
+
+        while (elapsedTime < _time)
         {
-            time -= Time.deltaTime;
-            //transform.position = transform.position.y / targetY
-            transform.position = new Vector3(transform.position.x, transform.position.y - (2f * Time.deltaTime), transform.position.z);
-            yield return new WaitForEndOfFrame();
+            float progress = elapsedTime / _time;
+            float curvedProgress = movementCurve.Evaluate(progress);
+
+            transform.position = Vector3.Lerp(
+                startPostion,
+                targetPosition,
+                curvedProgress
+            );
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
+        transform.position = targetPosition;
     }
 }
