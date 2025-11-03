@@ -32,8 +32,6 @@ namespace BattleSystem
                 }
             }
 
-            gameObject.transform.localPosition = Vector3.zero;
-            gameObject.transform.localRotation = Quaternion.Euler(Vector3.zero);
             gameObject.transform.parent = null;
             _startPosition = transform.position;
         }
@@ -59,7 +57,7 @@ namespace BattleSystem
 
         private void OverDistanceAction()
         {
-            Destroy(gameObject);
+            spellSummon.HandlingHit(gameObject, nodes, 0);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -75,7 +73,7 @@ namespace BattleSystem
                         trueDamage = health._current.Value;
 
                     health.Reduce(damage);
-                    spellSummon.HandlingHit(health.gameObject, gameObject, nodes, trueDamage);
+                    spellSummon.HandlingHit(gameObject, nodes, trueDamage);
                 }
             }
         }
