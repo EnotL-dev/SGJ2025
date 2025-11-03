@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: {fileID: 0}
-  _targetRenderer: {fileID: 0}
+  _targetRenderers: []
   _parameterName: _Alpha
   _parameterValue: 0
-  _redDuration: 0.1
+  _redDuration: 0.2
