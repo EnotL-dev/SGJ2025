@@ -18,7 +18,7 @@ namespace BattleSystem
         private void Start()
         {
             nodeData = Resources.Load<NodeData>("Nodes/NodeData");
-            node = nodeData.GetRandomNodeByWeightScene(100); //В параметры задавать шансы
+            node = nodeData.GetRandomNodeByWeightScene(); //В параметры задавать шансы
 
             if (node == null)
                 Destroy(gameObject);
