@@ -6,6 +6,7 @@ using UnityEngine;
 namespace EnemySystem {
     public class Waves : MonoBehaviour
     {
+        public Action<int> EndOfWaveNumber { get; set; }
         public Action EndOfWaves {  get; set; }
         [SerializeField] private List<StateBehaviour> _startEnemies = new();
         [Space]
@@ -59,6 +60,7 @@ namespace EnemySystem {
                 Debug.Log($"Start {i + 1} wave");
                 SpawnMobs(_waveEnemys[i].Prefabs);
                 yield return new WaitUntil(() => _countToEnd <= 0);
+                EndOfWaveNumber?.Invoke(i + 1);
                 Debug.Log($"End {i + 1} wave");
             }
             EndOfWaves?.Invoke();

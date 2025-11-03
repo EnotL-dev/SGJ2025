@@ -26,7 +26,7 @@ namespace EnemySystem.Worm
         {
            _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect));
             _states.Add(new Death(this, _animator, _destroyTimer, _timeBeforeDestroyAnimation, transform, _destroyAnimation));
-            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask, _shootSound));
+            _states.Add(new Attack(this, _bulletPool, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _launchPoint, _layerMask, _shootSound, _distanceDetect));
             SwitchState<Waiting>();
         }
 
