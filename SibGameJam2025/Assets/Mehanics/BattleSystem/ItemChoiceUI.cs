@@ -59,6 +59,7 @@ namespace BattleSystem
             newCard.cost = newNode.manaCost;
             TextNewCardCost.text = $"{newNode.moneyCost} ¤";
 
+            textMainDamage.text = (nodeGraph.shape.damage + SaveData.TempData.playerParams.bonusDamage).ToString();
             textMainCost.text = nodeGraph.GetManaCost().ToString();
             textBalance.text = $"{SaveData.TempData.GetMoney()} ¤";
 

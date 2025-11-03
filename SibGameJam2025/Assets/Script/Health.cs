@@ -68,9 +68,12 @@ public class Health : MonoBehaviour
         else
             _max.SetValueWithoutAction(_maxHealthValue);
 
-        _current.SetValueWithoutAction(_maxHealthValue);
+        if (playerStats)
+            _current.SetValueWithoutAction(SaveData.TempData.playerParams.maxHp);
+        else
+            _current.SetValueWithoutAction(_maxHealthValue);
 
-        if(playerStats)
+        if (playerStats)
             playerStats.ChangeHp(_current.Value, _max.Value);
     }
 

@@ -29,7 +29,7 @@ namespace SaveSystem
                     get => _maxMp;
                 }
 
-                private int _bonusDamage = 1;
+                private int _bonusDamage = 2;
                 public int bonusDamage
                 {
                     get => _bonusDamage;
@@ -39,8 +39,8 @@ namespace SaveSystem
                 {
                     _lv++;
                     _maxHp += 8;
-                    _maxMp += 5;
-                    _bonusDamage += 2;
+                    _maxMp += 9;
+                    _bonusDamage += 3;
                 }
             }
 

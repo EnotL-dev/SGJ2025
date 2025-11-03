@@ -128,6 +128,9 @@ MonoBehaviour:
   _layerMaskIgnore:
     serializedVersion: 2
     m_Bits: 64
+  _layerUI:
+    serializedVersion: 2
+    m_Bits: 32
 --- !u!54 &3043285751660223221
 Rigidbody:
   m_ObjectHideFlags: 0
