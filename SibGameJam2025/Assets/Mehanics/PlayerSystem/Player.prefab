@@ -1407,7 +1407,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 6081581465925539778}
-  _maxManaValue: 30
+  _maxManaValue: 50
 --- !u!1 &5824809035752513076
 GameObject:
   m_ObjectHideFlags: 0
