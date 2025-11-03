@@ -1,3 +1,4 @@
+using PlayerSystem;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,8 +27,20 @@ namespace EnemySystem {
             ConnectToStartMobs();
             if (CheckCount())
             {
+                PlayerRefs.Instance.levelManager.InitializeLevel(GetTotalEnemyCount());
                 StartCoroutine(DoWaves());
             }
+        }
+
+        private int GetTotalEnemyCount()
+        {
+            int count = 0;
+            for (var i = 0; i < _waveEnemys.Count; i++)
+            {
+                count += _waveEnemys[i].Prefabs.Count;
+            }
+            count += _startEnemies.Count;
+            return count;
         }
 
         private void ConnectToStartMobs()
@@ -57,6 +70,7 @@ namespace EnemySystem {
             yield return new WaitUntil(() => _countToEnd <= 0);
             for (var i = 0; i < _waveEnemys.Count; i++)
             {
+                PlayerRefs.Instance.levelManager.NewWaweMessage();
                 Debug.Log($"Start {i + 1} wave");
                 SpawnMobs(_waveEnemys[i].Prefabs);
                 yield return new WaitUntil(() => _countToEnd <= 0);
