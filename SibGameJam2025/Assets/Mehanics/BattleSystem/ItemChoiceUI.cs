@@ -91,7 +91,8 @@ namespace BattleSystem
 
         public void MakeCraft() //Сначало проведет действия в UI потом перекинет на "мгновенный" крафт
         {
-            if(newNode.moneyCost <= SaveData.TempData.GetMoney())
+            List<Node> checkList = SaveData.TempData.nodeGraph.GetNodesInList();
+            if(newNode.moneyCost <= SaveData.TempData.GetMoney() && !checkList.Contains(newNode))
             {
                 newCard.cardObj.SetActive(false);
                 listCards[indexCard].textName.text = newNode.nameNode;
@@ -103,6 +104,7 @@ namespace BattleSystem
 
                 textMainCost.text = $"{nodeGraph.GetManaCostWithChange(newNode)}";
 
+                buying = false;
                 StartCoroutine(BalanceEncount());
             }
             else
@@ -113,11 +115,14 @@ namespace BattleSystem
 
         public void Dissmis()
         {
-            spellCraft.Dissmis();
+            if(!buying)
+                spellCraft.Dissmis();
         }
 
+        bool buying = false;
         private IEnumerator BalanceEncount()
         {
+            buying = true;
             int count = newNode.moneyCost;
             int balanceInText = SaveData.TempData.GetMoney();
             float timeNext = 3/count;
