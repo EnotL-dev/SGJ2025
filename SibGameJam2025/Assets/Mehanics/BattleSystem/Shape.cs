@@ -29,7 +29,7 @@ namespace BattleSystem
             set => _speed = value;
         }
 
-        private int _distance = 20;
+        private int _distance = 15;
 
         public virtual int distance
         {
