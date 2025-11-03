@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  _maxHealthValue: 1
+  _maxHealthValue: 20
 --- !u!1001 &1731075132932268156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -134,6 +134,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3132541510833956175}
     m_Modifications:
+    - target: {fileID: 1254226829133591141, guid: eb932b9c4f01b5c428daedf6f33b3849, type: 3}
+      propertyPath: _health
+      value: 
+      objectReference: {fileID: 8065929881197506340}
     - target: {fileID: 4098735974887750636, guid: eb932b9c4f01b5c428daedf6f33b3849, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
