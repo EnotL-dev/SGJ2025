@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MinotaurConfig
   m_EditorClassIdentifier: 
   _distanceAttack: 7
-  _damage: 5
+  _damage: 15
   _attackPrepareTime: 0.8
   _attackTime: 0.3
   _attackFrequency: 0.5

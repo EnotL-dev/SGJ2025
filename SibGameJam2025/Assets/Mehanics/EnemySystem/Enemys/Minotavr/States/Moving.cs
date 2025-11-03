@@ -14,8 +14,17 @@ namespace EnemySystem.Minotaur
         private AnimatorController _animator;
         private NavMeshAgent _agent;
         private float _distanceDetect;
+        private AudioSource _walkingSound;
 
-        public Moving(IStateSwitcher stateSwitcher, Transform body, CharacterController player, MinotaurConfig config, AnimatorController animator, NavMeshAgent agent, float distanceDetect) : base(stateSwitcher)
+        public Moving(IStateSwitcher stateSwitcher,
+            Transform body,
+            CharacterController player,
+            MinotaurConfig config,
+            AnimatorController animator,
+            NavMeshAgent agent,
+            float distanceDetect,
+            AudioSource walkingSound
+            ) : base(stateSwitcher)
         {
             _body = body;
             _player = player;
@@ -23,6 +32,7 @@ namespace EnemySystem.Minotaur
             _animator = animator;
             _agent = agent;
             _distanceDetect = distanceDetect;
+            _walkingSound = walkingSound;
         }
 
         public override void Start()
@@ -36,6 +46,7 @@ namespace EnemySystem.Minotaur
             {
                 Debug.Log($"Nav mesh error {ex.Message}");
             }
+            _walkingSound.Play();
         }
         public override void Stop()
         {
@@ -48,6 +59,7 @@ namespace EnemySystem.Minotaur
             {
                 Debug.Log($"Nav mesh error {ex.Message}");
             }
+            _walkingSound.Stop();
         }
 
         public override void Update()
