@@ -2,6 +2,7 @@ using PlayerSystem;
 using ReactiveVariables;
 using SaveSystem;
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Mana : MonoBehaviour
@@ -55,8 +56,25 @@ public class Mana : MonoBehaviour
     private void Awake()
     {
         _max.SetValueWithoutAction(SaveData.TempData.playerParams.maxMp);
-        _current.SetValueWithoutAction(_maxManaValue);
+        _current.SetValueWithoutAction(SaveData.TempData.playerParams.maxMp);
 
         playerStats.ChangeMp(_current.Value, _max.Value);
+    }
+
+    private void Start()
+    {
+        StartCoroutine(ManaUpdate());
+    }
+
+    IEnumerator ManaUpdate()
+    {
+        while(true)
+        {
+            int addValue = SaveData.TempData.playerParams.lv;
+            Add(addValue);
+            yield return new WaitForSeconds(1f);
+        }
+
+        yield return null;
     }
 }

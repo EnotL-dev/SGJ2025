@@ -121,7 +121,7 @@ namespace BattleSystem
                 {
                     if (nodeFeature is Vampirism)
                         gameObject.GetComponent<Health>().Add(trueDamage / 2);
-                    else if(node is PaybackMana)
+                    else if(nodeFeature is PaybackMana)
                         gameObject.GetComponent<Mana>().Add(trueDamage / 3);
                 }
             }
