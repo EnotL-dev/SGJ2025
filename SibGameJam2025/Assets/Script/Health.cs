@@ -78,5 +78,7 @@ public class Health : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
             KillImmediately();
+        if (Input.GetKey(KeyCode.KeypadMinus))
+            Reduce(1);
     }
 }

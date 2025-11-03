@@ -263,6 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4098735974887750636}
   - component: {fileID: 8256337024965969847}
+  - component: {fileID: 1254226829133591141}
   m_Layer: 8
   m_Name: Hp Bar
   m_TagString: Untagged
@@ -302,3 +303,17 @@ MonoBehaviour:
   _yDirection: 0
   _speed: 0
   _yOffset: 0
+--- !u!114 &1254226829133591141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832240499809160949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3be69810cabe146438f862e2d9a44652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _image: {fileID: 688775270631673594}
+  _health: {fileID: 0}
