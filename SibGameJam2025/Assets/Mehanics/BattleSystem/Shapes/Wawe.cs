@@ -13,6 +13,6 @@ namespace BattleSystem
         public override int weight { get => 2; }
 
         public override int damage { get => 4; }
-        public override int speed { get => 8; }
+        public override int speed { get => 15; }
     }
 }
