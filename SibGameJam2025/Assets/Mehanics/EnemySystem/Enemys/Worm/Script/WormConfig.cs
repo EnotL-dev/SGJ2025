@@ -5,7 +5,6 @@ namespace EnemySystem.Worm
     [CreateAssetMenu(fileName = "WormConfig", menuName = "Configs/Enemy/Create WormConfig")]
     public class WormConfig : ScriptableObject
     {
-        public float DistanceDetect => _distanceDetect;
         public float DistanceAttack => _distanceAttack;
         public float AttackFrequancy => _attackFrequancy;
         public float AttackTime => _attackTime;

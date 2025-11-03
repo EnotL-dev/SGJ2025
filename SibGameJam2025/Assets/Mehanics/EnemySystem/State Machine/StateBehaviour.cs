@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,10 +7,13 @@ namespace EnemySystem
 {
     public abstract class StateBehaviour : MonoBehaviour, IStateSwitcher
     {
+        public Action Died { get; set; }
+        public bool MaxAgro { get; set; } = false;
         public State CurrentState { get; protected set; }
         public bool FierstStateIsLaunched { get => _fierstStateIsLaunched; set { _fierstStateIsLaunched = value; } }
         protected List<State> _states = new();
         protected bool _fierstStateIsLaunched = false;
+
 
         public void SwitchState<T>() where T : State
         {
