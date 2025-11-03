@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b35ee64fd8353a447afc3e72e80db419, type: 3}
   m_Name: HeadConfig
   m_EditorClassIdentifier: 
-  _distanceDetect: 10
   _distanceAttack: 2
-  _damage: 5
+  _damage: 7
   _attackPrepareTime: 0.5
   _attackTime: 0.1
   _attackFrequency: 0.5

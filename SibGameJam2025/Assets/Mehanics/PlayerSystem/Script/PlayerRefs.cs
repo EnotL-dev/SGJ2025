@@ -8,10 +8,12 @@ namespace PlayerSystem
         public CharacterController CharacterController => _characterController;
         public Health Health => _health;
         public LayerMask PlayerLayer => _playerLayer;
+        public PlayerStatsController PlayerStastController => _playerStastController;
 
         [SerializeField] private CharacterController _characterController;
         [SerializeField] private Health _health;
         [SerializeField] private LayerMask _playerLayer;
+        [SerializeField] private PlayerStatsController _playerStastController;
 
         public void Awake()
         {

@@ -39,7 +39,6 @@ namespace EnemySystem.Head
 
         private IEnumerator DestroyTimer()
         {
-            Debug.Log(_timeToDestroy);
             yield return new WaitForSeconds(_timeBeforeAnimation);
             _destroyAnimation.StartPlayAnimation();
             yield return new WaitForSeconds(_timeToDestroy);

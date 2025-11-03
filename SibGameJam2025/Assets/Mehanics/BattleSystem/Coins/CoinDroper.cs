@@ -6,15 +6,31 @@ namespace BattleSystem
 {
     public class CoinDroper : MonoBehaviour
     {
-        [SerializeField] private PlayerStatsController playerStatsController;
         [SerializeField] private Coin coinPrefab;
+        [SerializeField] private float _offset = 1f;
+        [SerializeField] private int _coinsCountMin = 0;
+        [SerializeField] private int _coinsCountMax = 0;
+        [SerializeField] private Health _health;
 
         private float spawnForce = 5f;
         private float radius = 0.3f;
         private float upwardForce = 5f;
 
-        public void DropCoins(Vector3 pos, int count)
+        private void OnEnable()
         {
+            _health.IsOver += DropCoins;
+        }
+
+        private void OnDisable()
+        {
+            _health.IsOver -= DropCoins;
+        }
+
+        private void DropCoins()
+        {
+            Vector3 pos = transform.position;
+            pos.y += _offset;
+            int count = Random.Range(_coinsCountMin, _coinsCountMax + 1);
             for (int i = 0; i < count; i++)
             {
                 // равномерное распределение углов по кругу
@@ -34,7 +50,7 @@ namespace BattleSystem
 
 
             SaveData.TempData.AddMoney(count * 3);
-            playerStatsController.BalanceUpdate();
+            PlayerRefs.Instance.PlayerStastController.balanceUpdate();
         }
     }
 }
