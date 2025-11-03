@@ -1,3 +1,4 @@
+using SaveSystem;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ namespace LevelSystem
         public void Start()
         {
             Debug.Log("Начат переход яркости");
+            SaveData.Load();
             StartCoroutine(FadeOutCoroutine(1f));
         }
 
@@ -39,6 +41,7 @@ namespace LevelSystem
 
         private void LoadLevel()
         {
+            SaveData.Save();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
         }
 

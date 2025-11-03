@@ -10,7 +10,7 @@ namespace EnemySystem
 
         private float spawnForce = 5f;
         private float radius = 0.3f;
-        private float upwardForce = 5f;
+        private float upwardForce = 4.1f;
 
         public void Drop(Vector3 pos)
         {

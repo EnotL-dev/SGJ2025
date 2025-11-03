@@ -1,7 +1,9 @@
+using BattleSystem;
 using EnemySystem;
 using PlayerSystem;
 using SaveSystem;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +16,9 @@ namespace LevelSystem
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
         [Space(5)]
+        [SerializeField] private Canvas canvasForNewCpgnitTexts;
+        [SerializeField] private TextMeshProUGUI textNewCognition;
+        [Space(5)]
         [SerializeField] private PortalTransitZone PORTAL_TRANSIT_ZONE;
         [SerializeField] private TransitionScript transitionScript;
 
@@ -21,8 +26,6 @@ namespace LevelSystem
         {
             fountainScript = FindFirstObjectByType<WellScript>();
             UpdateUIFountain(0, maxSouls);
-
-            SaveData.Save(); //На новом уровне - сохранение
 
             SaveData.currentSouls = 0;
             SaveData.maxSouls = maxSouls;
@@ -64,7 +67,21 @@ namespace LevelSystem
             if(PORTAL_TRANSIT_ZONE)
                 PORTAL_TRANSIT_ZONE.gameObject.SetActive(true);
 
+            StartCoroutine(ShowsNewNodeNames());
             StartCoroutine(FadeInCoroutine(1));
+        }
+
+        public IEnumerator ShowsNewNodeNames()
+        {
+            NodeData nodeData = Resources.Load<NodeData>("Nodes/NodeData");
+            List<Node> newNodes = nodeData.GetNewCognitionNodesList();
+
+            for (int i = 0; i < newNodes.Count; i++)
+            {
+                TextMeshProUGUI newCognitText = Instantiate(textNewCognition, canvasForNewCpgnitTexts.transform);
+                newCognitText.text = $"Вы познали <color=yellow>{newNodes[i].name}</color>";
+                yield return new WaitForSeconds(0.2f);
+            }
         }
 
         public void NewWaweMessage()
