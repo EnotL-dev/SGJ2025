@@ -22,6 +22,28 @@ namespace EnemySystem {
             [SerializeField] private List<GameObject> _prefabs = new();
         }
 
+        [ContextMenu("Land points")]
+        public void LandPoints()
+        {
+            foreach (var point in _spawnPoints)
+            {
+                Vector3 position = point.transform.position;
+                position.y += 1f;
+                 if (Physics.Raycast(position, -Vector3.up, out RaycastHit hit))
+                {
+                    if (point.transform.position.y != hit.point.y)
+                    {
+                        point.transform.position = hit.point;
+                        Debug.Log($"Point ({point}) moved down");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"No collider under the _spawnPoints:({point})!!11!!111!");
+                }
+            }
+        }
+
         private void Start()
         {
             ConnectToStartMobs();
