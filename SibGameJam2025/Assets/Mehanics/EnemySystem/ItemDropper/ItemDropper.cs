@@ -18,7 +18,7 @@ namespace EnemySystem
             if (rnd > _chance)
                 return;
 
-            float angle = Random.Range(0,360) * Mathf.PI * 2f;
+            float angle = Random.Range(0f, Mathf.PI * 2f);
 
             Vector3 spawnPos = pos + new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
 
