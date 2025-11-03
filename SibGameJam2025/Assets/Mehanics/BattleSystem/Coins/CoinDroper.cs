@@ -50,7 +50,7 @@ namespace BattleSystem
 
 
             SaveData.TempData.AddMoney(count * 3);
-            PlayerRefs.Instance.PlayerStastController.balanceUpdate();
+            PlayerRefs.Instance.PlayerStastController.BalanceUpdate();
         }
     }
 }
