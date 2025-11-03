@@ -1,3 +1,4 @@
+using PlayerSystem;
 using SaveSystem;
 using System.Collections.Generic;
 using UnityEngine;
@@ -70,8 +71,12 @@ namespace BattleSystem
                 if (other.gameObject.TryGetComponent(out Health health))
                 {
                     int trueDamage = damage; //урон
-                    if(health._current.Value < damage)
+                    if (health._current.Value < damage) //Это значит что урон убьет противника
+                    {
                         trueDamage = health._current.Value;
+                        PlayerRefs playerRefs = new PlayerRefs();
+                        playerRefs.levelManager.SoulAdd();
+                    }
 
                     health.Reduce(damage);
                     spellSummon.HandlingHit(gameObject, nodes, trueDamage);
