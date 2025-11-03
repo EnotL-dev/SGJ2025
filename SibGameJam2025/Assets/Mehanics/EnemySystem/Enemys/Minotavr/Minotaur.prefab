@@ -339,7 +339,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 0ff4ab328c8777c4f8e3736543d11751, type: 2}
   _animator: {fileID: 1574486873613798751}
   _agent: {fileID: 3849827828786364371}
-  _distanceDetect: 10
+  _distanceDetect: 20
   _health: {fileID: 9014864993927178128}
   _collision: {fileID: 2681903747239757362}
   _destroyTimer: 3.5

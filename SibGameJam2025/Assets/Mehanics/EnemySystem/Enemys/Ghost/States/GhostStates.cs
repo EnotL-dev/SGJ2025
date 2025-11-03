@@ -35,12 +35,14 @@ namespace EnemySystem.Ghost
         {
             _health.IsOver += CallDeath;
             _health._current.Changed += CallRecoil;
+            _health._current.Changed += CallAgr;
         }
 
         private void OnDisable()
         {
             _health.IsOver -= CallDeath;
             _health._current.Changed -= CallRecoil;
+            _health._current.Changed -= CallAgr;
         }
 
         private void CallDeath()
@@ -56,6 +58,12 @@ namespace EnemySystem.Ghost
         private void CallRecoil(int old, int newValue)
         {
             SwitchState<Recoil>();
+        }
+
+        private void CallAgr(int old, int newValue)
+        {
+            if (CurrentState is Waiting)
+                SwitchState<Moving>();
         }
     }
 }
