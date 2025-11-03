@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SaveSystem;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -13,14 +14,9 @@ namespace BattleSystem
         public List<Impact> impacts;
         public List<Feature> features;
 
-        public Node GetRandomNodeByWeightScene(int chance)
+        public Node GetRandomNodeByWeightScene()
         {
-            int rnd = Random.Range(0, 99);
-
-            if (rnd > chance)
-                return null;
-
-            int currentSceneIndex = 10; //SceneManager.GetActiveScene().buildIndex;
+            int currentSceneIndex = SaveData.TempData.playerParams.lv; //SceneManager.GetActiveScene().buildIndex;
 
             List<Node> allNodes = new List<Node>();
 
