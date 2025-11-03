@@ -8,6 +8,7 @@ namespace BattleSystem
     public class SpellSummon : MonoBehaviour
     {
         [SerializeField] private Transform spawnSpellPoint;
+        [SerializeField] private Animator _stickAnimator;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
         private float timerDelay = 0;
@@ -24,7 +25,7 @@ namespace BattleSystem
                     if (gameObject.GetComponent<Mana>()._current.Value >= nodeGraph.GetManaCost())
                     {
                         gameObject.GetComponent<Mana>().Reduce(nodeGraph.GetManaCost());
-
+                        _stickAnimator.SetTrigger("Attack");
                         SummonSpell();
                         timerDelay = delaySpell;
                     }
