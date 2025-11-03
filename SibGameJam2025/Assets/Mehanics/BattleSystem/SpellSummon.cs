@@ -8,8 +8,6 @@ namespace BattleSystem
     public class SpellSummon : MonoBehaviour
     {
         [SerializeField] private Transform spawnSpellPoint;
-        [SerializeField] private Transform spawnSpellPointSecond;
-        [SerializeField] private Transform spawnSpellPointThird;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
         private float timerDelay = 0;
@@ -20,6 +18,9 @@ namespace BattleSystem
             {
                 if (Input.GetMouseButtonDown(0))
                 {
+                    if (Time.timeScale < 1)
+                        return;
+
                     if (gameObject.GetComponent<Mana>()._current.Value >= nodeGraph.GetManaCost())
                     {
                         gameObject.GetComponent<Mana>().Reduce(nodeGraph.GetManaCost());
@@ -54,19 +55,22 @@ namespace BattleSystem
                 }
             }
 
-            SpellBullet spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, Quaternion.identity).GetComponent<SpellBullet>();
+            SpellBullet spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, Camera.main.transform.rotation).GetComponent<SpellBullet>();
             spellBullet.Launch(this, nodes);
 
             if (triple)
             {
-                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPointSecond.position, Quaternion.identity).GetComponent<SpellBullet>();
+                Quaternion rotation = Camera.main.transform.rotation;
+                rotation.y -= 30;
+                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, rotation).GetComponent<SpellBullet>();
                 spellBullet.Launch(this, nodes);
-                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPointThird.position, Quaternion.identity).GetComponent<SpellBullet>();
+                rotation.y += 60;
+                spellBullet = Instantiate(prefabSpellBullet, spawnSpellPoint.position, rotation).GetComponent<SpellBullet>();
                 spellBullet.Launch(this, nodes);
             }
         }
 
-        public void HandlingHit(GameObject hitObj, GameObject bulletObj, List<Node> nodes, int trueDamage) //Обработка попадания
+        public void HandlingHit(GameObject bulletObj, List<Node> nodes, int trueDamage) //Обработка попадания
         {
             foreach (Node node in nodes)
             {
@@ -78,8 +82,9 @@ namespace BattleSystem
                         {
                             for (int i = 1; i < 5; i++)
                             {
-                                float angle = i * 25f;
-                                Quaternion rotation = Quaternion.Euler(0, angle, 0);
+                                float angle = i * 90f;
+                                Quaternion rotation = Camera.main.transform.rotation;
+                                rotation.y += angle;
 
                                 List<Node> nodesWithoutShrapnel = new List<Node>();
 
@@ -90,8 +95,10 @@ namespace BattleSystem
                                     {
                                         if (addnode is Shape addShapeNode)
                                             newPrefabBullet = addShapeNode.prefabSpellBullet;
-
-                                        nodesWithoutShrapnel.Add(addnode);
+                                        else
+                                        {
+                                            nodesWithoutShrapnel.Add(addnode);
+                                        }
                                     }
                                     else
                                     {
