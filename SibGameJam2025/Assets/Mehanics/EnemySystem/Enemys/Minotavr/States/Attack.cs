@@ -1,0 +1,65 @@
+using EnemySystem.Head;
+using System.Collections;
+using UnityEngine;
+using UnityEngine.AI;
+
+namespace EnemySystem.Minotaur
+{
+    public class Attack : State
+    {
+        private Transform _body;
+        private CharacterController _player;
+        private float _distance;
+        private MinotaurConfig _config;
+        private AnimatorController _animator;
+        private Health _playerHealth;
+        private Coroutine _attackCoroutine;
+        private NavMeshAgent _navMeshAgent;
+
+        public Attack(IStateSwitcher stateSwitcher, Transform body, CharacterController player, MinotaurConfig config, AnimatorController animator, Health playerHealth, NavMeshAgent navMeshAgent) : base(stateSwitcher)
+        {
+            _body = body;
+            _player = player;
+            _config = config;
+            _animator = animator;
+            _playerHealth = playerHealth;
+            _navMeshAgent = navMeshAgent;
+        }
+
+        public override void Start()
+        {
+            // _navMeshAgent.enabled = false;
+            _attackCoroutine = _animator.StartCoroutine(AttackProccess());
+        }
+
+        public override void Stop()
+        {
+            // _navMeshAgent.enabled = true;
+            if (_attackCoroutine != null)
+                _animator.StopCoroutine(_attackCoroutine);
+            _animator.SetAttack(false);
+        }
+
+        public override void Update()
+        {
+            _distance = Vector3.Distance(_body.position, _player.transform.position);
+            if (_distance > _config.DistanceAttack + 0.2 && !PlayerAboveMe(_body))
+            {
+                _stateSwitcher.SwitchState<Moving>();
+            }
+        }
+
+        private IEnumerator AttackProccess()
+        {
+            while (true)
+            {
+                _animator.SetAttack(true);
+                yield return new WaitForSeconds(_config.AttackPrepareTime);
+                _playerHealth.Reduce(_config.Damage);
+                yield return new WaitForSeconds(_config.AttackTime);
+                _animator.SetAttack(false);
+                yield return new WaitForSeconds(_config.AttackFrequency);
+            }
+        }
+    }
+}
