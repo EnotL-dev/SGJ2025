@@ -61,6 +61,7 @@ namespace LevelSystem
         public void SoulAdd(ItemDropper itemDropper)
         {
             SaveData.currentSouls++;
+
             itemDropper.Drop(fountainScript.transform.position);
             SoulBehaviour soul = Instantiate(soulPrefab, itemDropper.gameObject.transform).GetComponent<SoulBehaviour>();
             soul.transform.parent = null;
