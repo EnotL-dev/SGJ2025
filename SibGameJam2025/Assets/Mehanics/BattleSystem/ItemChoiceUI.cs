@@ -142,7 +142,7 @@ namespace BattleSystem
 
             int count = newNode.moneyCost;
             int balanceInText = SaveData.TempData.GetMoney();
-            float timeNext = 3/count;
+            float timeNext = 2/count;
             while (count > 0)
             {
                 count--;
