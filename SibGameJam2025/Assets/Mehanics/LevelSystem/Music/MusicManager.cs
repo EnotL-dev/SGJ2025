@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -5,10 +6,28 @@ namespace LevelSystem
 {
     public class MusicManager : MonoBehaviour
     {
+        [SerializeField] private List<AudioClip> clips;
         [SerializeField] private MinMaxValue _cutoffFreq;
         [SerializeField] private AudioMixer _mixer;
         [SerializeField] private string lowPassParameterNameMusic = "LowpassCutoff_Music";
         [SerializeField] private string lowPassParameterNameSound = "LowpassCutoff_Sound";
+
+        [SerializeField] private bool playOnStart = true;
+
+        private void Start()
+        {
+            if (playOnStart)
+                PlayRandomMusic();
+        }
+
+        public void PlayRandomMusic()
+        {
+            if(clips.Count > 0)
+            {
+                int rndClip = Random.Range(0, clips.Count);
+                GetComponent<AudioSource>().PlayOneShot(clips[rndClip]);
+            }
+        }
 
         [ContextMenu("Muffle Music")]
         public void MuffleMusic()

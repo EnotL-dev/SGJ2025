@@ -79,8 +79,8 @@ namespace LevelSystem
             for (int i = 0; i < newNodes.Count; i++)
             {
                 TextMeshProUGUI newCognitText = Instantiate(textNewCognition, canvasForNewCpgnitTexts.transform);
-                newCognitText.text = $"Вы познали <color=yellow>{newNodes[i].name}</color>";
-                yield return new WaitForSeconds(0.2f);
+                newCognitText.text = $"Вы познали <color=yellow>{newNodes[i].nameNode}</color>";
+                yield return new WaitForSeconds(1f);
             }
         }
 

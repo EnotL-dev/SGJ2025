@@ -86,6 +86,8 @@ AudioMixerController:
     name: MusicVolume
   - guid: 2e371a73df717aa458b971f7ecbc4219
     name: LowpassCutoff_Music
+  - guid: 6c26c850674cf994ba070a4c5c8ea255
+    name: SFXVolume
   - guid: 0495993fd9fe2594d9b4cb05d846b11f
     name: SoundVolume
   - guid: 2dcc0cd5d5f473e448358503dddafa8c
@@ -95,6 +97,7 @@ AudioMixerController:
     - 6867ab1b8a4c9e548826222b0cb88035
     - 1201ae91258198344a554951c75eb586
     - 3131d03821573954fb715b41935be283
+    - 632c6cfbcea88c143ada754177057415
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -110,6 +113,7 @@ AudioMixerGroupController:
   m_Children:
   - {fileID: -2060466284357221422}
   - {fileID: 6914805338279742933}
+  - {fileID: 3372962934480449654}
   m_Volume: de8c018093b33cd4e8f922c45b9e71ec
   m_Pitch: 7e2aa1c235dd46a44b1bb60061913da6
   m_Send: 00000000000000000000000000000000
@@ -156,6 +160,39 @@ AudioMixerSnapshotController:
     9f746fec486fb9a4a961f2c2f09ef70d: 0.5
     784c525d789b12342846b7e6b7cc3fca: 0.5
   m_TransitionOverrides: {}
+--- !u!244 &1934790954670507331
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 87e764b2423227c438adf60954e4eace
+  m_EffectName: Attenuation
+  m_MixLevel: cb45c72d273621b41bbc47e1d8d510d6
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &3372962934480449654
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 632c6cfbcea88c143ada754177057415
+  m_Children: []
+  m_Volume: 6c26c850674cf994ba070a4c5c8ea255
+  m_Pitch: 55e680100721e3e4ab856a6df1f63032
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 1934790954670507331}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &6914805338279742933
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

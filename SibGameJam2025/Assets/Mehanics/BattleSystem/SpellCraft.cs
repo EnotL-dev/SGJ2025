@@ -2,6 +2,7 @@ using UnityEngine;
 using SaveSystem;
 using System.Collections;
 using PlayerSystem;
+using LevelSystem;
 
 namespace BattleSystem
 {
@@ -9,6 +10,8 @@ namespace BattleSystem
     {
         [SerializeField] private PlayerStatsController playerStatsController;
         [SerializeField] private GameObject canvasCraft;
+        [Space(5)]
+        [SerializeField] private MusicManager musicManager; 
         private GameObject tempCanvas;
         private CanvasGroup canvasGroup;
         private ItemChoiceUI itemChoiceUI;
@@ -79,6 +82,12 @@ namespace BattleSystem
 
         private IEnumerator FadeInCoroutine(float duration)
         {
+            if (musicManager)
+            {
+                musicManager.MuffleMusic();
+                musicManager.MuffleSound();
+            }
+
             float elapsed = 0f;
             canvasGroup.alpha = 0f;
 
@@ -94,6 +103,12 @@ namespace BattleSystem
 
         private IEnumerator FadeOutCoroutine(float duration)
         {
+            if (musicManager)
+            {
+                musicManager.UnmuffleMusic();
+                musicManager.UnmuffleSound();
+            }
+
             Time.timeScale = 1f;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;

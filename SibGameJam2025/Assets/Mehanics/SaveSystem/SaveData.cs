@@ -11,7 +11,7 @@ namespace SaveSystem
         {
             public class PlayerParams
             {
-                private int _lv = 10;
+                private int _lv = 1;
                 public int lv
                 {
                     get => _lv;
