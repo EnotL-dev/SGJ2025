@@ -376,7 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  _maxHealthValue: 55
+  _maxHealthValue: 75
 --- !u!65 &2681903747239757362
 BoxCollider:
   m_ObjectHideFlags: 0
