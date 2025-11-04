@@ -17,13 +17,21 @@ namespace LevelSystem
                     Cursor.lockState = CursorLockMode.None;
                     canvas.gameObject.SetActive(true);
                 }
-                else if (Time.timeScale == 0)
+                else
                 {
-                    Time.timeScale = 1;
-                    Cursor.visible = false;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    canvas.gameObject.SetActive(false);
+                    CloseMenu();
                 }
+            }
+        }
+
+        public void CloseMenu()
+        {
+            if (Time.timeScale == 0)
+            {
+                Time.timeScale = 1;
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                canvas.gameObject.SetActive(false);
             }
         }
 

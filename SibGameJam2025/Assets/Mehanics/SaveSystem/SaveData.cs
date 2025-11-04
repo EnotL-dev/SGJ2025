@@ -71,6 +71,7 @@ namespace SaveSystem
         }
 
         public static Dictionary<string, float> Volumes = new Dictionary<string, float>();
+        public static float sensivity = 400;
 
         public static int currentSouls = 0;
         public static int maxSouls = 0;
