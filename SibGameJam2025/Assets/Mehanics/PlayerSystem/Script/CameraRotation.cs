@@ -27,6 +27,11 @@ namespace PlayerSystem
             HandleMouseLook();
         }
 
+        public void ChangeSensivity(float newSens)
+        {
+            mouseSensitivity = newSens;
+        }
+
         void HandleMouseLook()
         {
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
