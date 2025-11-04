@@ -36,6 +36,8 @@ namespace LevelSystem
             SaveData.currentSouls = 0;
             SaveData.maxSouls = maxSouls;
             PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
+            PlayerRefs.Instance.PlayerStastController.BalanceUpdate();
+            PlayerRefs.Instance.PlayerStastController.LvUpdate();
         }
 
         public void Death()

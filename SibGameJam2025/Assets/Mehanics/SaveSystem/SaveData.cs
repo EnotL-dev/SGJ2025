@@ -38,8 +38,8 @@ namespace SaveSystem
                 public void LvlUp()
                 {
                     _lv++;
-                    _maxHp += 8;
-                    _maxMp += 10;
+                    _maxHp += 15;
+                    _maxMp += 30;
                     _bonusDamage += 3;
                 }
             }
