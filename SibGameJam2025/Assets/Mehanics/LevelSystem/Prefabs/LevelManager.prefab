@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soulPrefab: {fileID: 2696377201591820307, guid: 05667fd1f2a04e34cb2d860277fecbcb, type: 3}
+  clipAddSoul: {fileID: 8300000, guid: 7d63c7e701abc734994fdda65c7e610f, type: 3}
   hintGroup: {fileID: 6050709005648774872}
   textHint: {fileID: 2412132466899513823}
   canvasForNewCpgnitTexts: {fileID: 2083484968089508628}

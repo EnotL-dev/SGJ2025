@@ -24,7 +24,7 @@ namespace EnemySystem.Boss
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
-            _states.Add(new AttackLunge(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
+            //_states.Add(new AttackLunge(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
             _states.Add(new AttackExplosionOnPlayer(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _explosionZone));
             _states.Add(new Summon(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _spawnPoints, _enemies, this));
             _states.Add(new AttackSelect(this, _animator, _rotor, _attackCount, _config, this));

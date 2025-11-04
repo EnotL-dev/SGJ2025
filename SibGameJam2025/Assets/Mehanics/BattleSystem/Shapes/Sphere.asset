@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Sphere
   m_EditorClassIdentifier: 
   newPrefabSpellBullet: {fileID: 7597641698764003934, guid: 5b0ed6fb2394b1f48805982567b1c4ea, type: 3}
+  _prefabDestroyEffect: {fileID: 2794763924998232400, guid: f47e5cd67e8896c4391061460c9116c6, type: 3}
   _spawnSound: {fileID: 8300000, guid: 6f8bde0fb4b124042a5975082651c94c, type: 3}
