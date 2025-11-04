@@ -53,7 +53,7 @@ namespace BattleSystem
 
         private void Update()
         {
-            if(Input.GetKeyDown(KeyCode.Escape))
+            if(Input.GetKeyUp(KeyCode.Escape))
             {
                 Dissmis();
             }

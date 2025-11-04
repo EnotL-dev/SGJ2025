@@ -1603,9 +1603,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4994411479214999295, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: cb2916fac726f6d4f871aadc6d7f8dd6, type: 3}
     - target: {fileID: 2281284890829949370, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
       propertyPath: m_Name
       value: Music Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559295466613379897, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2559295466613379897, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
       propertyPath: clips.Array.size
