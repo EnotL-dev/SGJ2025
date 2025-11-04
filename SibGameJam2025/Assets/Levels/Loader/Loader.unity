@@ -176,7 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u0421\u0442\u0430\u0440\u0442"
+  m_text: "\u041D\u0430\u0447\u0430\u0442\u044C \u0418\u0433\u0440\u0443"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 774f7d620e645ed409efb0041ce892a3, type: 2}
   m_sharedMaterial: {fileID: -970957613337393106, guid: 774f7d620e645ed409efb0041ce892a3, type: 2}
@@ -203,8 +203,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 64
-  m_fontSizeBase: 64
+  m_fontSize: 44
+  m_fontSizeBase: 44
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1949,6 +1949,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 833182159}
   m_CullTransparentMesh: 1
+--- !u!1001 &878684467
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2281284890829949370, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_Name
+      value: Music Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559295466613379897, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: clips.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2559295466613379897, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: 'clips.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: cb2916fac726f6d4f871aadc6d7f8dd6, type: 3}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 16.88836
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.96891785
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.3912506
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3868737180993137289, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 21981573a06b5bf4bad561666cec115a, type: 3}
 --- !u!1 &897997890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2572,7 +2637,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.5
+  m_Value: 0.173
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2602,7 +2667,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: a70e66bf84e166a4f8caf5cd1a8db4d2, type: 2}
   source: {fileID: 357689947}
-  clip: {fileID: 8300000, guid: d5c1cc65ef2c6c14bbf62573b529b153, type: 3}
+  clip: {fileID: 0}
   volumeParameter: MusicVolume
 --- !u!1 &1507600892
 GameObject:
@@ -2976,3 +3041,4 @@ SceneRoots:
   - {fileID: 357689946}
   - {fileID: 787299724}
   - {fileID: 897997892}
+  - {fileID: 878684467}

@@ -11,19 +11,19 @@ namespace SaveSystem
         {
             public class PlayerParams
             {
-                private int _lv = 6;
+                private int _lv = 1;
                 public int lv
                 {
                     get => _lv;
                 }
 
-                private int _maxHp = 3000;
+                private int _maxHp = 30;
                 public int maxHp
                 {
                     get => _maxHp;
                 }
 
-                private int _maxMp = 200;
+                private int _maxMp = 20;
                 public int maxMp
                 {
                     get => _maxMp;
@@ -39,13 +39,13 @@ namespace SaveSystem
                 {
                     _lv++;
                     _maxHp += 8;
-                    _maxMp += 9;
+                    _maxMp += 10;
                     _bonusDamage += 3;
                 }
             }
 
             public NodeGraph nodeGraph = new NodeGraph();
-            private int money = 1000;
+            private int money = 0;
             public PlayerParams playerParams = new PlayerParams();
 
             public int GetMoney()

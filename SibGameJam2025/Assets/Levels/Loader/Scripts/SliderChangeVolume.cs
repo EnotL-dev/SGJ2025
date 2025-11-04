@@ -42,7 +42,7 @@ public class SliderChangeVolume : MonoBehaviour
             SaveData.Volumes[volumeParameter] = dbVolume;
         }
 
-        if (source)
+        if (source && clip)
         {
             if (!source.isPlaying)
                 source.PlayOneShot(clip);

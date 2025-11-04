@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Levels/Scene_03/Blockout_03.unity
     guid: 1a9a76702ef17df48b686667ffe6db57
+  - enabled: 1
+    path: Assets/Levels/Scene_04/Blockout_04.unity
+    guid: 577b590916b950c45a6a4ec98015d3df
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

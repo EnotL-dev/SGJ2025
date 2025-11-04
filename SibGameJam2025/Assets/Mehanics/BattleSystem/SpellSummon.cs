@@ -11,6 +11,8 @@ namespace BattleSystem
         public Action OnHit { get; set; }
         [SerializeField] private Transform spawnSpellPoint;
         [SerializeField] private AudioSource audioSpawnSource;
+        [SerializeField] private AudioSource audioNoMana;
+        [SerializeField] private AudioClip clipNoMana;
         [SerializeField] private Animator _stickAnimator;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
@@ -31,6 +33,11 @@ namespace BattleSystem
                         _stickAnimator.SetTrigger("Attack");
                         SummonSpell();
                         SetNewDelay();
+                    }
+                    else
+                    {
+                        if(audioNoMana && !audioNoMana.isPlaying)
+                            audioNoMana.PlayOneShot(clipNoMana);
                     }
                 }
             }
