@@ -1538,10 +1538,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PORTAL_TRANSIT_ZONE
       objectReference: {fileID: 0}
-    - target: {fileID: 8910575766513235769, guid: 0338381e47ded6348b235cdbda2013bf, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
