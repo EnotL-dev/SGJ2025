@@ -21,6 +21,9 @@ namespace PlayerSystem
 
         void Update()
         {
+            if (Time.timeScale < 1)
+                return;
+
             HandleMouseLook();
         }
 

@@ -1,3 +1,4 @@
+using LevelSystem;
 using PlayerSystem;
 using ReactiveVariables;
 using SaveSystem;
@@ -26,8 +27,12 @@ public class Health : MonoBehaviour
         if (_current.Value <= 0)
             IsOver?.Invoke();
 
-        if(playerStats)
+        if (playerStats)
+        {
             playerStats.ChangeHp(_current.Value, _max.Value);
+            if (_current.Value <= 0)
+                KillPlayer();
+        }
     }
 
     public void Add(int value)
@@ -57,8 +62,18 @@ public class Health : MonoBehaviour
         _current.Value = 0;
         IsOver?.Invoke();
 
-        if(playerStats)
+        if (playerStats)
+        {
+            KillPlayer();
             playerStats.ChangeHp(_current.Value, _max.Value);
+        }
+    }
+
+    private void KillPlayer()
+    {
+        GetComponent<Moving>().enabled = false;
+        GetComponentInChildren<CameraRotation>().enabled = false;
+        transform.parent.GetComponentInChildren<LevelManager>().Death();
     }
 
     private void Awake()

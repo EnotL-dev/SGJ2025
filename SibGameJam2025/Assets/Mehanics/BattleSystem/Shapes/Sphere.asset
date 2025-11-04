@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Sphere
   m_EditorClassIdentifier: 
   newPrefabSpellBullet: {fileID: 7597641698764003934, guid: 5b0ed6fb2394b1f48805982567b1c4ea, type: 3}
+  _spawnSound: {fileID: 8300000, guid: 6f8bde0fb4b124042a5975082651c94c, type: 3}
