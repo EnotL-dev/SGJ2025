@@ -17,7 +17,7 @@ namespace SaveSystem
                     get => _lv;
                 }
 
-                private int _maxHp = 30;
+                private int _maxHp = 25;
                 public int maxHp
                 {
                     get => _maxHp;
@@ -38,8 +38,8 @@ namespace SaveSystem
                 public void LvlUp()
                 {
                     _lv++;
-                    _maxHp += 15;
-                    _maxMp += 30;
+                    _maxHp += 13;
+                    _maxMp += 25;
                     _bonusDamage += 3;
                 }
             }

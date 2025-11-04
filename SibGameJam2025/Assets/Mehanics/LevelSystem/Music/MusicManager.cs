@@ -18,6 +18,9 @@ namespace LevelSystem
         {
             if (playOnStart)
                 PlayRandomMusic();
+
+            UnmuffleMusic();
+            UnmuffleSound();
         }
 
         public void PlayRandomMusic()
