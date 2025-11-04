@@ -14,6 +14,7 @@ namespace SaveSystem
                 public int lv
                 {
                     get => _lv;
+                    set => _lv = value;
                 }
 
                 private int _maxHp;
@@ -39,11 +40,20 @@ namespace SaveSystem
                     Load();
                 }
 
+                public PlayerParams(PlayerParams source)
+                {
+                    // Конструктор копирования
+                    _lv = source._lv;
+                    _maxHp = source._maxHp;
+                    _maxMp = source._maxMp;
+                    _bonusDamage = source._bonusDamage;
+                }
+
                 private void Load()
                 {
                     _lv = PlayerPrefs.GetInt("Player_Lv", 1);
                     _maxHp = PlayerPrefs.GetInt("Player_MaxHp", 25);
-                    _maxMp = PlayerPrefs.GetInt("Player_MaxMp", 20);
+                    _maxMp = PlayerPrefs.GetInt("Player_MaxMp", 25);
                     _bonusDamage = PlayerPrefs.GetInt("Player_BonusDamage", 2);
                 }
 
@@ -59,9 +69,8 @@ namespace SaveSystem
                 {
                     _lv++;
                     _maxHp += 13;
-                    _maxMp += 25;
+                    _maxMp += 45;
                     _bonusDamage += 3;
-                    Save();
                 }
             }
 
@@ -76,6 +85,14 @@ namespace SaveSystem
                 Load();
             }
 
+            public DataParams(DataParams source)
+            {
+                // Конструктор копирования
+                playerParams = new PlayerParams(source.playerParams);
+                nodeGraph = source.nodeGraph;
+                money = source.money;
+            }
+
             public int GetMoney()
             {
                 return money;
@@ -87,7 +104,6 @@ namespace SaveSystem
                     return;
 
                 money += add;
-                PlayerPrefs.SetInt("Money", money);
             }
 
             public void ReduceMoney(int reduce)
@@ -96,7 +112,11 @@ namespace SaveSystem
                     return;
 
                 money -= reduce;
-                PlayerPrefs.SetInt("Money", money);
+            }
+
+            public void SetMoney(int newMoney)
+            {
+                money = newMoney;
             }
 
             private void Load()
@@ -108,7 +128,6 @@ namespace SaveSystem
             {
                 PlayerPrefs.SetInt("Money", money);
                 playerParams.Save();
-                // NodeGraph сохраняется автоматически при изменениях
             }
         }
 
@@ -118,7 +137,6 @@ namespace SaveSystem
             get
             {
                 var volumes = new Dictionary<string, float>();
-                // Загрузка громкости для разных каналов
                 volumes["Master"] = PlayerPrefs.GetFloat("Volume_Master", 1f);
                 volumes["Music"] = PlayerPrefs.GetFloat("Volume_Music", 1f);
                 volumes["SFX"] = PlayerPrefs.GetFloat("Volume_SFX", 1f);
@@ -183,21 +201,21 @@ namespace SaveSystem
         public static void Load()
         {
             Debug.Log("Загрузка сейва");
-            // Данные автоматически загружаются при создании объектов
-            // Просто пересоздаем TempData как копию MainData
-            _tempData = new DataParams();
 
-            // Копируем значения из MainData в TempData
-            _tempData.playerParams = MainData.playerParams;
-            _tempData.nodeGraph = MainData.nodeGraph;
-            // Money копируется автоматически через PlayerPrefs
+            // Создаем НОВЫЙ TempData как полную копию MainData (включая деньги и NodeGraph)
+            _tempData = new DataParams(MainData);
         }
 
         public static void Save()
         {
             Debug.Log("Сохранение");
+
+            // Заменяем MainData полной копией TempData (включая деньги и NodeGraph)
+            _mainData = new DataParams(_tempData);
+
+            // Сохраняем в PlayerPrefs
             MainData.Save();
-            PlayerPrefs.Save(); // Сохраняем все изменения на диск
+            PlayerPrefs.Save();
         }
 
         public static void DeleteAllSaveData()
