@@ -5,7 +5,7 @@ namespace EnemySystem.Boss
 {
     public class ExplosionTarget : MonoBehaviour
     {
-        [SerializeField] private int _distance;
+        [SerializeField] private float _distance;
         [SerializeField] private int _damage;
         [SerializeField] private GameObject _image;
 

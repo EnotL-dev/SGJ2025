@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace EnemySystem.Boss
 {
@@ -12,6 +13,7 @@ namespace EnemySystem.Boss
         private BossConfig _config;
         private ExplosionTarget _explosionZone;
         private Coroutine _coroutine;
+        private AudioSource _audioSource;
 
         public AttackExplosionOnPlayer(
             IStateSwitcher stateSwitcher,
@@ -20,7 +22,8 @@ namespace EnemySystem.Boss
             BossConfig config,
             AnimatorController animator,
             RotateToPlayer rotor,
-            ExplosionTarget explosionZone
+            ExplosionTarget explosionZone,
+            AudioSource audioSource
             ) : base(stateSwitcher)
         {
             _body = body;
@@ -29,6 +32,7 @@ namespace EnemySystem.Boss
             _config = config;
             _rotor = rotor;
             _explosionZone = explosionZone;
+            _audioSource = audioSource;
         }
 
         public override void Start()
@@ -37,6 +41,7 @@ namespace EnemySystem.Boss
             _animator.SetAttack(true);
             _rotor.enabled = true;
             _coroutine = _animator.StartCoroutine(DoAttack());
+            _audioSource.Play();
         }
 
         public override void Stop()
