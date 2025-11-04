@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 108146f7dec9e6845b038e9f1039cd8b
+guid: 27bdda5019f45624fa18ff6a145232bf
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Wave explosion_0
+      name: Bloody mask_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 512
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e8b7e70e639d43d4ea4711ff941c10e6
-      internalID: 2079564447
+      spriteID: eb91b2cbd6431e54eab5fc3ed75f1462
+      internalID: -686096112
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f53ce1af5ae989b429342957bcecf4db
+    spriteID: 509eb8b6b67533d4895aac93f3d8abd3
     internalID: 0
     vertices: []
     indices: 
@@ -132,7 +132,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Wave explosion_0: 2079564447
+      Bloody mask_0: -686096112
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
