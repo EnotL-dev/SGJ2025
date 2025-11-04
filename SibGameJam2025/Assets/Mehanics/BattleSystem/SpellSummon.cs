@@ -145,8 +145,13 @@ namespace BattleSystem
             if (trueDamage > 0)
                 OnHit?.Invoke();
 
-            if(bulletObj)
-                Destroy(bulletObj);
+            if (bulletObj)
+            {
+                if (nodes[1] is not Wawe)
+                    Destroy(bulletObj);
+                else
+                    bulletObj.GetComponent<DestroyMyselfByTimer>().enabled = true;
+            }
         }
     }
 }
