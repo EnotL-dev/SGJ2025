@@ -43,6 +43,9 @@ MonoBehaviour:
     _distanceToDamage: 10
     _damage: 5
   _attackExplosionOnPlayer:
-    _timeToExplosion: 1
+    _timeToExplosion: 0.5
     _explosion: {fileID: 161350644367478607, guid: e822249155070764ebb94a7d05dd7904, type: 3}
     _endOfAttackAnimationTime: 1.5
+  _summon:
+    _timeBeforeSummon: 1
+    _timeBetweeenSummon: 0.5

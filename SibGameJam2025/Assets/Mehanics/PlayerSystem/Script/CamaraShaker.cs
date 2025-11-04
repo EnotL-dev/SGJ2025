@@ -43,6 +43,8 @@ namespace PlayerSystem
 
         public void Shake(int old, int newValue)
         {
+            if (newValue > old)
+                return;
             if (!isShaking)
             {
                 StartCoroutine(ShakeCoroutine());

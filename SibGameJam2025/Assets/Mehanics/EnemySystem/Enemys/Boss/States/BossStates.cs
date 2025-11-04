@@ -18,6 +18,9 @@ namespace EnemySystem.Boss
         [SerializeField] private float _timeToDestroy;
         [SerializeField] private List<Transform> _spawnPoints = new();
         [SerializeField] private List<Transform> _enemies = new();
+        [SerializeField] private AudioSource _attackAudio;
+        [SerializeField] private AudioSource _deathAudio;
+        [SerializeField] private AudioSource _callAudio;
         private const int _attackCount = 1;
         private int _countUnitsToSpawn = 0;
 
@@ -25,8 +28,8 @@ namespace EnemySystem.Boss
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
             //_states.Add(new AttackLunge(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
-            _states.Add(new AttackExplosionOnPlayer(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _explosionZone));
-            _states.Add(new Summon(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _spawnPoints, _enemies, this));
+            _states.Add(new AttackExplosionOnPlayer(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _explosionZone, _attackAudio));
+            _states.Add(new Summon(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _spawnPoints, _enemies, this, _callAudio));
             _states.Add(new AttackSelect(this, _animator, _rotor, _attackCount, _config, this));
             _states.Add(new Death(this, _animator, _timeToDestroy, transform));
             SwitchState<Waiting>();
@@ -64,7 +67,7 @@ namespace EnemySystem.Boss
             _rotor.enabled = false;
             _explosionZone.gameObject.SetActive(false);
             Destroy(_explosionZone.gameObject);
-            // _deathSound.Play();
+            _deathAudio.Play();
             Died?.Invoke();
         }
     }

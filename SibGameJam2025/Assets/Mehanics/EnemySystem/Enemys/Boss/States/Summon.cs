@@ -15,6 +15,7 @@ namespace EnemySystem.Boss
         private List<Transform> _enemies = new();
         private BossStates _states;
         private Coroutine _coroutine;
+        private AudioSource _audioSource;
 
         public Summon(
             IStateSwitcher stateSwitcher,
@@ -25,7 +26,8 @@ namespace EnemySystem.Boss
             RotateToPlayer rotor,
             List<Transform> spawnPoints,
             List<Transform> enemies,
-            BossStates states
+            BossStates states,
+            AudioSource audioSource
             ) : base(stateSwitcher)
         {
             _body = body;
@@ -36,6 +38,7 @@ namespace EnemySystem.Boss
             _spawnPoints = spawnPoints;
             _enemies = enemies;
             _states = states;
+            _audioSource = audioSource;
         }
 
         public override void Start()
@@ -67,6 +70,7 @@ namespace EnemySystem.Boss
             }
             else
             {
+                _audioSource.Play();
                 for (var i = 0; i < _enemies.Count; i++)
                 {
                     var enemy = GameObject.Instantiate(_enemies[i], _spawnPoints[i].transform.position, Quaternion.identity);
