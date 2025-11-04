@@ -401,8 +401,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6404792, y: 0.8924446}
   m_AnchorMax: {x: 0.99160415, y: 0.97225934}
-  m_AnchoredPosition: {x: 0.69189453, y: -0.6635132}
-  m_SizeDelta: {x: 1.2145996, y: -1.5980835}
+  m_AnchoredPosition: {x: -137.27533, y: 6.4454956}
+  m_SizeDelta: {x: -188.75085, y: -1.5980835}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4841402883684852660
 MonoBehaviour:
@@ -489,7 +489,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7396042, y: 0.814}
   m_AnchorMax: {x: 0.99160415, y: 0.8924446}
-  m_AnchoredPosition: {x: -0.44995117, y: -0.009002686}
+  m_AnchoredPosition: {x: -233.4, y: 7.100006}
   m_SizeDelta: {x: 0.4600067, y: -0.38259888}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7305670252917525438
@@ -772,8 +772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.6404792, y: 0.8924446}
   m_AnchorMax: {x: 0.992125, y: 0.97225934}
-  m_AnchoredPosition: {x: -0.17004395, y: -0.6913147}
-  m_SizeDelta: {x: -2.1, y: -1.3826}
+  m_AnchoredPosition: {x: -137.73495, y: 6.417694}
+  m_SizeDelta: {x: -192.87009, y: -1.3826}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8862284372875724458
 CanvasRenderer:
@@ -910,7 +910,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7396042, y: 0.814}
   m_AnchorMax: {x: 0.992125, y: 0.8924446}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -232.94995, y: 7.109009}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9090101275874460993
@@ -1949,7 +1949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7396042, y: 0.74655557}
   m_AnchorMax: {x: 0.99160415, y: 0.814}
-  m_AnchoredPosition: {x: -0.9000244, y: 1.0191956}
+  m_AnchoredPosition: {x: -243.1, y: 8.128204}
   m_SizeDelta: {x: 1.0080566, y: -1.5932007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6155482607350920596
@@ -2570,7 +2570,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0673dff36238e504bb232d6b63cb13cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 400
   gamepadSensitivity: 8
   invertY: 0
   minVerticalAngle: -85
@@ -2655,7 +2654,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
+  m_AnchoredPosition: {x: -4.9999847, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7436670484783076426
@@ -3235,6 +3234,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas cross
       objectReference: {fileID: 0}
+    - target: {fileID: 1128106742991692403, guid: f16d386bc6d12344f9b0a023993103e2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1843350645564629594, guid: f16d386bc6d12344f9b0a023993103e2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3672,6 +3675,10 @@ PrefabInstance:
     - target: {fileID: 3439509328080808571, guid: 8728a4c406b65ec44b6fd9814357b4a8, type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3439509328080808571, guid: 8728a4c406b65ec44b6fd9814357b4a8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
