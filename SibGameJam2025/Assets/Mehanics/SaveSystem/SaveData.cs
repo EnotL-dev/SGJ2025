@@ -76,7 +76,7 @@ namespace SaveSystem
         public static int currentSouls = 0;
         public static int maxSouls = 0;
 
-        private static DataParams MainData = new DataParams();
+        public static DataParams MainData = new DataParams();
         public static DataParams TempData = new DataParams();
 
         public static void Load()
