@@ -92,6 +92,7 @@ public class Health : MonoBehaviour
             playerStats.ChangeHp(_current.Value, _max.Value);
     }
 
+#if UNITY_EDITOR
     public void Update()
     {
         if (Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -99,4 +100,5 @@ public class Health : MonoBehaviour
         if (Input.GetKey(KeyCode.KeypadMinus))
             Reduce(1);
     }
+#endif
 }

@@ -48,14 +48,17 @@ namespace EnemySystem.Boss
         private IEnumerator SelectAttack()
         {
             yield return new WaitForSeconds(_config.TimeBeforeAttack);
-            Debug.Log("Boss start Attack");
+           // Debug.Log("Boss start Attack");
             if (_attackCount > 3 && _states.CountUnitsToSpawn <= 0)
                 _stateSwitcher.SwitchState<Summon>();
-            switch (Random.Range(0, _attacksCount))
+            else
             {
-                case 0:
-                    _stateSwitcher.SwitchState<AttackExplosionOnPlayer>();
-                    break;
+                switch (Random.Range(0, _attacksCount))
+                {
+                    case 0:
+                        _stateSwitcher.SwitchState<AttackExplosionOnPlayer>();
+                        break;
+                }
             }
             _attackCount++;
         }

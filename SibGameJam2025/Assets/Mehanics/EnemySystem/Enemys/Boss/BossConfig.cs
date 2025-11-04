@@ -13,6 +13,8 @@ namespace EnemySystem.Boss
 
         public AttackExplosionOnPlayerConst AttackExplosionOnPlayer => _attackExplosionOnPlayer;
         [SerializeField] private AttackExplosionOnPlayerConst _attackExplosionOnPlayer = new();
+        public SummonConst Summon => _summon;
+        [SerializeField] private SummonConst _summon = new();
 
         [Serializable]
         public class AttackLungeConst
@@ -47,6 +49,17 @@ namespace EnemySystem.Boss
 
             [SerializeField] private float _endOfAttackAnimationTime = 3f;
 
+        }
+
+        [Serializable]
+        public class SummonConst
+        {
+            public float TimeBeforeSummon => _timeBeforeSummon;
+
+            [SerializeField] private float _timeBeforeSummon = 1f;
+            public float TimeBetweeenSummon => _timeBetweeenSummon;
+
+            [SerializeField] private float _timeBetweeenSummon = 0.5f;
         }
     }
 }
