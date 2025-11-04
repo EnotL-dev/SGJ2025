@@ -17,7 +17,7 @@ namespace SaveSystem
                     get => _lv;
                 }
 
-                private int _maxHp = 30;
+                private int _maxHp = 3000;
                 public int maxHp
                 {
                     get => _maxHp;
