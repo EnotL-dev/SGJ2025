@@ -979,10 +979,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7956477240996061271, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
-      propertyPath: field of view
-      value: 62.1
-      objectReference: {fileID: 0}
     - target: {fileID: 8926006386886770822, guid: 4e208028a2a24844c9edf5de9b8b4be0, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

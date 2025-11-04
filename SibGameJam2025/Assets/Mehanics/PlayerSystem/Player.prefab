@@ -3318,14 +3318,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4094545117736838016, guid: f16d386bc6d12344f9b0a023993103e2, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4094545117736838016, guid: f16d386bc6d12344f9b0a023993103e2, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 5551579871377925705, guid: f16d386bc6d12344f9b0a023993103e2, type: 3}
       propertyPath: _health
       value: 
