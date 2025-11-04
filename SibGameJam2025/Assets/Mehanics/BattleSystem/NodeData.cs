@@ -45,7 +45,7 @@ namespace BattleSystem
 
         public Node GetRandomNodeByWeightScene()
         {
-            int currentSceneIndex = SaveData.TempData.playerParams.lv; //SceneManager.GetActiveScene().buildIndex;
+            int currentLv = SaveData.TempData.playerParams.lv; //SceneManager.GetActiveScene().buildIndex;
 
             List<Node> playerNowNodes = new List<Node>();
             playerNowNodes.Add(SaveData.TempData.nodeGraph.summon);
@@ -78,7 +78,7 @@ namespace BattleSystem
 
             for (int i = allNodes.Count - 1; i >= 0; i--)
             {
-                if (allNodes[i].weight >= currentSceneIndex)
+                if (allNodes[i].weight > currentLv)
                 {
                     allNodes.RemoveAt(i);
                 }
