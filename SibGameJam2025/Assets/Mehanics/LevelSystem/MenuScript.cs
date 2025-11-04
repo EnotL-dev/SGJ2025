@@ -10,12 +10,19 @@ namespace LevelSystem
         {
             if(Input.GetKeyUp(KeyCode.Escape))
             {
-                if(Time.timeScale > 0)
+                if(Time.timeScale > 0.1)
                 {
-                    if(!canvas.gameObject.activeSelf)
-                        canvas.gameObject.SetActive(true);
-                    else
-                        canvas.gameObject.SetActive(false);
+                    Time.timeScale = 0;
+                    Cursor.visible = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    canvas.gameObject.SetActive(true);
+                }
+                else if (Time.timeScale == 0)
+                {
+                    Time.timeScale = 1;
+                    Cursor.visible = false;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    canvas.gameObject.SetActive(false);
                 }
             }
         }

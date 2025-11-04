@@ -1,5 +1,6 @@
 using PlayerSystem;
 using SaveSystem;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace BattleSystem
@@ -11,6 +12,9 @@ namespace BattleSystem
         [SerializeField] private int _coinsCountMin = 0;
         [SerializeField] private int _coinsCountMax = 0;
         [SerializeField] private Health _health;
+        [Space(5)]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private List<AudioClip> coinClips;
 
         private float spawnForce = 5f;
         private float radius = 0.3f;
@@ -52,8 +56,18 @@ namespace BattleSystem
             if (SaveData.TempData.nodeGraph.feature is GoldRush)
                 addGoldRush = 1;
 
+            MakeSound();
             SaveData.TempData.AddMoney(count * (3+addGoldRush));
             PlayerRefs.Instance.PlayerStastController.BalanceUpdate();
+        }
+
+        private void MakeSound()
+        {
+            if (!audioSource || coinClips.Count < 1)
+                return;
+
+            int rndClip = Random.Range(0, coinClips.Count);
+            audioSource.PlayOneShot(coinClips[rndClip]);
         }
     }
 }

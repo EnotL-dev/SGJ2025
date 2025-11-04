@@ -16,6 +16,9 @@ namespace PlayerSystem
 
         private void Update()
         {
+            if (Time.timeScale < 1)
+                return;
+
             Move();
         }
 

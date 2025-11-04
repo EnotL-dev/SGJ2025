@@ -29,6 +29,14 @@ namespace BattleSystem
         [SerializeField] private TextMeshProUGUI textBalance;
         [SerializeField] private TextMeshProUGUI textMainCost;
         [SerializeField] private TextMeshProUGUI textMainDamage;
+        [Space(5)]
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip clipCoinClick;
+        [SerializeField] private AudioClip clipOpenPanel;
+        [SerializeField] private AudioClip clipMakeSpell;
+        [SerializeField] private AudioClip clipDismiss;
+        [SerializeField] private AudioClip clipNoMoney;
+        [SerializeField] private AudioClip clipClosePanel;
 
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
 
@@ -36,6 +44,8 @@ namespace BattleSystem
         private Node newNode;
         public void InitUI(Node newNode, SpellCraft spellCraft)
         {
+            audioSource.PlayOneShot(clipOpenPanel);
+
             this.newNode = newNode;
             this.spellCraft = spellCraft;
             InitializeCards();
@@ -94,6 +104,8 @@ namespace BattleSystem
             List<Node> checkList = SaveData.TempData.nodeGraph.GetNodesInList();
             if(newNode.moneyCost <= SaveData.TempData.GetMoney() && !checkList.Contains(newNode))
             {
+                audioSource.PlayOneShot(clipMakeSpell);
+
                 newCard.cardObj.SetActive(false);
                 listCards[indexCard].textName.text = newNode.nameNode;
                 listCards[indexCard].textDescription.text = newNode.description;
@@ -109,20 +121,25 @@ namespace BattleSystem
             }
             else
             {
+                audioSource.PlayOneShot(clipNoMoney);
                 print("Íåò ÄÅÍÅÃ!");
             }
         }
 
         public void Dissmis()
         {
-            if(!buying)
+            if (!buying)
+            {
                 spellCraft.Dissmis();
+                audioSource.PlayOneShot(clipDismiss);
+            }
         }
 
         bool buying = false;
         private IEnumerator BalanceEncount()
         {
             buying = true;
+
             int count = newNode.moneyCost;
             int balanceInText = SaveData.TempData.GetMoney();
             float timeNext = 3/count;
@@ -131,9 +148,12 @@ namespace BattleSystem
                 count--;
                 balanceInText--;
                 textBalance.text = $"{balanceInText} ¤";
+
+                audioSource.PlayOneShot(clipCoinClick);
                 yield return new WaitForSeconds(timeNext);
             }
 
+            audioSource.PlayOneShot(clipClosePanel);
             spellCraft.MakeCraft();
             yield return null;
         }
