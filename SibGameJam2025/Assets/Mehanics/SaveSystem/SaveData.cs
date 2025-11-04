@@ -38,14 +38,14 @@ namespace SaveSystem
                 public void LvlUp()
                 {
                     _lv++;
-                    _maxHp += 8;
-                    _maxMp += 9;
+                    _maxHp += 15;
+                    _maxMp += 30;
                     _bonusDamage += 3;
                 }
             }
 
             public NodeGraph nodeGraph = new NodeGraph();
-            private int money = 1000;
+            private int money = 0;
             public PlayerParams playerParams = new PlayerParams();
 
             public int GetMoney()
