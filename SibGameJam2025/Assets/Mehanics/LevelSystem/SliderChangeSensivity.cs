@@ -10,8 +10,8 @@ public class SliderChangeSensivity : MonoBehaviour
         slider = GetComponent<Slider>();
     }
 
-    public void SetVolume()
+    public void SetSensivity()
     {
-        
+        SaveData.sensivity = slider.value;
     }
 }

@@ -1,10 +1,11 @@
+using SaveSystem;
 using UnityEngine;
 
 namespace PlayerSystem
 {
     public class CameraRotation : MonoBehaviour
     {
-        public float mouseSensitivity = 100f;
+        public float mouseSensitivity => SaveData.sensivity;
         public float gamepadSensitivity = 2f;
         public bool invertY = false;
         public float minVerticalAngle = -90f;
@@ -25,11 +26,6 @@ namespace PlayerSystem
                 return;
 
             HandleMouseLook();
-        }
-
-        public void ChangeSensivity(float newSens)
-        {
-            mouseSensitivity = newSens;
         }
 
         void HandleMouseLook()
