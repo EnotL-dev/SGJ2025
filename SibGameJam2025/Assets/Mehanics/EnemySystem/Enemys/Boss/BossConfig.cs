@@ -11,6 +11,9 @@ namespace EnemySystem.Boss
         [SerializeField] private float _timeBeforeAttack = 1f;
         [SerializeField] private AttackLungeConst _attackLunge = new();
 
+        public AttackExplosionOnPlayerConst AttackExplosionOnPlayer => _attackExplosionOnPlayer;
+        [SerializeField] private AttackExplosionOnPlayerConst _attackExplosionOnPlayer = new();
+
         [Serializable]
         public class AttackLungeConst
         {
@@ -30,6 +33,17 @@ namespace EnemySystem.Boss
             public int Damage => _damage;
 
             [SerializeField] private int _damage;
+        }
+
+        [Serializable]
+        public class AttackExplosionOnPlayerConst
+        {
+            public float TimeToExplosion => _timeToExplosion;
+
+            [SerializeField] private float _timeToExplosion = 3f;
+            public Transform Explosion => _explosion;
+
+            [SerializeField] private Transform _explosion;
         }
     }
 }

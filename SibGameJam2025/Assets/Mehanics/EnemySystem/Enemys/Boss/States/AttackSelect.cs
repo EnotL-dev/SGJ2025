@@ -44,10 +44,11 @@ namespace EnemySystem.Boss
         private IEnumerator SelectAttack()
         {
             yield return new WaitForSeconds(_config.TimeBeforeAttack);
+            Debug.Log("Boss start Attack");
             switch (Random.Range(0, _attacksCount))
             {
                 case 0:
-                    _stateSwitcher.SwitchState<AttackLunge>();
+                    _stateSwitcher.SwitchState<AttackExplosionOnPlayer>();
                     break;
             }
         }
