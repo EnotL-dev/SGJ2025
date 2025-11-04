@@ -32,9 +32,21 @@ namespace LevelSystem
             PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
         }
 
+        public void Death()
+        {
+            MusicManager musicManager = FindAnyObjectByType<MusicManager>();
+            if (musicManager)
+            {
+                musicManager.MuffleMusic();
+                musicManager.MuffleSound();
+            }
+
+            transitionScript.StartTransit(true); //true = для смерти
+        }
+
         public void LoadNextLevel()
         {
-            transitionScript.StartTransit();
+            transitionScript.StartTransit(false);
         }
 
         private void UpdateUIFountain(int min, int max)

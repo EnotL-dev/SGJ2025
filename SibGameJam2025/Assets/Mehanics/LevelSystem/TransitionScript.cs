@@ -9,19 +9,19 @@ namespace LevelSystem
     {
         public CanvasGroup canvasGroupTransition;
 
-        public void Start()
+        public void Awake()
         {
             Debug.Log("Начат переход яркости");
             SaveData.Load();
             StartCoroutine(FadeOutCoroutine(1f));
         }
 
-        public void StartTransit()
+        public void StartTransit(bool death)
         {
-            StartCoroutine(FadeInCoroutine(1f));
+            StartCoroutine(FadeInCoroutine(1f, death));
         }
 
-        private IEnumerator FadeInCoroutine(float duration)
+        private IEnumerator FadeInCoroutine(float duration, bool death)
         {
             canvasGroupTransition.gameObject.SetActive(true);
 
@@ -36,13 +36,20 @@ namespace LevelSystem
             }
 
             canvasGroupTransition.alpha = 1f;
-            LoadLevel();
+            LoadLevel(death);
         }
 
-        private void LoadLevel()
+        private void LoadLevel(bool death)
         {
-            SaveData.Save();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
+            if (!death)
+            {
+                SaveData.Save();
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
+            else
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
         }
 
         private IEnumerator FadeOutCoroutine(float duration)

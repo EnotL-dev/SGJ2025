@@ -8,6 +8,9 @@ namespace BattleSystem
         [SerializeField] private SpellBullet newPrefabSpellBullet;
         public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
 
+        [SerializeField] private AudioClip _spawnSound;
+        public override AudioClip spawnSound { get => _spawnSound; }
+
         public override string nameNode { get => "Волна"; }
         public override string description { get => $"Задает форму заклинанию в виде <b>волны</<b>>. Назначает урон <color=red>{damage + 1} + Lv*3</color>"; }
         public override int manaCost { get => 2; }

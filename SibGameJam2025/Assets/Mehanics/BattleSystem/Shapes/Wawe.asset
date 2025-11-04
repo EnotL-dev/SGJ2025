@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Wawe
   m_EditorClassIdentifier: 
   newPrefabSpellBullet: {fileID: 7597641698764003934, guid: 37b2bb296812330498da2e62ff6adeb9, type: 3}
+  _spawnSound: {fileID: 8300000, guid: 3ccc9bb0050bd404aaf50706e50f8192, type: 3}

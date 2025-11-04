@@ -7,6 +7,10 @@ namespace BattleSystem
     {
         [SerializeField] private SpellBullet newPrefabSpellBullet;
         public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
+
+        [SerializeField] private AudioClip _spawnSound;
+        public override AudioClip spawnSound { get => _spawnSound; }
+
         public override string nameNode { get => "Шар"; }
         public override string description { get => $"Задает форму заклинанию в виде <b>шара</b>. Назначает урон <color=red>{damage + 1} + Lv*3</color>"; }
         public override int manaCost { get => 1; }
