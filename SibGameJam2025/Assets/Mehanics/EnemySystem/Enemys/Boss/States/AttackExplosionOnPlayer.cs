@@ -33,6 +33,7 @@ namespace EnemySystem.Boss
 
         public override void Start()
         {
+            _animator.ChooseAttack(0);
             _animator.SetAttack(true);
             _rotor.enabled = true;
             _coroutine = _animator.StartCoroutine(DoAttack());

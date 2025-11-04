@@ -14,7 +14,7 @@ namespace EnemySystem.Boss
         private List<Transform> _spawnPoints = new();
         private List<Transform> _enemies = new();
         private BossStates _states;
-       // private Coroutine _coroutine;
+        private Coroutine _coroutine;
 
         public Summon(
             IStateSwitcher stateSwitcher,
@@ -40,15 +40,17 @@ namespace EnemySystem.Boss
 
         public override void Start()
         {
+            _animator.ChooseAttack(1);
             _animator.SetAttack(true);
             _rotor.enabled = true;
-            DoSpawn();
+            _coroutine = _animator.StartCoroutine(Spawn());
         }
 
         public override void Stop()
         {
             _animator.SetAttack(false);
             _rotor.enabled = false;
+            _animator.StopCoroutine(_coroutine);
         }
 
         public override void Update()
@@ -56,25 +58,31 @@ namespace EnemySystem.Boss
 
         }
 
-        private void DoSpawn()
+        private IEnumerator Spawn()
         {
+            yield return new WaitForSeconds(_config.Summon.TimeBeforeSummon);
             if (_spawnPoints.Count < _enemies.Count)
             {
                 Debug.LogError("Boss error _spawnPoints.Count != _enemies.Count");
-                return;
             }
-            for (var i = 0; i < _enemies.Count; i++)
+            else
             {
-              var enemy = GameObject.Instantiate(_enemies[i], _spawnPoints[i].transform.position, Quaternion.identity);
-                if (enemy.TryGetComponent(out Health health)) {
-                    health.IsOver += _states.UnitIsKilled;
-                }
-                if (enemy.TryGetComponent(out StateBehaviour states))
+                for (var i = 0; i < _enemies.Count; i++)
                 {
-                    states.MaxAgro = true;
+                    var enemy = GameObject.Instantiate(_enemies[i], _spawnPoints[i].transform.position, Quaternion.identity);
+                    if (enemy.TryGetComponent(out Health health))
+                    {
+                        health.IsOver += _states.UnitIsKilled;
+                    }
+                    if (enemy.TryGetComponent(out StateBehaviour states))
+                    {
+                        states.MaxAgro = true;
+                    }
+                    yield return new WaitForSeconds(_config.Summon.TimeBetweeenSummon);
                 }
+                _states.SetUnitToSpawn(_enemies.Count);
             }
-            _states.SetUnitToSpawn(_enemies.Count);
+            _stateSwitcher.SwitchState<AttackSelect>();
         }
     }
 }
