@@ -10,6 +10,7 @@ namespace BattleSystem
     {
         public Action OnHit { get; set; }
         [SerializeField] private Transform spawnSpellPoint;
+        [SerializeField] private AudioSource audioSpawnSource;
         [SerializeField] private Animator _stickAnimator;
         private NodeGraph nodeGraph => SaveData.TempData.nodeGraph;
         private float delaySpell = 0.5f;
@@ -29,7 +30,7 @@ namespace BattleSystem
                         gameObject.GetComponent<Mana>().Reduce(nodeGraph.GetManaCost());
                         _stickAnimator.SetTrigger("Attack");
                         SummonSpell();
-                        timerDelay = delaySpell;
+                        SetNewDelay();
                     }
                 }
             }
@@ -39,9 +40,20 @@ namespace BattleSystem
             }
         }
 
+        private void SetNewDelay()
+        {
+            if (nodeGraph.impact is not Machinegun)
+                timerDelay = delaySpell;
+            else
+                timerDelay = delaySpell/2;
+        }
+
         private void SummonSpell()
         {
             List<Node> nodes = nodeGraph.GetNodesInList();
+
+            if(audioSpawnSource && nodes[1] is Shape shapeNode)
+                audioSpawnSource.PlayOneShot(shapeNode.spawnSound);
 
             bool triple = false;
             SpellBullet prefabSpellBullet = null;

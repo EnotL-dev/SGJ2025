@@ -13,6 +13,8 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
         private WellScript fountainScript;
+        [SerializeField] private GameObject soulPrefab;
+        [Space(5)]
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
         [Space(5)]
@@ -32,9 +34,21 @@ namespace LevelSystem
             PlayerRefs.Instance.PlayerStastController.SoulsUpdate();
         }
 
+        public void Death()
+        {
+            MusicManager musicManager = FindAnyObjectByType<MusicManager>();
+            if (musicManager)
+            {
+                musicManager.MuffleMusic();
+                musicManager.MuffleSound();
+            }
+
+            transitionScript.StartTransit(true); //true = для смерти
+        }
+
         public void LoadNextLevel()
         {
-            transitionScript.StartTransit();
+            transitionScript.StartTransit(false);
         }
 
         private void UpdateUIFountain(int min, int max)
@@ -48,6 +62,9 @@ namespace LevelSystem
         {
             SaveData.currentSouls++;
             itemDropper.Drop(fountainScript.transform.position);
+            SoulBehaviour soul = Instantiate(soulPrefab, itemDropper.gameObject.transform).GetComponent<SoulBehaviour>();
+            soul.transform.parent = null;
+            soul.Init(fountainScript.transform);
 
             if (SaveData.currentSouls == SaveData.maxSouls)
                 LevelComplete();

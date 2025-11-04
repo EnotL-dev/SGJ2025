@@ -11,13 +11,13 @@ namespace SaveSystem
         {
             public class PlayerParams
             {
-                private int _lv = 1;
+                private int _lv = 6;
                 public int lv
                 {
                     get => _lv;
                 }
 
-                private int _maxHp = 30;
+                private int _maxHp = 3000;
                 public int maxHp
                 {
                     get => _maxHp;
