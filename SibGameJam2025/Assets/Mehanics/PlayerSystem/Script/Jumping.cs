@@ -1,4 +1,5 @@
 using ReactiveVariables;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ namespace PlayerSystem
 {
     public class Jumping : MonoBehaviour
     {
+        public event Action GroundedFromHeight;
         public ReactiveProperty<bool> IsGrounded = new(true);
         [SerializeField] private PlayerConfig _playerConfig;
         [SerializeField] private CharacterController _characterController;
@@ -116,8 +118,11 @@ namespace PlayerSystem
                 if (_secondJumpTimer != null)
                     StopCoroutine(_secondJumpTimer);
 
-                if (Mathf.Abs(_startJumpHight - _characterController.transform.position.y) > 1.5f)
+                if (_startJumpHight - _characterController.transform.position.y > 1f)
+                {
+                    GroundedFromHeight?.Invoke();
                     _audioLanding.Play();
+                }
             }
         }
     }
