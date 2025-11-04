@@ -8,9 +8,10 @@ public class PrologWords : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out Bullet b))
-            return;
-        _remove.Play();
-        _collider.enabled = false;
+        if (other.TryGetComponent(out CharacterController b))
+        {
+            _remove.Play();
+            _collider.enabled = false;
+        }
     }
 }

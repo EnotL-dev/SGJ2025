@@ -264,7 +264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _remove: {fileID: 9079281571182502057}
-  _collider: {fileID: 0}
+  _collider: {fileID: 376928230750601298}
 --- !u!65 &376928230750601298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -284,8 +284,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 5, y: 2.0307662, z: 1}
-  m_Center: {x: 0, y: 0.9904274, z: 0}
+  m_Size: {x: 5, y: 2.0307662, z: 2.4665241}
+  m_Center: {x: 0, y: 0.9904274, z: 0.73326206}
 --- !u!54 &2235047111525617586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -425,10 +425,9 @@ Animation:
   m_GameObject: {fileID: 5739935656682698470}
   m_Enabled: 1
   serializedVersion: 4
-  m_Animation: {fileID: 7400000, guid: fbfa55cb11fcf00459fd47c436aeee9f, type: 2}
+  m_Animation: {fileID: 7400000, guid: 99cbd8a3b7c1ff243841bc356ad15b07, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 99cbd8a3b7c1ff243841bc356ad15b07, type: 2}
-  - {fileID: 7400000, guid: fbfa55cb11fcf00459fd47c436aeee9f, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
