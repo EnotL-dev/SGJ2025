@@ -7,6 +7,8 @@ namespace BattleSystem
     {
         [SerializeField] private SpellBullet newPrefabSpellBullet;
         public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
+        [SerializeField] private GameObject _prefabDestroyEffect;
+        public override GameObject prefabDestroyEffect { get => _prefabDestroyEffect; }
 
         [SerializeField] private AudioClip _spawnSound;
         public override AudioClip spawnSound { get => _spawnSound; }

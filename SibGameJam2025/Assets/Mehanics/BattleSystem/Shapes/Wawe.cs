@@ -7,6 +7,8 @@ namespace BattleSystem
     {
         [SerializeField] private SpellBullet newPrefabSpellBullet;
         public override SpellBullet prefabSpellBullet { get => newPrefabSpellBullet; }
+        [SerializeField] private GameObject _prefabDestroyEffect;
+        public override GameObject prefabDestroyEffect { get => _prefabDestroyEffect; }
 
         [SerializeField] private AudioClip _spawnSound;
         public override AudioClip spawnSound { get => _spawnSound; }
@@ -17,8 +19,8 @@ namespace BattleSystem
         public override int weight { get => 1; }
         public override int moneyCost { get => 55; }
 
-        public override int damage { get => 3; }
-        public override int speed { get => 25; }
-        public override int distance { get => 25; }
+        public override int damage { get => 2; }
+        public override int speed { get => 20; }
+        public override int distance { get => 22; }
     }
 }

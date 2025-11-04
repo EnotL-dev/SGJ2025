@@ -13,6 +13,14 @@ namespace BattleSystem
             set => _prefabSpellBullet = value;
         }
 
+        private GameObject _prefabDestroyEffect;
+
+        public virtual GameObject prefabDestroyEffect
+        {
+            get => _prefabDestroyEffect;
+            set => _prefabDestroyEffect = value;
+        }
+
         private AudioClip _spawnSound;
 
         public virtual AudioClip spawnSound

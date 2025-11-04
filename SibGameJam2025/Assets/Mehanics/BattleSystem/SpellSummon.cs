@@ -147,10 +147,16 @@ namespace BattleSystem
 
             if (bulletObj)
             {
-                if (nodes[1] is not Wawe)
-                    Destroy(bulletObj);
-                else
-                    bulletObj.GetComponent<DestroyMyselfByTimer>().enabled = true;
+                if (nodes[1] is Shape shapeNode)
+                {
+                    GameObject tempObj = Instantiate(shapeNode.prefabDestroyEffect, bulletObj.transform);
+                    tempObj.transform.parent = null;
+
+                    if (shapeNode is not Wawe)
+                        Destroy(bulletObj);
+                    else
+                        bulletObj.GetComponent<DestroyMyselfByTimer>().enabled = true;
+                }
             }
         }
     }

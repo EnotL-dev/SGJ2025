@@ -14,6 +14,8 @@ namespace LevelSystem
     {
         private WellScript fountainScript;
         [SerializeField] private GameObject soulPrefab;
+        private AudioSource audioSource;
+        [SerializeField] private AudioClip clipAddSoul;
         [Space(5)]
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
@@ -27,6 +29,7 @@ namespace LevelSystem
         public void InitializeLevel(int maxSouls) //Инициализируем на старте
         {
             fountainScript = FindFirstObjectByType<WellScript>();
+            audioSource = fountainScript.GetComponentInChildren<AudioSource>();
             UpdateUIFountain(0, maxSouls);
 
             SaveData.currentSouls = 0;
@@ -61,6 +64,8 @@ namespace LevelSystem
         public void SoulAdd(ItemDropper itemDropper)
         {
             SaveData.currentSouls++;
+            if (audioSource)
+                audioSource.PlayOneShot(clipAddSoul);
 
             itemDropper.Drop(fountainScript.transform.position);
             SoulBehaviour soul = Instantiate(soulPrefab, itemDropper.gameObject.transform).GetComponent<SoulBehaviour>();
