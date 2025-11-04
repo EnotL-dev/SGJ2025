@@ -9,14 +9,16 @@ namespace EnemySystem.Boss
         [SerializeField] private float _distanceDetect;
         [SerializeField] private RotateToPlayer _rotor;
         [SerializeField] private BossConfig _config;
+        [SerializeField] private Transform _explosionZone;
         private const int _attackCount = 1;
 
         protected override void InitializeStates()
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _animator, _distanceDetect, _rotor));
             _states.Add(new AttackLunge(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _distanceDetect, _rotor));
+            _states.Add(new AttackExplosionOnPlayer(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _rotor, _explosionZone));
             _states.Add(new AttackSelect(this, _animator, _rotor, _attackCount, _config));
-            
+            SwitchState<Waiting>();
         }
 
         protected override void OnAwake()
