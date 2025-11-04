@@ -61,5 +61,15 @@ namespace EnemySystem.Boss
 
             [SerializeField] private float _timeBetweeenSummon = 0.5f;
         }
+
+        [Serializable]
+        public class WaveConst
+        {
+            public float TimeBeforeAttack => _timeBeforeAttack;
+
+            [SerializeField] private float _timeBeforeAttack = 1f;
+            public float Speed => _speed;
+            [SerializeField] private float _speed = 1f;
+        }
     }
 }

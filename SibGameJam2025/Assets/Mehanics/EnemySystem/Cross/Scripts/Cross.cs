@@ -47,14 +47,14 @@ namespace EnemySystem
         private void ShowHitColor()
         {
             _crossFrame.gameObject.SetActive(true);
-            _cross.color = _hitColor;
+            //_cross.color = _hitColor;
             _crossFrame.color = _hitColor;
         }
 
         private void HideHitColor()
         {
             _crossFrame.gameObject.SetActive(false);
-            _cross.color = _normalColor;
+         //   _cross.color = _normalColor;
             _crossFrame.color = _normalColor;
         }
     }
