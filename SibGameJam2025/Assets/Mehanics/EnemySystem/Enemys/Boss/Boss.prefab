@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerStats: {fileID: 0}
-  _maxHealthValue: 1000
+  _maxHealthValue: 500
 --- !u!1 &1364039591364624853
 GameObject:
   m_ObjectHideFlags: 0

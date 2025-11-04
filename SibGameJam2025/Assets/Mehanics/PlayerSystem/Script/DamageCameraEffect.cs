@@ -24,6 +24,8 @@ namespace PlayerSystem
 
         private void DoEffect(int old, int newValue)
         {
+            if (newValue > old)
+                return;
             if (_health._current.Value <= 0)
             {
                 Color col = Color.white;
