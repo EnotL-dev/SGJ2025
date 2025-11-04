@@ -51,14 +51,6 @@ namespace BattleSystem
             InitializeCards();
         }
 
-        private void Update()
-        {
-            if(Input.GetKeyUp(KeyCode.Escape))
-            {
-                Dissmis();
-            }
-        }
-
         private void InitializeCards()
         {
             int i = 0;
