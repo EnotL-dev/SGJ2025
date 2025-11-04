@@ -39,6 +39,9 @@ namespace PlayerSystem
 
         private void StartJump()
         {
+            if (Time.timeScale < 1)
+                return;
+
             if ((IsGrounded.Value || _canSecondJump) && CanJump() && Input.GetKeyDown(KeyCode.Space) && !_secondJump)
             {
                 if (_canSecondJump)

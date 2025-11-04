@@ -30,6 +30,9 @@ public class SliderChangeVolume : MonoBehaviour
         float value = slider.value;
         float dbVolume = Mathf.Log10(value) * 20;
 
+        if (slider.value < 0.01)
+            dbVolume = -80;
+
         if (!SaveData.Volumes.ContainsKey(volumeParameter))
         {
             SaveData.Volumes.Add(volumeParameter, dbVolume);
@@ -39,8 +42,11 @@ public class SliderChangeVolume : MonoBehaviour
             SaveData.Volumes[volumeParameter] = dbVolume;
         }
 
-        if (!source.isPlaying)
-            source.PlayOneShot(clip);
+        if (source)
+        {
+            if (!source.isPlaying)
+                source.PlayOneShot(clip);
+        }
 
         mixer.SetFloat(volumeParameter, dbVolume);
     }
