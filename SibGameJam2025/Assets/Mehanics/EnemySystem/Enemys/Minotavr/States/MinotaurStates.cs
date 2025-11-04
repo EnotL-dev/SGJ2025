@@ -1,4 +1,5 @@
 using PlayerSystem;
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -6,6 +7,8 @@ namespace EnemySystem.Minotaur
 {
     public class MinotaurStates : StateBehaviour
     {
+        public Action Kick;
+
         [SerializeField] private MinotaurConfig _config;
         [SerializeField] private AnimatorController _animator;
         [SerializeField] private NavMeshAgent _agent;
@@ -23,7 +26,7 @@ namespace EnemySystem.Minotaur
         {
             _states.Add(new Waiting(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, (MaxAgro ? 30000 : _distanceDetect)));
             _states.Add(new Death(this, _animator, _destroyTimer, _timeBeforeDestroyAnimation, transform, _destroyAnimation));
-            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _agent, _attackSound));
+            _states.Add(new Attack(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, PlayerRefs.Instance.Health, _agent, _attackSound, this));
             _states.Add(new Moving(this, transform, PlayerRefs.Instance.CharacterController, _config, _animator, _agent, 30000, _walkingSound));
             SwitchState<Waiting>();
         }
