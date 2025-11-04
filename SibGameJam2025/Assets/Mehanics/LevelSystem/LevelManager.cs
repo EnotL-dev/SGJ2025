@@ -13,6 +13,7 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
         private WellScript fountainScript;
+        [SerializeField] private bool ignoreSoulLimit = false;
         [SerializeField] private GameObject soulPrefab;
         private AudioSource audioSource;
         [SerializeField] private AudioClip clipAddSoul;
@@ -72,7 +73,7 @@ namespace LevelSystem
             soul.transform.parent = null;
             soul.Init(fountainScript.transform);
 
-            if (SaveData.currentSouls == SaveData.maxSouls)
+            if (SaveData.currentSouls == SaveData.maxSouls && !ignoreSoulLimit)
                 LevelComplete();
 
             UpdateUIFountain(SaveData.currentSouls, SaveData.maxSouls);
