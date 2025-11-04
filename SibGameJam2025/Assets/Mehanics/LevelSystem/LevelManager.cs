@@ -13,6 +13,8 @@ namespace LevelSystem
     public class LevelManager : MonoBehaviour
     {
         private WellScript fountainScript;
+        [SerializeField] private GameObject soulPrefab;
+        [Space(5)]
         [SerializeField] private CanvasGroup hintGroup;
         [SerializeField] private TextMeshProUGUI textHint;
         [Space(5)]
@@ -59,7 +61,11 @@ namespace LevelSystem
         public void SoulAdd(ItemDropper itemDropper)
         {
             SaveData.currentSouls++;
+
             itemDropper.Drop(fountainScript.transform.position);
+            SoulBehaviour soul = Instantiate(soulPrefab, itemDropper.gameObject.transform).GetComponent<SoulBehaviour>();
+            soul.transform.parent = null;
+            soul.Init(fountainScript.transform);
 
             if (SaveData.currentSouls == SaveData.maxSouls)
                 LevelComplete();

@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 870217902738992752}
   - component: {fileID: 82787387243932378}
   - component: {fileID: 5268852249339176712}
+  - component: {fileID: 7966036725965626490}
   m_Layer: 10
   m_Name: Wawe
   m_TagString: Untagged
@@ -4959,6 +4960,19 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!114 &7966036725965626490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148795206059370246}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88877f555076c534685a8a7ac733106d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeTimer: 1
 --- !u!1 &3953006209718621336
 GameObject:
   m_ObjectHideFlags: 0
@@ -5061,7 +5075,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2

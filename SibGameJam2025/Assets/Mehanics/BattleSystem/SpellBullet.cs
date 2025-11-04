@@ -77,10 +77,12 @@ namespace BattleSystem
                 if (other.gameObject.TryGetComponent(out Health health) && gameObject.layer != LayerMask.NameToLayer("Player"))
                 {
                     int trueDamage = damage; //урон
-                    if (health._current.Value < damage) //Это значит что урон убьет противника
+                    if (health._current.Value <= damage) //Это значит что урон убьет противника
                     {
                         trueDamage = health._current.Value;
-                        PlayerRefs.Instance.levelManager.SoulAdd(other.gameObject.GetComponent<ItemDropper>());
+
+                        if(other.gameObject.GetComponent<ItemDropper>())
+                            PlayerRefs.Instance.levelManager.SoulAdd(other.gameObject.GetComponent<ItemDropper>());
                     }
 
                     health.Reduce(damage);
