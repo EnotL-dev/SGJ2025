@@ -27,13 +27,13 @@ namespace BattleSystem
         {
             int sum = nodeChange.manaCost;
 
-            if (nodeChange is Summon)
+            if (nodeChange is not Summon)
                 sum += summon.manaCost;
-            else if (nodeChange is Shape)
+            if (nodeChange is not Shape)
                 sum += shape.manaCost;
-            else if (nodeChange is Impact)
+            if (nodeChange is not Impact)
                 sum += impact.manaCost;
-            else if (nodeChange is Feature)
+            if (nodeChange is not Feature)
                 sum += feature.manaCost;
 
             return sum;

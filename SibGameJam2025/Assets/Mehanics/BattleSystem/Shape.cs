@@ -13,6 +13,14 @@ namespace BattleSystem
             set => _prefabSpellBullet = value;
         }
 
+        private AudioClip _spawnSound;
+
+        public virtual AudioClip spawnSound
+        {
+            get => _spawnSound;
+            set => _spawnSound = value;
+        }
+
         private int _damage = 5;
 
         public virtual int damage

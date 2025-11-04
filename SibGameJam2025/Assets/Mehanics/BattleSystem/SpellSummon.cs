@@ -29,7 +29,7 @@ namespace BattleSystem
                         gameObject.GetComponent<Mana>().Reduce(nodeGraph.GetManaCost());
                         _stickAnimator.SetTrigger("Attack");
                         SummonSpell();
-                        timerDelay = delaySpell;
+                        SetNewDelay();
                     }
                 }
             }
@@ -37,6 +37,14 @@ namespace BattleSystem
             {
                 timerDelay -= Time.deltaTime;
             }
+        }
+
+        private void SetNewDelay()
+        {
+            if (nodeGraph.impact is not Machinegun)
+                timerDelay = delaySpell;
+            else
+                timerDelay = delaySpell/2;
         }
 
         private void SummonSpell()
