@@ -9,19 +9,23 @@ namespace EnemySystem.Boss
         private RotateToPlayer _rotor;
         private int _attacksCount;
         private BossConfig _config;
+        private int _attackCount = 0;
+        private BossStates _states;
 
         public AttackSelect(
             IStateSwitcher stateSwitcher,
             AnimatorController animator,
             RotateToPlayer rotor,
             int attacsCount,
-            BossConfig config
+            BossConfig config,
+            BossStates states
             ) : base(stateSwitcher)
         {
             _animator = animator;
             _rotor = rotor;
             _attacksCount = attacsCount;
             _config = config;
+            _states = states;
         }
 
         public override void Start()
@@ -45,12 +49,15 @@ namespace EnemySystem.Boss
         {
             yield return new WaitForSeconds(_config.TimeBeforeAttack);
             Debug.Log("Boss start Attack");
+            if (_attackCount > 3 && _states.CountUnitsToSpawn <= 0)
+                _stateSwitcher.SwitchState<Summon>();
             switch (Random.Range(0, _attacksCount))
             {
                 case 0:
                     _stateSwitcher.SwitchState<AttackExplosionOnPlayer>();
                     break;
             }
+            _attackCount++;
         }
     }
 }

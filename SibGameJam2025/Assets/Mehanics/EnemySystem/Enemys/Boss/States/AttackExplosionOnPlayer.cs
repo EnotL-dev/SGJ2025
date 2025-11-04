@@ -10,7 +10,8 @@ namespace EnemySystem.Boss
         private AnimatorController _animator;
         private RotateToPlayer _rotor;
         private BossConfig _config;
-        private Transform _explosionZone;
+        private ExplosionTarget _explosionZone;
+        private Coroutine _coroutine;
 
         public AttackExplosionOnPlayer(
             IStateSwitcher stateSwitcher,
@@ -19,7 +20,7 @@ namespace EnemySystem.Boss
             BossConfig config,
             AnimatorController animator,
             RotateToPlayer rotor,
-            Transform explosionZone
+            ExplosionTarget explosionZone
             ) : base(stateSwitcher)
         {
             _body = body;
@@ -34,13 +35,16 @@ namespace EnemySystem.Boss
         {
             _animator.SetAttack(true);
             _rotor.enabled = true;
-            _animator.StartCoroutine(DoAttack());
+            _coroutine = _animator.StartCoroutine(DoAttack());
         }
 
         public override void Stop()
         {
             _animator.SetAttack(false);
             _rotor.enabled = false;
+            _explosionZone.gameObject.SetActive(false);
+            _explosionZone.DeactivateExplosion();
+            _animator.StopCoroutine(_coroutine);
         }
 
         public override void Update()
@@ -50,16 +54,24 @@ namespace EnemySystem.Boss
 
         private IEnumerator DoAttack()
         {
-            Debug.Log("ffff");
-            Vector3 playerPosition = _player.transform.position;
-            _explosionZone.transform.position = playerPosition;
-            _explosionZone.parent = null;
-            _explosionZone.gameObject.SetActive(true);
-            yield return new WaitForSeconds(_config.AttackExplosionOnPlayer.TimeToExplosion);
-            GameObject.Instantiate(_config.AttackExplosionOnPlayer.Explosion, playerPosition, Quaternion.identity);
-            _explosionZone.gameObject.SetActive(false);
-            _explosionZone.parent = _body;
-            _stateSwitcher.SwitchState<AttackSelect>();
+            if (_explosionZone != null)
+            {
+                Vector3 playerPosition = _player.transform.position;
+                playerPosition.y = _body.transform.position.y;
+                _explosionZone.transform.position = playerPosition;
+                _explosionZone.DeactivateExplosion();
+                _explosionZone.transform.parent = null;
+                _explosionZone.gameObject.SetActive(true);
+                yield return new WaitForSeconds(_config.AttackExplosionOnPlayer.EndOfAttackAnimationTime);
+                _animator.SetAttack(false);
+                _animator.SetIdle(true);
+                yield return new WaitForSeconds(_config.AttackExplosionOnPlayer.TimeToExplosion);
+                GameObject.Instantiate(_config.AttackExplosionOnPlayer.Explosion, playerPosition, Quaternion.identity);
+                _explosionZone.gameObject.SetActive(false);
+                _explosionZone.ActivateExplosion();
+                _explosionZone.transform.parent = _body;
+                _stateSwitcher.SwitchState<AttackSelect>();
+            }
         }
 
 

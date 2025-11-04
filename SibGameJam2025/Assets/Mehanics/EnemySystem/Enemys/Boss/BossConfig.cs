@@ -29,7 +29,6 @@ namespace EnemySystem.Boss
             public float DistanceToDamage => _distanceToDamage;
 
             [SerializeField] private float _distanceToDamage;
-
             public int Damage => _damage;
 
             [SerializeField] private int _damage;
@@ -44,6 +43,10 @@ namespace EnemySystem.Boss
             public Transform Explosion => _explosion;
 
             [SerializeField] private Transform _explosion;
+            public float EndOfAttackAnimationTime => _endOfAttackAnimationTime;
+
+            [SerializeField] private float _endOfAttackAnimationTime = 3f;
+
         }
     }
 }
