@@ -12,7 +12,15 @@ namespace LevelSystem
         public void Awake()
         {
             Debug.Log("Начат переход яркости");
-            SaveData.Load();
+            if (SaveData.TempData == SaveData.MainData)
+            {
+                SaveData.Save();
+            }
+            else
+            {
+                SaveData.Load();
+            }
+
             StartCoroutine(FadeOutCoroutine(1f));
         }
 
