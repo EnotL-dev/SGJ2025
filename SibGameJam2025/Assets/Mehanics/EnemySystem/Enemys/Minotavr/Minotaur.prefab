@@ -274,6 +274,7 @@ GameObject:
   - component: {fileID: 2681903747239757362}
   - component: {fileID: 6678121681757372297}
   - component: {fileID: 8030827773314884071}
+  - component: {fileID: 8266778333422668045}
   m_Layer: 8
   m_Name: Minotaur
   m_TagString: Untagged
@@ -301,6 +302,7 @@ Transform:
   - {fileID: 6407363965755126265}
   - {fileID: 3195566970447302964}
   - {fileID: 5983126254286012401}
+  - {fileID: 450958980630009001}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &3849827828786364371
@@ -433,6 +435,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _item: {fileID: 6878124202887625533, guid: 3ef31d394e390764f9b8204252cc8738, type: 3}
   _chance: 30
+--- !u!114 &8266778333422668045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7020877738935274359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b91e5e726df2f3448b807e103782349, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 6283771725779049972, guid: e3ed6887ac3673944a05f448e5e8d2ea, type: 3}
+  _states: {fileID: 6438507327817681464}
+  _point: {fileID: 450958980630009001}
 --- !u!1 &8255211283409522178
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,6 +579,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &8437065119182805405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 450958980630009001}
+  m_Layer: 8
+  m_Name: Boom spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &450958980630009001
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8437065119182805405}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.09}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1729130289847423088}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4909213156583642152
 PrefabInstance:
   m_ObjectHideFlags: 0

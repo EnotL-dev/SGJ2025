@@ -15,6 +15,7 @@ namespace EnemySystem.Minotaur
         private Coroutine _attackCoroutine;
         private NavMeshAgent _navMeshAgent;
         private AudioSource _attackSound;
+        private MinotaurStates _minotaurStates;
 
         public Attack(IStateSwitcher stateSwitcher,
             Transform body,
@@ -23,7 +24,8 @@ namespace EnemySystem.Minotaur
             AnimatorController animator,
             Health playerHealth,
             NavMeshAgent navMeshAgent,
-            AudioSource attackSound
+            AudioSource attackSound,
+            MinotaurStates minotaurStates
             ) : base(stateSwitcher)
         {
             _body = body;
@@ -33,6 +35,7 @@ namespace EnemySystem.Minotaur
             _playerHealth = playerHealth;
             _navMeshAgent = navMeshAgent;
             _attackSound = attackSound;
+            _minotaurStates = minotaurStates;
         }
 
         public override void Start()
@@ -66,6 +69,7 @@ namespace EnemySystem.Minotaur
                 _attackSound.Play();
                 yield return new WaitForSeconds(_config.AttackPrepareTime);
                 _playerHealth.Reduce(_config.Damage);
+                _minotaurStates.Kick?.Invoke();
                 yield return new WaitForSeconds(_config.AttackTime);
                 _animator.SetAttack(false);
                 yield return new WaitForSeconds(_config.AttackFrequency);
