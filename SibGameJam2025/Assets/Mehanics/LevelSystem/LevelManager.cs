@@ -64,7 +64,7 @@ namespace LevelSystem
             itemDropper.Drop(fountainScript.transform.position);
             SoulBehaviour soul = Instantiate(soulPrefab, itemDropper.gameObject.transform).GetComponent<SoulBehaviour>();
             soul.transform.parent = null;
-            soul.Init(itemDropper.gameObject.transform);
+            soul.Init(fountainScript.transform);
 
             if (SaveData.currentSouls == SaveData.maxSouls)
                 LevelComplete();

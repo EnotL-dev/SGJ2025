@@ -5,8 +5,8 @@ namespace LevelSystem
     public class SoulBehaviour : MonoBehaviour
     {
         private Transform wellTransform;
-        private float moveSpeed = 3f;
-        private float destroyDistance = 1f;
+        private float moveSpeed = 25f;
+        private float destroyDistance = 0.3f;
 
         public void Init(Transform wellTransform)
         {

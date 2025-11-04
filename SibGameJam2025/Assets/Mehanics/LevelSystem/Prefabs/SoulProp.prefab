@@ -155,7 +155,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 2
+  m_Time: 3
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -177,8 +177,8 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.51902205, g: 0.24256852, b: 0.745283, a: 1}
-      key1: {r: 0.6929927, g: 0.23887502, b: 0.8301887, a: 0.48235294}
+      key0: {r: 0.29123047, g: 0.07342471, b: 0.4716981, a: 1}
+      key1: {r: 0.6929927, g: 0.23887502, b: 0.8301887, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -229,5 +229,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edd35de7456fa74e8d3db1a22d8fc75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 8
-  destroyDistance: 1
