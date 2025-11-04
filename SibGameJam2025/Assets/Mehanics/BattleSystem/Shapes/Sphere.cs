@@ -19,6 +19,6 @@ namespace BattleSystem
 
         public override int damage { get => 5; }
         public override int speed { get => 30; }
-        public override int distance { get => 40; }
+        public override int distance { get => 35; }
     }
 }
