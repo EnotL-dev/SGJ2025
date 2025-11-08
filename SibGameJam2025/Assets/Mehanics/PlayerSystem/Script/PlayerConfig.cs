@@ -11,6 +11,7 @@ namespace PlayerSystem
         public float JumpHeight => _jumpHeight;
         public float JumpHeightSecond => _jumpHeightSecond;
         public float Gravity => _gravity;
+        public float GravityOnGround => _gravityOnGround;
         public float GroundCheckDistance => _groundCheckDistance;
         public LayerMask GroundCheckMask => _groundCheckMask;
         public float TimeToSecondJump => _timeToSecondJump;
@@ -21,6 +22,7 @@ namespace PlayerSystem
         [SerializeField] private float _jumpHeight = 5f;
         [SerializeField] private float _jumpHeightSecond = 5f;
         [SerializeField] private float _gravity = 1f;
+        [SerializeField] private float _gravityOnGround = -2f;
         [SerializeField] private float _groundCheckDistance = 1f;
         [SerializeField] private LayerMask _groundCheckMask;
         [SerializeField] private float _timeToSecondJump;

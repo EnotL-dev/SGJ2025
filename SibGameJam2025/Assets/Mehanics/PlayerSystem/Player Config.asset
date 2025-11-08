@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkingSpeed: 8
   _sprintSpeed: 12
-  _movingSpeedJump: 0.5
+  _movingSpeedJump: 20
   _jumpHeight: 1.5
   _jumpHeightSecond: 2
   _gravity: -19.62
-  _groundCheckDistance: 0.2
+  _gravityOnGround: -4
+  _groundCheckDistance: 0.4
   _groundCheckMask:
     serializedVersion: 2
     m_Bits: 311

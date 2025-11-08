@@ -73,7 +73,7 @@ namespace PlayerSystem
                 _playerConfig.GroundCheckDistance,
                 _playerConfig.GroundCheckMask);
             if (IsGrounded.Value && _velocity.y < 0)
-                _velocity.y = -2f;
+                _velocity.y = _playerConfig.GravityOnGround;
         }
 
         private void ApplyGravitation()
@@ -124,6 +124,7 @@ namespace PlayerSystem
                     _audioLanding.Play();
                 }
             }
+            Debug.Log($"IsGrounded = {IsGrounded.Value}");
         }
     }
 }
