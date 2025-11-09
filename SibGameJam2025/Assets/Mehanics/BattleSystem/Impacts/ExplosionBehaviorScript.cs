@@ -14,7 +14,7 @@ namespace BattleSystem
             {
                 if (other.gameObject.TryGetComponent(out Health health))
                 {
-                    health.Reduce(2*(SaveData.TempData.playerParams.bonusDamage-1));
+                    health.Reduce(SaveData.TempData.playerParams.bonusDamage);
                 }
             }
         }

@@ -4,94 +4,49 @@ using UnityEngine;
 
 namespace SaveSystem
 {
-    public static class SaveData
+
+    public class SaveData
     {
         public class DataParams
         {
             public class PlayerParams
             {
-                private int _lv;
+                private int _lv = 1;
                 public int lv
                 {
                     get => _lv;
-                    set => _lv = value;
                 }
 
-                private int _maxHp;
+                private int _maxHp = 25;
                 public int maxHp
                 {
                     get => _maxHp;
                 }
 
-                private int _maxMp;
+                private int _maxMp = 20;
                 public int maxMp
                 {
                     get => _maxMp;
                 }
 
-                private int _bonusDamage;
+                private int _bonusDamage = 2;
                 public int bonusDamage
                 {
                     get => _bonusDamage;
                 }
 
-                public PlayerParams()
-                {
-                    Load();
-                }
-
-                public PlayerParams(PlayerParams source)
-                {
-                    // Конструктор копирования
-                    _lv = source._lv;
-                    _maxHp = source._maxHp;
-                    _maxMp = source._maxMp;
-                    _bonusDamage = source._bonusDamage;
-                }
-
-                private void Load()
-                {
-                    _lv = PlayerPrefs.GetInt("Player_Lv", 1);
-                    _maxHp = PlayerPrefs.GetInt("Player_MaxHp", 25);
-                    _maxMp = PlayerPrefs.GetInt("Player_MaxMp", 25);
-                    _bonusDamage = PlayerPrefs.GetInt("Player_BonusDamage", 2);
-                }
-
-                public void Save()
-                {
-                    PlayerPrefs.SetInt("Player_Lv", _lv);
-                    PlayerPrefs.SetInt("Player_MaxHp", _maxHp);
-                    PlayerPrefs.SetInt("Player_MaxMp", _maxMp);
-                    PlayerPrefs.SetInt("Player_BonusDamage", _bonusDamage);
-                }
-
                 public void LvlUp()
                 {
                     _lv++;
-                    _maxHp += 13;
-                    _maxMp += 45;
+                    _maxHp += 18;
+                    _maxMp += 37;
                     _bonusDamage += 3;
                 }
             }
 
-            public NodeGraph nodeGraph;
-            private int money;
-            public PlayerParams playerParams;
-
-            public DataParams()
-            {
-                playerParams = new PlayerParams();
-                nodeGraph = new NodeGraph();
-                Load();
-            }
-
-            public DataParams(DataParams source)
-            {
-                // Конструктор копирования
-                playerParams = new PlayerParams(source.playerParams);
-                nodeGraph = source.nodeGraph;
-                money = source.money;
-            }
+            private int money = 0;
+            public NodeGraph nodeGraph = new NodeGraph();
+            public PlayerParams playerParams = new PlayerParams();
 
             public int GetMoney()
             {
@@ -114,115 +69,82 @@ namespace SaveSystem
                 money -= reduce;
             }
 
-            public void SetMoney(int newMoney)
+            public DataParams()
             {
-                money = newMoney;
+
             }
 
-            private void Load()
+            public DataParams(DataParams data, int lv)
             {
-                money = PlayerPrefs.GetInt("Money", 0);
-            }
+                money += data.money;
 
-            public void Save()
-            {
-                PlayerPrefs.SetInt("Money", money);
-                playerParams.Save();
-            }
-        }
-
-        // Статические свойства с сохранением в PlayerPrefs
-        public static Dictionary<string, float> Volumes
-        {
-            get
-            {
-                var volumes = new Dictionary<string, float>();
-                volumes["Master"] = PlayerPrefs.GetFloat("Volume_Master", 1f);
-                volumes["Music"] = PlayerPrefs.GetFloat("Volume_Music", 1f);
-                volumes["SFX"] = PlayerPrefs.GetFloat("Volume_SFX", 1f);
-                return volumes;
-            }
-            set
-            {
-                foreach (var kvp in value)
+                NodeData nodeData = Resources.Load<NodeData>("Nodes/NodeData");
+                foreach (Node node in data.nodeGraph.GetNodesInList())
                 {
-                    PlayerPrefs.SetFloat($"Volume_{kvp.Key}", kvp.Value);
+                    if(node is Summon)
+                    {
+                        if (node is Single)
+                            nodeGraph.summon = nodeData.summons[0];
+                        else if (node is Triple)
+                            nodeGraph.summon = nodeData.summons[1];
+                    }
+                    else if (node is Shape)
+                    {
+                        if (node is Sphere)
+                            nodeGraph.shape = nodeData.shapes[0];
+                        else if (node is Wawe)
+                            nodeGraph.shape = nodeData.shapes[1];
+                    }
+                    else if (node is Impact)
+                    {
+                        if (node is Explosion)
+                            nodeGraph.impact = nodeData.impacts[0];
+                        else if (node is Shrapnel)
+                            nodeGraph.impact = nodeData.impacts[1];
+                        else if (node is Machinegun)
+                            nodeGraph.impact = nodeData.impacts[2];
+                    }
+                    else if (node is Feature)
+                    {
+                        if (node is PaybackMana)
+                            nodeGraph.feature = nodeData.features[0];
+                        else if (node is Vampirism)
+                            nodeGraph.feature = nodeData.features[1];
+                        else if (node is GoldRush)
+                            nodeGraph.feature = nodeData.features[2];
+                    }
+                }
+
+                for(int i = 1; i < lv; i++)
+                {
+                    playerParams.LvlUp();
                 }
             }
         }
 
-        public static float sensivity
-        {
-            get => PlayerPrefs.GetFloat("Sensivity", 400f);
-            set => PlayerPrefs.SetFloat("Sensivity", value);
-        }
+        public static Dictionary<string, float> Volumes = new Dictionary<string, float>();
+        public static float sensivity = 400f;
 
-        public static int currentSouls
-        {
-            get => PlayerPrefs.GetInt("CurrentSouls", 0);
-            set => PlayerPrefs.SetInt("CurrentSouls", value);
-        }
+        public static int currentSouls = 0;
+        public static int maxSouls = 0;
 
-        public static int maxSouls
-        {
-            get => PlayerPrefs.GetInt("MaxSouls", 0);
-            set => PlayerPrefs.SetInt("MaxSouls", value);
-        }
+        public static int indexScene = 1;
+        public static DataParams MainData = new DataParams();
 
-        // Основные данные
-        private static DataParams _mainData;
-        public static DataParams MainData
-        {
-            get
-            {
-                if (_mainData == null)
-                {
-                    _mainData = new DataParams();
-                }
-                return _mainData;
-            }
-            private set => _mainData = value;
-        }
-
-        private static DataParams _tempData;
-        public static DataParams TempData
-        {
-            get
-            {
-                if (_tempData == null)
-                {
-                    _tempData = new DataParams();
-                }
-                return _tempData;
-            }
-            private set => _tempData = value;
-        }
+        public static DataParams TempData = new DataParams();
 
         public static void Load()
         {
             Debug.Log("Загрузка сейва");
-
-            // Создаем НОВЫЙ TempData как полную копию MainData (включая деньги и NodeGraph)
-            _tempData = new DataParams(MainData);
+            TempData = new DataParams(MainData, indexScene);
         }
 
         public static void Save()
         {
             Debug.Log("Сохранение");
-
-            // Заменяем MainData полной копией TempData (включая деньги и NodeGraph)
-            _mainData = new DataParams(_tempData);
-
-            // Сохраняем в PlayerPrefs
-            MainData.Save();
-            PlayerPrefs.Save();
-        }
-
-        public static void DeleteAllSaveData()
-        {
-            PlayerPrefs.DeleteAll();
-            _mainData = null;
-            _tempData = null;
+            indexScene++;
+            TempData = new DataParams(TempData, indexScene);
+            MainData = new DataParams(TempData, indexScene);
         }
     }
 }

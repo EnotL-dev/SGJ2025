@@ -13,14 +13,22 @@ namespace LevelSystem
         [SerializeField] private string lowPassParameterNameSound = "LowpassCutoff_Sound";
 
         [SerializeField] private bool playOnStart = true;
+        [SerializeField] private AudioSource source;
 
         private void Start()
         {
             if (playOnStart)
                 PlayRandomMusic();
 
+            source = GetComponent<AudioSource>();
             UnmuffleMusic();
             UnmuffleSound();
+        }
+
+        private void Update()
+        {
+            if(!source.isPlaying)
+                PlayRandomMusic();
         }
 
         public void PlayRandomMusic()

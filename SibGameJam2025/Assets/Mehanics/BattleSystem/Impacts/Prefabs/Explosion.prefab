@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4107319476483282328}
   - component: {fileID: 1673848074685080631}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: expSound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 6174652519059869582}
   - component: {fileID: 157106942026691473}
   - component: {fileID: 4355796074390763980}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +249,7 @@ GameObject:
   - component: {fileID: 490226633009407580}
   - component: {fileID: 3631955648501638852}
   - component: {fileID: 3988964748792275516}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SphereEffectDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
