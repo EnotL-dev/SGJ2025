@@ -54,9 +54,9 @@ namespace PlayerSystem
             }
             else
             {
-                Vector3 jumpMoving = _moving + _inputMoving * _config.MovingSpeedJump;
-                jumpMoving = Vector3.ClampMagnitude(jumpMoving, GetSpeed());
-                _characterController.Move(jumpMoving * Time.deltaTime);
+                _moving += _inputMoving * _config.MovingSpeedJump * Time.deltaTime;
+                _moving = Vector3.ClampMagnitude(_moving, GetSpeed());
+                _characterController.Move(_moving * Time.deltaTime);
             }
             if (_debug)
                 Debug.Log($"player speed: " + _characterController.velocity.magnitude);
