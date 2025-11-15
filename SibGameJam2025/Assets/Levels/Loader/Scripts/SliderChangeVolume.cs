@@ -19,9 +19,8 @@ public class SliderChangeVolume : MonoBehaviour
 
         if (SaveData.Volumes.ContainsKey(volumeParameter))
         {
-            float value = SaveData.Volumes[volumeParameter];
+            float value = Mathf.Pow(10, SaveData.Volumes[volumeParameter] / 20f);
             slider.value = value;
-            SetVolume();
         }
     }
 

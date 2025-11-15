@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68511a7e5af7b4d48ae3fee04d31979f, type: 3}
   m_Name: Shrapnel
   m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 0}

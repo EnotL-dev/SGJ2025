@@ -1656,6 +1656,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: KillZone
       objectReference: {fileID: 0}
+    - target: {fileID: 7183689488687627154, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
+      propertyPath: m_Size.x
+      value: 5.3508983
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183689488687627154, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
+      propertyPath: m_Size.z
+      value: 3.9069154
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183689488687627154, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
+      propertyPath: m_Center.x
+      value: -0.639666
+      objectReference: {fileID: 0}
+    - target: {fileID: 7183689488687627154, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
+      propertyPath: m_Center.z
+      value: 0.050975736
+      objectReference: {fileID: 0}
     - target: {fileID: 7833762181459532503, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
       propertyPath: m_LocalScale.x
       value: 17.777363
@@ -1670,7 +1686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7833762181459532503, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13.84
+      value: 12.8
       objectReference: {fileID: 0}
     - target: {fileID: 7833762181459532503, guid: c1104dd09f1c22348b9b4f66ff362854, type: 3}
       propertyPath: m_LocalPosition.y

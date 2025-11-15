@@ -72,7 +72,7 @@ public class Mana : MonoBehaviour
         {
             int addValue = SaveData.TempData.playerParams.lv;
             Add(addValue);
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.5f);
         }
 
         //yield return null;

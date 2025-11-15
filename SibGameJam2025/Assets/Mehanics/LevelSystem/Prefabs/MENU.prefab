@@ -192,7 +192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: a70e66bf84e166a4f8caf5cd1a8db4d2, type: 2}
   source: {fileID: 0}
-  clip: {fileID: 8300000, guid: d5c1cc65ef2c6c14bbf62573b529b153, type: 3}
+  clip: {fileID: 0}
   volumeParameter: MusicVolume
 --- !u!1 &295929766049375764
 GameObject:

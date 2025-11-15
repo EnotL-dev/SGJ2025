@@ -97,9 +97,10 @@ namespace BattleSystem
             {
                 if (node is Impact nodeImpact)
                 {
-                    if(nodeImpact.prefabToSpawn)
+                    if(nodeImpact is not Shrapnel && nodeImpact is Explosion)
                     {
-                        Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
+                        if (nodeImpact.prefabToSpawn)
+                            Instantiate(nodeImpact.prefabToSpawn, bulletObj.transform.position, Quaternion.identity);
                     }
                     else
                     {
@@ -128,7 +129,7 @@ namespace BattleSystem
                                     else
                                     {
                                         NodeData nodeData = Resources.Load<NodeData>("Nodes/NodeData");
-                                        nodesWithoutShrapnel.Add(nodeData.impacts[0]); //nothing ставим
+                                        nodesWithoutShrapnel.Add(new NothingImpact()); //nothing ставим
                                         nodeData = null;
                                         Resources.UnloadAsset(nodeData);
                                     }
@@ -158,12 +159,8 @@ namespace BattleSystem
                 {
                     GameObject tempObj = Instantiate(shapeNode.prefabDestroyEffect, bulletObj.transform);
                     tempObj.transform.parent = null;
-
-                    if (shapeNode is not Wawe)
-                        Destroy(bulletObj);
-                    else
-                        bulletObj.GetComponent<DestroyMyselfByTimer>().enabled = true;
                 }
+                bulletObj.GetComponent<DestroyMyselfByTimer>().enabled = true;
             }
         }
     }
